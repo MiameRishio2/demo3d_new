@@ -1,0 +1,9 @@
+
+*.csproj
+.vs/demo3d_new/v17/.suo
+.vsconfig
+Library
+Logs
+obj
+Temp
+demo3d_new.sln
