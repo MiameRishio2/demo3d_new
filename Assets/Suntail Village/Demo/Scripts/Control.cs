@@ -57,6 +57,7 @@ public class Control : MonoBehaviour
     private int nowIndex = 0;
     private List<Actions> moveActions;
     private Actions dialogueActions;
+    private bool isPaused = false;
 
     // Start is called before the first frame update
     void Start()
@@ -416,7 +417,21 @@ public class Control : MonoBehaviour
             }
         }
 
-       
+        //暂停功能
+        if (Input.GetButtonDown("PauseResume"))
+        {
+            Debug.Log("paused");
+            if (isPaused)
+            {
+                Time.timeScale = 1f;
+                isPaused = false;
+            }
+            else
+            {
+                Time.timeScale = 0f;
+                isPaused = true;
+            }
+        }
     }
 
     Actions GetMoveActions(string name, string start, string end)

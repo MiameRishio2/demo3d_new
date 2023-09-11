@@ -7,3 +7,7 @@ Logs
 obj
 Temp
 demo3d_new.sln
+Assets/TextMesh Pro/Shaders/TMPro_Surface.cginc
+Assets/TextMesh Pro/Shaders/TMPro_Mobile.cginc.meta
+Assets/TextMesh Pro/Shaders/
+Assets/TextMesh Pro/
