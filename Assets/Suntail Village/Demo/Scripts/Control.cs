@@ -10,6 +10,7 @@ using GameCreator.Localization;
 using GameCreator.Messages;
 using UnityEditor.VersionControl;
 using static GameCreator.Core.ActionTransform;
+using UnityEngine.UI;
 
 public class Control : MonoBehaviour
 {
@@ -46,6 +47,7 @@ public class Control : MonoBehaviour
     public List<NavigationMarker> markers = new List<NavigationMarker>();//存放所有路点
     public List<TargetCharacter> npcsMove = new List<TargetCharacter>(); //存放所有人物角色 运动相关
     public List<TargetGameObject> npcsDialogue = new List<TargetGameObject>(); //存放所有人物角色 对话相关
+    public GameObject timeUI; 
 
     private Dictionary<string, TargetCharacter> npcDicsMove = new Dictionary<string, TargetCharacter>();//存放npc的map 运动相关
     private Dictionary<string, TargetGameObject> npcDicsDialogue = new Dictionary<string, TargetGameObject>();//存放npc的map 对话相关
@@ -371,6 +373,9 @@ public class Control : MonoBehaviour
             }
             else
             {
+                Text tempText = timeUI.GetComponent<Text>();
+                tempText.text = infos[nowIndex].time;
+                Debug.Log(infos[nowIndex].time);
                 //生成对话Actions 
                 dialogueActions = GetDiglogueActions();
                 state = 1 ;
