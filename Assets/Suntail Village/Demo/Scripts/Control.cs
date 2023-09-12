@@ -47,8 +47,9 @@ public class Control : MonoBehaviour
     public List<NavigationMarker> markers = new List<NavigationMarker>();//存放所有路点
     public List<TargetCharacter> npcsMove = new List<TargetCharacter>(); //存放所有人物角色 运动相关
     public List<TargetGameObject> npcsDialogue = new List<TargetGameObject>(); //存放所有人物角色 对话相关
-    public GameObject timeUI;
-    public GameObject reasonUI;
+    public List<GameObject> npcsGameObject = new List<GameObject>(); //存放所有人物object 用于计算角色位置
+    public GameObject timeUI; //显示时间的ui
+    public GameObject reasonUI; //显示reason的ui
 
     private Dictionary<string, TargetCharacter> npcDicsMove = new Dictionary<string, TargetCharacter>();//存放npc的map 运动相关
     private Dictionary<string, TargetGameObject> npcDicsDialogue = new Dictionary<string, TargetGameObject>();//存放npc的map 对话相关
@@ -436,6 +437,59 @@ public class Control : MonoBehaviour
             {
                 Time.timeScale = 0f;
                 isPaused = true;
+            }
+        }
+
+        reasonUI.SetActive(false);
+        //悬停显示reason
+        if (isPaused)
+        {
+            Vector3 mousePosition = Input.mousePosition;
+
+            // 将屏幕坐标转换为世界坐标
+            Ray ray = Camera.main.ScreenPointToRay(mousePosition);
+            RaycastHit hit;
+
+            // 进行射线投射检测
+            if (Physics.Raycast(ray, out hit))
+            {
+                if (hit.collider.gameObject != null)
+                {
+                    if (hit.collider.gameObject.name.Equals("MannaTrigger"))
+                    {
+                        reasonUI.SetActive(true);
+                        Text reasonText = reasonUI.GetComponent<Text>();
+                        reasonText.text = infos[nowIndex].reasons["Manna"];
+                    }
+
+                    if (hit.collider.gameObject.name.Equals("DukeTrigger"))
+                    {
+                        reasonUI.SetActive(true);
+                        Text reasonText = reasonUI.GetComponent<Text>();
+                        reasonText.text = infos[nowIndex].reasons["Duke"];
+                    }
+
+                    if (hit.collider.gameObject.name.Equals("AnnaTrigger"))
+                    {
+                        reasonUI.SetActive(true);
+                        Text reasonText = reasonUI.GetComponent<Text>();
+                        reasonText.text = infos[nowIndex].reasons["Anna"];
+                    }
+
+                    if (hit.collider.gameObject.name.Equals("BasilTrigger"))
+                    {
+                        reasonUI.SetActive(true);
+                        Text reasonText = reasonUI.GetComponent<Text>();
+                        reasonText.text = infos[nowIndex].reasons["Basil"];
+                    }
+
+                    if (hit.collider.gameObject.name.Equals("MaryTrigger"))
+                    {
+                        reasonUI.SetActive(true);
+                        Text reasonText = reasonUI.GetComponent<Text>();
+                        reasonText.text = infos[nowIndex].reasons["Mary"];
+                    }
+                }
             }
         }
     }
