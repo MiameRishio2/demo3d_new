@@ -44,7 +44,20 @@ public class Control : MonoBehaviour
         public List<string> dialogues;
     }
 
-    public List<NavigationMarker> markers = new List<NavigationMarker>();//存放所有路点
+    public List<NavigationMarker> locationMarkers = new List<NavigationMarker>();//存放所有场所路点
+    public List<NavigationMarker> AjaWinerySceneOutMarkers = new List<NavigationMarker>(); //存放从AjaWineryScene出来的路点
+    public List<NavigationMarker> AjaWinerySceneInMarkers = new List<NavigationMarker>(); //存放进入AjaWineryScene的路点
+    public List<NavigationMarker> BasilHouseSceneOutMarkers = new List<NavigationMarker>(); //存放从BasilHouseScene出来的路点
+    public List<NavigationMarker> BasilHouseSceneInMarkers = new List<NavigationMarker>(); //存放进入BasilHouseScene的路点
+    public List<NavigationMarker> MaryLibrarySceneOutMarkers = new List<NavigationMarker>(); //存放从MaryLibraryScene出来的路点
+    public List<NavigationMarker> MaryLibrarySceneInMarkers = new List<NavigationMarker>(); //存放进入MaryLibraryScene的路点
+    public List<NavigationMarker> MineralClinicSceneOutMarkers = new List<NavigationMarker>(); //存放从MineralClinicScene出来的路点
+    public List<NavigationMarker> MineralClinicSceneInMarkers = new List<NavigationMarker>(); //存放进入MineralClinicScene的路点
+    public List<NavigationMarker> ChurchSceneOutMarkers = new List<NavigationMarker>(); //存放从ChurchScene出来的路点
+    public List<NavigationMarker> ChurchSceneInMarkers = new List<NavigationMarker>(); //存放进入ChurchScene的路点
+    public List<NavigationMarker> MiddlePMarkers = new List<NavigationMarker>(); //中间正向路点
+    public List<NavigationMarker> MiddleNMarkers = new List<NavigationMarker>(); //中间反向路点
+
     public List<TargetCharacter> npcsMove = new List<TargetCharacter>(); //存放所有人物角色 运动相关
     public List<TargetGameObject> npcsDialogue = new List<TargetGameObject>(); //存放所有人物角色 对话相关
     public List<GameObject> npcsGameObject = new List<GameObject>(); //存放所有人物object 用于计算角色位置
@@ -90,178 +103,153 @@ public class Control : MonoBehaviour
         //右下蓝房子为MineralClinicScene House_8C
 
         //初始化角色-房间路点 最初的30个路点存放角色-房间路点
-        npcMarkers["Manna AjaWineryScene"] = markers[0];
-        npcMarkers["Manna BasilHouseScene"] = markers[1];
-        npcMarkers["Manna MaryLibraryScene"] = markers[2];
-        npcMarkers["Manna MineralClinicScene"] = markers[3];
-        npcMarkers["Manna ChurchScene"] = markers[4];
-        npcMarkers["Manna RoseSquareScene"] = markers[5];
+        npcMarkers["Manna AjaWineryScene"] = locationMarkers[0];
+        npcMarkers["Manna BasilHouseScene"] = locationMarkers[1];
+        npcMarkers["Manna MaryLibraryScene"] = locationMarkers[2];
+        npcMarkers["Manna MineralClinicScene"] = locationMarkers[3];
+        npcMarkers["Manna ChurchScene"] = locationMarkers[4];
+        npcMarkers["Manna RoseSquareScene"] = locationMarkers[5];
 
-        npcMarkers["Duke AjaWineryScene"] = markers[6];
-        npcMarkers["Duke BasilHouseScene"] = markers[7];
-        npcMarkers["Duke MaryLibraryScene"] = markers[8];
-        npcMarkers["Duke MineralClinicScene"] = markers[9];
-        npcMarkers["Duke ChurchScene"] = markers[10];
-        npcMarkers["Duke RoseSquareScene"] = markers[11];
+        npcMarkers["Duke AjaWineryScene"] = locationMarkers[6];
+        npcMarkers["Duke BasilHouseScene"] = locationMarkers[7];
+        npcMarkers["Duke MaryLibraryScene"] = locationMarkers[8];
+        npcMarkers["Duke MineralClinicScene"] = locationMarkers[9];
+        npcMarkers["Duke ChurchScene"] = locationMarkers[10];
+        npcMarkers["Duke RoseSquareScene"] = locationMarkers[11];
 
-        npcMarkers["Anna AjaWineryScene"] = markers[12];
-        npcMarkers["Anna BasilHouseScene"] = markers[13];
-        npcMarkers["Anna MaryLibraryScene"] = markers[14];
-        npcMarkers["Anna MineralClinicScene"] = markers[15];
-        npcMarkers["Anna ChurchScene"] = markers[16];
-        npcMarkers["Anna RoseSquareScene"] = markers[17];
+        npcMarkers["Anna AjaWineryScene"] = locationMarkers[12];
+        npcMarkers["Anna BasilHouseScene"] = locationMarkers[13];
+        npcMarkers["Anna MaryLibraryScene"] = locationMarkers[14];
+        npcMarkers["Anna MineralClinicScene"] = locationMarkers[15];
+        npcMarkers["Anna ChurchScene"] = locationMarkers[16];
+        npcMarkers["Anna RoseSquareScene"] = locationMarkers[17];
 
-        npcMarkers["Basil AjaWineryScene"] = markers[18];
-        npcMarkers["Basil BasilHouseScene"] = markers[19];
-        npcMarkers["Basil MaryLibraryScene"] = markers[20];
-        npcMarkers["Basil MineralClinicScene"] = markers[21];
-        npcMarkers["Basil ChurchScene"] = markers[22];
-        npcMarkers["Basil RoseSquareScene"] = markers[23];
+        npcMarkers["Basil AjaWineryScene"] = locationMarkers[18];
+        npcMarkers["Basil BasilHouseScene"] = locationMarkers[19];
+        npcMarkers["Basil MaryLibraryScene"] = locationMarkers[20];
+        npcMarkers["Basil MineralClinicScene"] = locationMarkers[21];
+        npcMarkers["Basil ChurchScene"] = locationMarkers[22];
+        npcMarkers["Basil RoseSquareScene"] = locationMarkers[23];
 
-        npcMarkers["Mary AjaWineryScene"] = markers[24];
-        npcMarkers["Mary BasilHouseScene"] = markers[25];
-        npcMarkers["Mary MaryLibraryScene"] = markers[26];
-        npcMarkers["Mary MineralClinicScene"] = markers[27];
-        npcMarkers["Mary ChurchScene"] = markers[28];
-        npcMarkers["Mary RoseSquareScene"] = markers[29];
+        npcMarkers["Mary AjaWineryScene"] = locationMarkers[24];
+        npcMarkers["Mary BasilHouseScene"] = locationMarkers[25];
+        npcMarkers["Mary MaryLibraryScene"] = locationMarkers[26];
+        npcMarkers["Mary MineralClinicScene"] = locationMarkers[27];
+        npcMarkers["Mary ChurchScene"] = locationMarkers[28];
+        npcMarkers["Mary RoseSquareScene"] = locationMarkers[29];
 
         //存放每一条路径的Marker list
         //路径相关 先只记录中间的
-        //AjaWineryScene to BasilHouseScene MP0  
-        //BasilHouseScene to AjaWineryScene NP0
-        //AjaWineryScene to MaryLibraryScene 无
-        //MaryLibraryScene to AjaWineryScene 无
-        //AjaWineryScene to MineralClinicScene MP1
-        //MineralClinicScene to AjaWineryScene NP1
-        //AjaWineryScene to ChurchScene MP0 MP2
-        //ChurchScene to AjaWineryScene NP2 NP0
-        //AjaWineryScene to RoseSquareScene MP1
-        //RoseSquareScene to AjaWineryScene NP1
-
-        //BasilHouseScene to MaryLibraryScene NP0
-        //MaryLibraryScene to BasilHouseScene MP0
-        //BasilHouseScene to MineralClinicScene NP0 NP1
-        //MineralClinicScene to BasilHouseScene MP1 MP0
-        //BasilHouseScene to ChurchScene MP2
-        //ChurchScene to BasilHouseScene NP2
-        //BasilHouseScene to RoseSquareScene NP0 MP1
-        //RoseSquareScene to BasilHouseScene NP1 MP0
-
-        //MaryLibraryScene to MineralClinicScene MP1
-        //MineralClinicScene to MaryLibraryScene NP1
-        //MaryLibraryScene to ChurchScene MP0 MP2
-        //ChurchScene to MaryLibraryScene NP2 NP0
-        //MaryLibraryScene to RoseSquareScene 无
-        //RoseSquareScene to MaryLibraryScene 无
-
-        //MineralClinicScene to ChurchScene NP1 MP0 MP2
-        //ChurchScene to MineralClinicScene NP2 NP0 MP1
-        //MineralClinicScene to RoseSquareScene 无
-        //RoseSquareScene to MineralClinicScene 无
-
-        //ChurchScene to RoseSquareScene  NP2 NP0 MP1
-        //RoseSquareScene to ChurchScene  NP1 MP0 MP2
-
-
-        //mp0 92  mp1 93  mp2 94  np0 95  np1 96  np2 97
         pathMarkers["AjaWineryScene BasilHouseScene"] = new List<NavigationMarker>();
-        pathMarkers["AjaWineryScene BasilHouseScene"].Add(markers[92]);
+        pathMarkers["AjaWineryScene BasilHouseScene"].Add(MiddleNMarkers[1]);
 
         pathMarkers["AjaWineryScene MaryLibraryScene"] = new List<NavigationMarker>();
 
         pathMarkers["AjaWineryScene MineralClinicScene"] = new List<NavigationMarker>();
-        pathMarkers["AjaWineryScene MineralClinicScene"].Add(markers[93]);
+        pathMarkers["AjaWineryScene MineralClinicScene"].Add(MiddlePMarkers[2]);
+        pathMarkers["AjaWineryScene MineralClinicScene"].Add(MiddlePMarkers[3]);
 
         pathMarkers["AjaWineryScene ChurchScene"] = new List<NavigationMarker>();
-        pathMarkers["AjaWineryScene ChurchScene"].Add(markers[94]);
+        pathMarkers["AjaWineryScene ChurchScene"].Add(MiddleNMarkers[1]);
+        pathMarkers["AjaWineryScene ChurchScene"].Add(MiddlePMarkers[0]);
 
         pathMarkers["AjaWineryScene RoseSquareScene"] = new List<NavigationMarker>();
-        pathMarkers["AjaWineryScene RoseSquareScene"].Add(markers[93]);
+        pathMarkers["AjaWineryScene RoseSquareScene"].Add(MiddlePMarkers[2]);
 
         pathMarkers["BasilHouseScene AjaWineryScene"] = new List<NavigationMarker>();
-        pathMarkers["BasilHouseScene AjaWineryScene"].Add(markers[95]);
+        pathMarkers["BasilHouseScene AjaWineryScene"].Add(MiddlePMarkers[1]);
 
         pathMarkers["BasilHouseScene MaryLibraryScene"] = new List<NavigationMarker>();
-        pathMarkers["BasilHouseScene MaryLibraryScene"].Add(markers[95]);
+        pathMarkers["BasilHouseScene MaryLibraryScene"].Add(MiddlePMarkers[1]);
+        pathMarkers["BasilHouseScene MaryLibraryScene"].Add(MiddlePMarkers[2]);
 
         pathMarkers["BasilHouseScene MineralClinicScene"] = new List<NavigationMarker>();
-        pathMarkers["BasilHouseScene MineralClinicScene"].Add(markers[95]);
-        pathMarkers["BasilHouseScene MineralClinicScene"].Add(markers[96]);
+        pathMarkers["BasilHouseScene MineralClinicScene"].Add(MiddlePMarkers[1]);
+        pathMarkers["BasilHouseScene MineralClinicScene"].Add(MiddlePMarkers[2]);
+        pathMarkers["BasilHouseScene MineralClinicScene"].Add(MiddlePMarkers[3]);
 
         pathMarkers["BasilHouseScene ChurchScene"] = new List<NavigationMarker>();
-        pathMarkers["BasilHouseScene ChurchScene"].Add(markers[94]);
+        pathMarkers["BasilHouseScene ChurchScene"].Add(MiddlePMarkers[1]);
+        pathMarkers["BasilHouseScene ChurchScene"].Add(MiddlePMarkers[0]);
 
         pathMarkers["BasilHouseScene RoseSquareScene"] = new List<NavigationMarker>();
-        pathMarkers["BasilHouseScene RoseSquareScene"].Add(markers[95]);
-        pathMarkers["BasilHouseScene RoseSquareScene"].Add(markers[93]);
+        pathMarkers["BasilHouseScene RoseSquareScene"].Add(MiddlePMarkers[1]);
+        pathMarkers["BasilHouseScene RoseSquareScene"].Add(MiddlePMarkers[2]);
 
         pathMarkers["MaryLibraryScene AjaWineryScene"] = new List<NavigationMarker>();
 
         pathMarkers["MaryLibraryScene BasilHouseScene"] = new List<NavigationMarker>();
-        pathMarkers["MaryLibraryScene BasilHouseScene"].Add(markers[92]);
+        pathMarkers["MaryLibraryScene BasilHouseScene"].Add(MiddleNMarkers[2]);
+        pathMarkers["MaryLibraryScene BasilHouseScene"].Add(MiddleNMarkers[1]);
 
         pathMarkers["MaryLibraryScene MineralClinicScene"] = new List<NavigationMarker>();
-        pathMarkers["MaryLibraryScene MineralClinicScene"].Add(markers[93]);
+        pathMarkers["MaryLibraryScene MineralClinicScene"].Add(MiddlePMarkers[3]);
 
         pathMarkers["MaryLibraryScene ChurchScene"] = new List<NavigationMarker>();
-        pathMarkers["MaryLibraryScene ChurchScene"].Add(markers[92]);
-        pathMarkers["MaryLibraryScene ChurchScene"].Add(markers[94]);
+        pathMarkers["MaryLibraryScene ChurchScene"].Add(MiddleNMarkers[2]);
+        pathMarkers["MaryLibraryScene ChurchScene"].Add(MiddleNMarkers[1]);
+        pathMarkers["MaryLibraryScene ChurchScene"].Add(MiddlePMarkers[0]);
 
         pathMarkers["MaryLibraryScene RoseSquareScene"] = new List<NavigationMarker>();
 
         pathMarkers["MineralClinicScene AjaWineryScene"] = new List<NavigationMarker>();
-        pathMarkers["MineralClinicScene AjaWineryScene"].Add(markers[96]);
+        pathMarkers["MineralClinicScene AjaWineryScene"].Add(MiddleNMarkers[3]);
+        pathMarkers["MineralClinicScene AjaWineryScene"].Add(MiddleNMarkers[2]);
 
         pathMarkers["MineralClinicScene BasilHouseScene"] = new List<NavigationMarker>();
-        pathMarkers["MineralClinicScene BasilHouseScene"].Add(markers[93]);
-        pathMarkers["MineralClinicScene BasilHouseScene"].Add(markers[92]);
+        pathMarkers["MineralClinicScene BasilHouseScene"].Add(MiddleNMarkers[3]);
+        pathMarkers["MineralClinicScene BasilHouseScene"].Add(MiddleNMarkers[2]);
+        pathMarkers["MineralClinicScene BasilHouseScene"].Add(MiddleNMarkers[1]);
 
         pathMarkers["MineralClinicScene MaryLibraryScene"] = new List<NavigationMarker>();
-        pathMarkers["MineralClinicScene MaryLibraryScene"].Add(markers[96]);
+        pathMarkers["MineralClinicScene MaryLibraryScene"].Add(MiddleNMarkers[3]);
 
         pathMarkers["MineralClinicScene ChurchScene"] = new List<NavigationMarker>();
-        pathMarkers["MineralClinicScene ChurchScene"].Add(markers[96]);
-        pathMarkers["MineralClinicScene ChurchScene"].Add(markers[92]);
-        pathMarkers["MineralClinicScene ChurchScene"].Add(markers[94]);
+        pathMarkers["MineralClinicScene ChurchScene"].Add(MiddleNMarkers[3]);
+        pathMarkers["MineralClinicScene ChurchScene"].Add(MiddleNMarkers[2]);
+        pathMarkers["MineralClinicScene ChurchScene"].Add(MiddleNMarkers[1]);
+        pathMarkers["MineralClinicScene ChurchScene"].Add(MiddlePMarkers[0]);
 
         pathMarkers["MineralClinicScene RoseSquareScene"] = new List<NavigationMarker>();
 
         pathMarkers["ChurchScene AjaWineryScene"] = new List<NavigationMarker>();
-        pathMarkers["ChurchScene AjaWineryScene"].Add(markers[97]);
-        pathMarkers["ChurchScene AjaWineryScene"].Add(markers[95]);
+        pathMarkers["ChurchScene AjaWineryScene"].Add(MiddleNMarkers[0]);
+        pathMarkers["ChurchScene AjaWineryScene"].Add(MiddlePMarkers[1]);
 
         pathMarkers["ChurchScene BasilHouseScene"] = new List<NavigationMarker>();
-        pathMarkers["ChurchScene BasilHouseScene"].Add(markers[97]);
+        pathMarkers["ChurchScene BasilHouseScene"].Add(MiddleNMarkers[0]);
 
         pathMarkers["ChurchScene MaryLibraryScene"] = new List<NavigationMarker>();
-        pathMarkers["ChurchScene MaryLibraryScene"].Add(markers[97]);
-        pathMarkers["ChurchScene MaryLibraryScene"].Add(markers[95]);
+        pathMarkers["ChurchScene MaryLibraryScene"].Add(MiddleNMarkers[0]);
+        pathMarkers["ChurchScene MaryLibraryScene"].Add(MiddlePMarkers[1]);
+        pathMarkers["ChurchScene MaryLibraryScene"].Add(MiddlePMarkers[2]);
 
         pathMarkers["ChurchScene MineralClinicScene"] = new List<NavigationMarker>();
-        pathMarkers["ChurchScene MineralClinicScene"].Add(markers[97]);
-        pathMarkers["ChurchScene MineralClinicScene"].Add(markers[95]);
-        pathMarkers["ChurchScene MineralClinicScene"].Add(markers[93]);
+        pathMarkers["ChurchScene MineralClinicScene"].Add(MiddleNMarkers[0]);
+        pathMarkers["ChurchScene MineralClinicScene"].Add(MiddlePMarkers[1]);
+        pathMarkers["ChurchScene MineralClinicScene"].Add(MiddlePMarkers[2]);
+        pathMarkers["ChurchScene MineralClinicScene"].Add(MiddlePMarkers[3]);
 
         pathMarkers["ChurchScene RoseSquareScene"] = new List<NavigationMarker>();
-        pathMarkers["ChurchScene RoseSquareScene"].Add(markers[97]);
-        pathMarkers["ChurchScene RoseSquareScene"].Add(markers[95]);
-        pathMarkers["ChurchScene RoseSquareScene"].Add(markers[93]);
+        pathMarkers["ChurchScene RoseSquareScene"].Add(MiddleNMarkers[0]);
+        pathMarkers["ChurchScene RoseSquareScene"].Add(MiddlePMarkers[1]);
+        pathMarkers["ChurchScene RoseSquareScene"].Add(MiddlePMarkers[2]);
 
         pathMarkers["RoseSquareScene AjaWineryScene"] = new List<NavigationMarker>();
-        pathMarkers["RoseSquareScene AjaWineryScene"].Add(markers[96]);
+        pathMarkers["RoseSquareScene AjaWineryScene"].Add(MiddleNMarkers[2]);
 
         pathMarkers["RoseSquareScene BasilHouseScene"] = new List<NavigationMarker>();
-        pathMarkers["RoseSquareScene BasilHouseScene"].Add(markers[96]);
-        pathMarkers["RoseSquareScene BasilHouseScene"].Add(markers[92]);
+        pathMarkers["RoseSquareScene BasilHouseScene"].Add(MiddleNMarkers[2]);
+        pathMarkers["RoseSquareScene BasilHouseScene"].Add(MiddleNMarkers[1]);
 
         pathMarkers["RoseSquareScene MaryLibraryScene"] = new List<NavigationMarker>();
 
         pathMarkers["RoseSquareScene MineralClinicScene"] = new List<NavigationMarker>();
 
         pathMarkers["RoseSquareScene ChurchScene"] = new List<NavigationMarker>();
-        pathMarkers["RoseSquareScene ChurchScene"].Add(markers[96]);
-        pathMarkers["RoseSquareScene ChurchScene"].Add(markers[92]);
-        pathMarkers["RoseSquareScene ChurchScene"].Add(markers[94]);
+        pathMarkers["RoseSquareScene ChurchScene"].Add(MiddleNMarkers[2]);
+        pathMarkers["RoseSquareScene ChurchScene"].Add(MiddleNMarkers[1]);
+        pathMarkers["RoseSquareScene ChurchScene"].Add(MiddlePMarkers[0]);
 
         //初始化角色字典
         npcDicsMove["Manna"] = npcsMove[0];
@@ -523,49 +511,28 @@ public class Control : MonoBehaviour
 
         if (start.Equals("AjaWineryScene"))
         {
-            resultMarkers.Add(markers[30]);
-            resultMarkers.Add(markers[31]);
-            resultMarkers.Add(markers[32]);
-            resultMarkers.Add(markers[33]);
-            resultMarkers.Add(markers[34]);
-            resultMarkers.Add(markers[35]);
-            resultMarkers.Add(markers[36]);
-            resultMarkers.Add(markers[37]);
-            resultMarkers.Add(markers[38]);
-            resultMarkers.Add(markers[39]);
+            for(int i = 0; i < AjaWinerySceneOutMarkers.Count; i++)
+                resultMarkers.Add(AjaWinerySceneOutMarkers[i]);
         }
         if (start.Equals("BasilHouseScene"))
         {
-            resultMarkers.Add(markers[50]);
-            resultMarkers.Add(markers[51]);
-            resultMarkers.Add(markers[52]);
-            resultMarkers.Add(markers[53]);
-            resultMarkers.Add(markers[54]);
+            for (int i = 0; i < BasilHouseSceneOutMarkers.Count; i++)
+                resultMarkers.Add(BasilHouseSceneOutMarkers[i]);
         }
         if (start.Equals("MaryLibraryScene"))
         {
-            resultMarkers.Add(markers[60]);
-            resultMarkers.Add(markers[61]);
-            resultMarkers.Add(markers[62]);
-            resultMarkers.Add(markers[63]);
-            resultMarkers.Add(markers[64]);
-            resultMarkers.Add(markers[65]);
-            resultMarkers.Add(markers[66]);
+            for (int i = 0; i < MaryLibrarySceneOutMarkers.Count; i++)
+                resultMarkers.Add(MaryLibrarySceneOutMarkers[i]);
         }
         if (start.Equals("MineralClinicScene"))
         {
-            resultMarkers.Add(markers[74]);
-            resultMarkers.Add(markers[75]);
-            resultMarkers.Add(markers[76]);
-            resultMarkers.Add(markers[77]);
-            resultMarkers.Add(markers[78]);
-            resultMarkers.Add(markers[79]);
+            for (int i = 0; i < MineralClinicSceneOutMarkers.Count; i++)
+                resultMarkers.Add(MineralClinicSceneOutMarkers[i]);
         }
         if (start.Equals("ChurchScene"))
         {
-            resultMarkers.Add(markers[86]);
-            resultMarkers.Add(markers[87]);
-            resultMarkers.Add(markers[88]);
+            for (int i = 0; i < ChurchSceneOutMarkers.Count; i++)
+                resultMarkers.Add(ChurchSceneOutMarkers[i]);
         }
         List<NavigationMarker> path = pathMarkers[start + " " + end];
         for(int i = 0; i < path.Count; i++)
@@ -573,49 +540,28 @@ public class Control : MonoBehaviour
 
         if (end.Equals("AjaWineryScene"))
         {
-            resultMarkers.Add(markers[49]);
-            resultMarkers.Add(markers[48]);
-            resultMarkers.Add(markers[47]);
-            resultMarkers.Add(markers[46]);
-            resultMarkers.Add(markers[45]);
-            resultMarkers.Add(markers[44]);
-            resultMarkers.Add(markers[43]);
-            resultMarkers.Add(markers[42]);
-            resultMarkers.Add(markers[41]);
-            resultMarkers.Add(markers[40]);
+            for (int i = 0; i < AjaWinerySceneInMarkers.Count; i++)
+                resultMarkers.Add(AjaWinerySceneInMarkers[AjaWinerySceneInMarkers.Count - i -1]);
         }
         if (end.Equals("BasilHouseScene"))
-        {   
-            resultMarkers.Add(markers[59]);
-            resultMarkers.Add(markers[58]);
-            resultMarkers.Add(markers[57]);
-            resultMarkers.Add(markers[56]);
-            resultMarkers.Add(markers[55]);
+        {
+            for (int i = 0; i < BasilHouseSceneInMarkers.Count; i++)
+                resultMarkers.Add(BasilHouseSceneInMarkers[BasilHouseSceneInMarkers.Count - i -1]);
         }
         if (end.Equals("MaryLibraryScene"))
-        {   
-            resultMarkers.Add(markers[73]);
-            resultMarkers.Add(markers[72]);
-            resultMarkers.Add(markers[71]);
-            resultMarkers.Add(markers[70]);
-            resultMarkers.Add(markers[69]);
-            resultMarkers.Add(markers[68]);
-            resultMarkers.Add(markers[67]);
+        {
+            for (int i = 0; i < MaryLibrarySceneInMarkers.Count; i++)
+                resultMarkers.Add(MaryLibrarySceneInMarkers[MaryLibrarySceneInMarkers.Count - i -1]);
         }
         if (end.Equals("MineralClinicScene"))
         {
-            resultMarkers.Add(markers[85]);
-            resultMarkers.Add(markers[84]);
-            resultMarkers.Add(markers[83]);
-            resultMarkers.Add(markers[82]);
-            resultMarkers.Add(markers[81]);
-            resultMarkers.Add(markers[80]);      
+            for (int i = 0; i < MineralClinicSceneInMarkers.Count; i++)
+                resultMarkers.Add(MineralClinicSceneInMarkers[MineralClinicSceneInMarkers.Count -i -1]);
         }
         if (end.Equals("ChurchScene"))
         {
-            resultMarkers.Add(markers[91]);
-            resultMarkers.Add(markers[90]);
-            resultMarkers.Add(markers[89]);
+            for (int i = 0; i < ChurchSceneInMarkers.Count; i++)
+                resultMarkers.Add(ChurchSceneInMarkers[ChurchSceneInMarkers.Count - i - 1]);
         }
         resultMarkers.Add(npcMarkers[name + " " + end]);
         return resultMarkers;
