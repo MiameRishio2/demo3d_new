@@ -1,0 +1,287 @@
+fileFormatVersion: 2
+guid: dca3a8ecaa6063a4c93e88c472f5f00b
+ModelImporter:
+  serializedVersion: 19301
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eyebrows_2212_sm_5_eyebrows_mesh
+    second: {fileID: 2100000, guid: 97602108e77f9c5499b7ad0c6806a0eb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Genesis 8 Female Eyelashes_EyeMoisture
+    second: {fileID: 2100000, guid: 5cf5f347b2d4d7d46be04877cf5cf87f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Genesis 8 Female Eyelashes_Eyelashes
+    second: {fileID: 2100000, guid: e883a83291d68c64c9a7b539f91dfbf5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Jessica_Arms
+    second: {fileID: 2100000, guid: f8cd5d3d0ba3a5b46adeb99d508297de, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Jessica_Cornea
+    second: {fileID: 2100000, guid: 8ba28f3ee87699a46af71791ffcbb69d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Jessica_Ears
+    second: {fileID: 2100000, guid: b30af5303d8dfb047a938e0d4ebf4198, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Jessica_EyeMoisture
+    second: {fileID: 2100000, guid: fa27ea9824b54ff4f92d3fb95aa8439c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Jessica_EyeSocket
+    second: {fileID: 2100000, guid: 9a8930e7688630847b692373207417ef, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Jessica_Face
+    second: {fileID: 2100000, guid: fd43b9fac6e55344f91b0bf2ae7b5a0f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Jessica_Fingernails
+    second: {fileID: 2100000, guid: c205fe99952c45a47acb712cdd8218bb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Jessica_Hair_57204_Hair
+    second: {fileID: 2100000, guid: 7e154c99d8c77524fb5d18937e4bafa3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Jessica_Hair_57204_Hair_2
+    second: {fileID: 2100000, guid: b14e488a1c9726f4b910bc03a2913253, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Jessica_Hair_57204_Hair_lace
+    second: {fileID: 2100000, guid: a4ce58e6753ff7f4684d8f70bd57c353, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Jessica_Hair_57204_pigtail_Outside
+    second: {fileID: 2100000, guid: cec4ca7e438251747a05fbc118d6b9a2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Jessica_Irises
+    second: {fileID: 2100000, guid: ad7bf107a29e1cf458b8d059ec8ae6b2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Jessica_Legs
+    second: {fileID: 2100000, guid: 517136e825c06cb4c960fa7747423d39, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Jessica_Lips
+    second: {fileID: 2100000, guid: ed6dc7832a5050f47a95a04671322179, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Jessica_Mouth
+    second: {fileID: 2100000, guid: a4fba801ef9443c458c7daf50d303267, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Jessica_Pupils
+    second: {fileID: 2100000, guid: ece4e8b171d3b8c4bafaa7f9ddfe0e28, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Jessica_Sclera
+    second: {fileID: 2100000, guid: 3cb5fd7a4a8ef2a46a2254cc660c9632, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Jessica_Teeth
+    second: {fileID: 2100000, guid: f2178650c4af1424f9703d4d68f20937, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Jessica_Toenails
+    second: {fileID: 2100000, guid: 26a208ecd6e407441a604bcbd0af1e33, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Jessica_Torso
+    second: {fileID: 2100000, guid: f4956763857a81949b35df2314264edc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Shirley Lee Martin Boots_42520_Groove
+    second: {fileID: 2100000, guid: afe32cdefb3e55146b19d77e6365bd29, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Shirley Lee Martin Boots_42520_Hole
+    second: {fileID: 2100000, guid: d920ef419fe87fc4d9ef9e2a2a815760, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Shirley Lee Martin Boots_42520_Shoelaces
+    second: {fileID: 2100000, guid: 3b19014fd29133d4ab9fc1eb50f0bcc2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Shirley Lee Martin Boots_42520_Sole
+    second: {fileID: 2100000, guid: 97813963957d1be4eb9ed2be9979c125, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Shirley Lee Martin Boots_42520_Stripe
+    second: {fileID: 2100000, guid: ed5939da41e24224dbd0af258ac2e0f1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Shirley Lee Martin Boots_42520_Upper
+    second: {fileID: 2100000, guid: f80e5c4b7148e71448f2f4db785282ab, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Shirley Lee Martin Boots_42520_Vamp
+    second: {fileID: 2100000, guid: b75e91af29dc7b940a3811752d311bac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Shirley Lee Martin Boots_42520_Welt
+    second: {fileID: 2100000, guid: 81603780e2317f749a7626c3089fa036, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Shirt_2594_Material
+    second: {fileID: 2100000, guid: ffb83076d3de90d4296f3c9cb771874f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: jeans_6914_Button
+    second: {fileID: 2100000, guid: a35b8fb881397634a9c912632347d39f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: jeans_6914_Jean
+    second: {fileID: 2100000, guid: 8c5c817c52704044daafa8ed9411a7de, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: jeans_6914_UnderWear_Lace
+    second: {fileID: 2100000, guid: 5bf75767633a88f488369187259cc5bb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: jeans_6914_Zip
+    second: {fileID: 2100000, guid: 2c4a015ce6476b045a07842e444e17aa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: jeans_6914_stiches
+    second: {fileID: 2100000, guid: 0f39af1f7ff37a244945e27f40a68b60, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: jeans_6914_underwear
+    second: {fileID: 2100000, guid: 5b8523f89244dad41843887b5bae16af, type: 2}
+  materials:
+    materialImportMode: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 3
+  humanoidOversampling: 1
+  avatarSetup: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

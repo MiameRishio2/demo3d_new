@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 823a0ec5d712d9048b341c1489cbd101
+guid: 756f94c26c27a5e45a97aadef0330c36
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
@@ -8,212 +8,212 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: 1
-    second: {fileID: 2100000, guid: daccd3a095f413345a0ce59ac3c745ba, type: 2}
+    second: {fileID: 2100000, guid: f005ab59f2be8d14abb34fa134016b08, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: 1.001
-    second: {fileID: 2100000, guid: 238f6822c712a714baebce2aaee7671b, type: 2}
+    second: {fileID: 2100000, guid: eb3eebe10820b5e43b2ee1b6ee4f1e49, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: 2021-03Hair_191637_Back
-    second: {fileID: 2100000, guid: 7d6245be9c7c3cd42b13f536baa2d1df, type: 2}
+    second: {fileID: 2100000, guid: 8b4ccbe104a9abf4797b37ceea33256a, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: 2021-03Hair_191637_BackUnder
-    second: {fileID: 2100000, guid: bb0ec21c9ef91f84190c8febe947a357, type: 2}
+    second: {fileID: 2100000, guid: 76038e6dab05d8449a1fc216a1e97057, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: 2021-03Hair_191637_Bangs1
-    second: {fileID: 2100000, guid: 42b1f420565890e48ac4ebd327c0bde4, type: 2}
+    second: {fileID: 2100000, guid: 3b00cc48042287a46a2d8d664a12cdfe, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: 2021-03Hair_191637_Bangs2
-    second: {fileID: 2100000, guid: 6f1d7983865a3cb488b08155269016f2, type: 2}
+    second: {fileID: 2100000, guid: af22e303ab9ca4d44a009ddf91b1321f, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: 2021-03Hair_191637_Cap
-    second: {fileID: 2100000, guid: 2bd2ec329be66a14e818080dd0c3e971, type: 2}
+    second: {fileID: 2100000, guid: 63185b5b8e2357943a36bf904c7f8626, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: 2021-03Hair_191637_Front1
-    second: {fileID: 2100000, guid: 628c8b5fa917f234caa915b50f5e90a4, type: 2}
+    second: {fileID: 2100000, guid: 7a791896bc3069345b3e69a5319f9d4b, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: 2021-03Hair_191637_Front2
-    second: {fileID: 2100000, guid: a3e86402cd97f584abf92acce86bbde4, type: 2}
+    second: {fileID: 2100000, guid: 71d2415a7c564a5469fa2dc210cca200, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: 2021-03Hair_191637_Side1
-    second: {fileID: 2100000, guid: e0de654bd929cb149a05e741b67fca41, type: 2}
+    second: {fileID: 2100000, guid: 7668cc7d551f6094c8fd28e3b9b75f01, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: 2021-03Hair_191637_Side2
-    second: {fileID: 2100000, guid: 96b6cf2934dd1a8408444716110e9305, type: 2}
+    second: {fileID: 2100000, guid: 857b6f8473763fd458f6e0f45844a72e, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: DOA Momiji_Arms
-    second: {fileID: 2100000, guid: 7eb46a9983cb7404aacc8069ce6645e2, type: 2}
+    second: {fileID: 2100000, guid: 2612adeeb4533bb4fb2c8858b871c708, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: DOA Momiji_Cornea
-    second: {fileID: 2100000, guid: 41d0112abe1bfe142a049051b24355f1, type: 2}
+    second: {fileID: 2100000, guid: 5eb76b2e4b513cc468a786146d9dbef9, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: DOA Momiji_Ears
-    second: {fileID: 2100000, guid: 1f6ca6589c22fd84fb2931d280324b1f, type: 2}
+    second: {fileID: 2100000, guid: f1e9e76860332814fb925c2b12faad34, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: DOA Momiji_EyeMoisture
-    second: {fileID: 2100000, guid: e010be4fbf70dc747be5edbc82e88816, type: 2}
+    second: {fileID: 2100000, guid: 155034de5cbf6314480a9665ff3872eb, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: DOA Momiji_EyeSocket
-    second: {fileID: 2100000, guid: 25f9017813f396949b30d9507fd41fc5, type: 2}
+    second: {fileID: 2100000, guid: b009fa54d36af9b429e1da65b170750a, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: DOA Momiji_Face
-    second: {fileID: 2100000, guid: 83053e11542f7054393fb45245ff5b3b, type: 2}
+    second: {fileID: 2100000, guid: c2e1f9b1645a7184babf58db696eded8, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: DOA Momiji_Fingernails
-    second: {fileID: 2100000, guid: 851578274d26eb547a343cdcb04b420e, type: 2}
+    second: {fileID: 2100000, guid: 6da9ef28efafd4644ade45b364f33c49, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: DOA Momiji_Irises
-    second: {fileID: 2100000, guid: 8d6ed6fc67cb2c64bbb4f406b7b0d808, type: 2}
+    second: {fileID: 2100000, guid: b949e151ca5f06040b58778b5bae4393, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: DOA Momiji_Legs
-    second: {fileID: 2100000, guid: 5f47d565914811b45a7626328d453bc5, type: 2}
+    second: {fileID: 2100000, guid: c3807585022e4384e8e360a9435a3d25, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: DOA Momiji_Lips
-    second: {fileID: 2100000, guid: ee33a6b4ecf68694585aa7debd41e4a9, type: 2}
+    second: {fileID: 2100000, guid: fbb6cbe20ea50444692eb21eefdf0c74, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: DOA Momiji_Mouth
-    second: {fileID: 2100000, guid: 9ff7a954748f4154aaca99394ab90018, type: 2}
+    second: {fileID: 2100000, guid: af6930cbfeb32e44da9df790d9a503fc, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: DOA Momiji_Pupils
-    second: {fileID: 2100000, guid: d7b911274ff50c34e8c796237e23f66c, type: 2}
+    second: {fileID: 2100000, guid: 115132c121b8e3742a77377136cce74e, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: DOA Momiji_Sclera
-    second: {fileID: 2100000, guid: fc21aa74703ce1f45864dac52df6f38d, type: 2}
+    second: {fileID: 2100000, guid: 382faa086ca3053428ca75cf64a4805b, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: DOA Momiji_Teeth
-    second: {fileID: 2100000, guid: 539a466a9a926c14091dcc8933d62a9a, type: 2}
+    second: {fileID: 2100000, guid: e55c8f8aedac7524bb59dc2961b51b5f, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: DOA Momiji_Toenails
-    second: {fileID: 2100000, guid: e77f0f760028cec469b225e59b0da6e6, type: 2}
+    second: {fileID: 2100000, guid: f6524039a12fd424cb3a8f95b1304e5e, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: DOA Momiji_Torso
-    second: {fileID: 2100000, guid: b1e9497bca74b864f93ada7c72eeca9c, type: 2}
+    second: {fileID: 2100000, guid: 85176a89e7eaabe48b8b349877af4a44, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: _button_dr_button
-    second: {fileID: 2100000, guid: 174d970f3bdb86941adad06bb673743a, type: 2}
+    second: {fileID: 2100000, guid: f5603a8676e4da34f97c6660939db85d, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: boots_base_13242_boots_body
-    second: {fileID: 2100000, guid: 1142f8956a5ff9d439f39a1fcd97302b, type: 2}
+    second: {fileID: 2100000, guid: eb1c90db89346274fbac0a4e4bfb1e43, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: boots_base_13242_boots_inner
-    second: {fileID: 2100000, guid: 079b1f15d2310f44b8ec3d7a4d28f8bf, type: 2}
+    second: {fileID: 2100000, guid: 9bd18315fc7f52446ae24fda766bebb3, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: boots_base_13242_boots_sole
-    second: {fileID: 2100000, guid: b5f3168fb0cf8024b961916eba2aaeb4, type: 2}
+    second: {fileID: 2100000, guid: 65782fe7bff333441b8c0f26ca574465, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: dr_button.001
-    second: {fileID: 2100000, guid: b443f81a431c40043ac095a5e4756663, type: 2}
+      name: dr_button
+    second: {fileID: 2100000, guid: de4381688a903e3408240306c1d9af07, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: dr_button.002
-    second: {fileID: 2100000, guid: 50e20a0ba9a420e48a76d8158f2cbd76, type: 2}
+    second: {fileID: 2100000, guid: 3fa64c980ccfd944db4ff21f7bc1f2e9, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: dr_button.003
-    second: {fileID: 2100000, guid: a8fe9f9623fce5043a16123ca07fedcd, type: 2}
+    second: {fileID: 2100000, guid: 31db10311bb9e074c817287b0d7a013b, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: dr_button.004
-    second: {fileID: 2100000, guid: 15d4a056fe9791040a0bf5a0ee561b81, type: 2}
+    second: {fileID: 2100000, guid: 8cf7ddcee5e5ff04ba4101a7b9215894, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: dr_button.005
-    second: {fileID: 2100000, guid: 7a9567c1e6268bf4784ae6fc67cbb29d, type: 2}
+    second: {fileID: 2100000, guid: 70508aa577853b847a4e3ad6ea4751d8, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: dr_button.006
-    second: {fileID: 2100000, guid: 47a5a60b28473524a8ea0e8253fb91c4, type: 2}
+    second: {fileID: 2100000, guid: bfc743d8b379d3245bc20f666baa4d7a, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: dress_33700_dress_collar
-    second: {fileID: 2100000, guid: 3059dccaa79ec7044af62cb48b7a05fb, type: 2}
+    second: {fileID: 2100000, guid: 982b81b373bb6584d97084400f2d1cd0, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: dress_33700_dress_dyn_body
-    second: {fileID: 2100000, guid: 1df9327b4d4ef1a4f86942e85dd6b4fb, type: 2}
+    second: {fileID: 2100000, guid: a68bd36e4a00a8247b29725640ac5567, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: dress_33700_dress_dyn_skirt
-    second: {fileID: 2100000, guid: 615daa3036c38cf4681d1dcc109c7bad, type: 2}
+    second: {fileID: 2100000, guid: 51584084fffc38f4890c5ba0fe972b6b, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: dress_33700_dress_dyn_sleeve
-    second: {fileID: 2100000, guid: 1a132ef2b95fa124c8f0b423cd979ddc, type: 2}
+    second: {fileID: 2100000, guid: b7382c296aa549546be3b1aec029e15c, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: dress_33700_dress_shirt
-    second: {fileID: 2100000, guid: 100e29f38c8535d49b16ab8eb1d41fa8, type: 2}
+    second: {fileID: 2100000, guid: 5ac6022ba707c6042a3a3dc606624d2a, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
