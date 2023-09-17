@@ -81,6 +81,8 @@ public class Control : MonoBehaviour
     public GameObject BasilTriggerH;
     public GameObject MaryTriggerH;
 
+    public List<GameObject> NPCNames = new List<GameObject>();
+
     private Dictionary<string, TargetCharacter> npcDicsMove = new Dictionary<string, TargetCharacter>();//存放npc的map 运动相关
     private Dictionary<string, TargetGameObject> npcDicsDialogue = new Dictionary<string, TargetGameObject>();//存放npc的map 对话相关
     private Dictionary<string, NavigationMarker> npcMarkers = new Dictionary<string, NavigationMarker>();//存放npc在各个场所的路点
@@ -368,13 +370,34 @@ public class Control : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //高空的trigger一直位于单位的世界坐标的正上方20处
+        //处理高空trigger
+        MannaTriggerH.transform.position = getTriggerHPosition(Manna, 20);
+        DukeTriggerH.transform.position = getTriggerHPosition(Duke, 20);
+        AnnaTriggerH.transform.position = getTriggerHPosition(Anna, 20);
+        BasilTriggerH.transform.position = getTriggerHPosition(Basil, 20);
+        MaryTriggerH.transform.position = getTriggerHPosition(Mary, 20);
 
-        MannaTriggerH.transform.position = getTriggerHPosition(Manna);
-        DukeTriggerH.transform.position = getTriggerHPosition(Duke);
-        AnnaTriggerH.transform.position = getTriggerHPosition(Anna);
-        BasilTriggerH.transform.position = getTriggerHPosition(Basil);
-        MaryTriggerH.transform.position = getTriggerHPosition(Mary);
+        //俯视角下显示名字
+        float offset_x = 100f;
+        Vector3 targetPosition = getTriggerHPosition(Manna, 5);
+        Vector3 screenPosition = Camera.main.WorldToScreenPoint(targetPosition);
+        NPCNames[0].transform.position = screenPosition + new Vector3(offset_x, 0);
+
+        targetPosition = getTriggerHPosition(Duke, 5);
+        screenPosition = Camera.main.WorldToScreenPoint(targetPosition);
+        NPCNames[1].transform.position = screenPosition + new Vector3(offset_x, 0); ;
+
+        targetPosition = getTriggerHPosition(Anna, 5);
+        screenPosition = Camera.main.WorldToScreenPoint(targetPosition);
+        NPCNames[2].transform.position = screenPosition + new Vector3(offset_x, 0); ;
+
+        targetPosition = getTriggerHPosition(Basil, 5);
+        screenPosition = Camera.main.WorldToScreenPoint(targetPosition);
+        NPCNames[3].transform.position = screenPosition + new Vector3(offset_x, 0); ;
+
+        targetPosition = getTriggerHPosition(Mary, 5);
+        screenPosition = Camera.main.WorldToScreenPoint(targetPosition);
+        NPCNames[4].transform.position = screenPosition + new Vector3(offset_x, 0); ;
 
         //取指令阶段
         if (state == 0)
@@ -615,7 +638,7 @@ public class Control : MonoBehaviour
         return actions;
     }
 
-    private Vector3 getTriggerHPosition(GameObject people)
+    private Vector3 getTriggerHPosition(GameObject people, float height)
     {
         Vector3 cameraPosition = topViewer.transform.position;
         Vector3 targetPosition = people.transform.position;
@@ -624,8 +647,8 @@ public class Control : MonoBehaviour
       //  float distanceToCamera = directionToCamera.magnitude;
 
         // 将要挡住的物体放置在相机和要被挡住的物体之间，可以通过以下方式：
-        float offsetDistance = 20f; // 调整挡住物体的距离
-        Vector3 newPosition = targetPosition + directionToCamera.normalized * offsetDistance;
+        // 调整挡住物体的距离
+        Vector3 newPosition = targetPosition + directionToCamera.normalized * height;
 
         // 返回要挡住的物体的新位置
         return newPosition;
