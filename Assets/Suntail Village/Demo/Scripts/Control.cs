@@ -64,6 +64,23 @@ public class Control : MonoBehaviour
     public GameObject timeUI; //显示时间的ui
     public GameObject reasonUI; //显示reason的ui
 
+    //角色物体
+    public GameObject Manna;
+    public GameObject Duke;
+    public GameObject Anna;
+    public GameObject Basil;
+    public GameObject Mary;
+
+    //向下的相机
+    public GameObject topViewer;
+
+    //人物的高空Trigger
+    public GameObject MannaTriggerH;
+    public GameObject DukeTriggerH;
+    public GameObject AnnaTriggerH;
+    public GameObject BasilTriggerH;
+    public GameObject MaryTriggerH;
+
     private Dictionary<string, TargetCharacter> npcDicsMove = new Dictionary<string, TargetCharacter>();//存放npc的map 运动相关
     private Dictionary<string, TargetGameObject> npcDicsDialogue = new Dictionary<string, TargetGameObject>();//存放npc的map 对话相关
     private Dictionary<string, NavigationMarker> npcMarkers = new Dictionary<string, NavigationMarker>();//存放npc在各个场所的路点
@@ -348,12 +365,19 @@ public class Control : MonoBehaviour
             }
         }*/
      }
-
     // Update is called once per frame
     void Update()
     {
+        //高空的trigger一直位于单位的世界坐标的正上方20处
+
+        MannaTriggerH.transform.position = getTriggerHPosition(Manna);
+        DukeTriggerH.transform.position = getTriggerHPosition(Duke);
+        AnnaTriggerH.transform.position = getTriggerHPosition(Anna);
+        BasilTriggerH.transform.position = getTriggerHPosition(Basil);
+        MaryTriggerH.transform.position = getTriggerHPosition(Mary);
+
         //取指令阶段
-        if(state == 0)
+        if (state == 0)
         {
             //当前所有的指令都已经被取完 进入结束状态
             if(nowIndex >= infos.Count)
@@ -589,5 +613,21 @@ public class Control : MonoBehaviour
 
         actions.Execute();
         return actions;
+    }
+
+    private Vector3 getTriggerHPosition(GameObject people)
+    {
+        Vector3 cameraPosition = topViewer.transform.position;
+        Vector3 targetPosition = people.transform.position;
+
+        Vector3 directionToCamera = cameraPosition - targetPosition;
+      //  float distanceToCamera = directionToCamera.magnitude;
+
+        // 将要挡住的物体放置在相机和要被挡住的物体之间，可以通过以下方式：
+        float offsetDistance = 20f; // 调整挡住物体的距离
+        Vector3 newPosition = targetPosition + directionToCamera.normalized * offsetDistance;
+
+        // 返回要挡住的物体的新位置
+        return newPosition;
     }
 }
