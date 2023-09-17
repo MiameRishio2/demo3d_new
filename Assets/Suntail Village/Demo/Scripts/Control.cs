@@ -467,35 +467,35 @@ public class Control : MonoBehaviour
             {
                 if (hit.collider.gameObject != null)
                 {
-                    if (hit.collider.gameObject.name.Equals("MannaTrigger"))
+                    if (hit.collider.gameObject.name.Equals("MannaTrigger") || hit.collider.gameObject.name.Equals("MannaTriggerH"))
                     {
                         reasonUI.SetActive(true);
                         Text reasonText = reasonUI.GetComponent<Text>();
                         reasonText.text = infos[nowIndex].reasons["Manna"];
                     }
 
-                    if (hit.collider.gameObject.name.Equals("DukeTrigger"))
+                    if (hit.collider.gameObject.name.Equals("DukeTrigger") || hit.collider.gameObject.name.Equals("DukeTriggerH"))
                     {
                         reasonUI.SetActive(true);
                         Text reasonText = reasonUI.GetComponent<Text>();
                         reasonText.text = infos[nowIndex].reasons["Duke"];
                     }
 
-                    if (hit.collider.gameObject.name.Equals("AnnaTrigger"))
+                    if (hit.collider.gameObject.name.Equals("AnnaTrigger") || hit.collider.gameObject.name.Equals("AnnaTriggerH"))
                     {
                         reasonUI.SetActive(true);
                         Text reasonText = reasonUI.GetComponent<Text>();
                         reasonText.text = infos[nowIndex].reasons["Anna"];
                     }
 
-                    if (hit.collider.gameObject.name.Equals("BasilTrigger"))
+                    if (hit.collider.gameObject.name.Equals("BasilTrigger") || hit.collider.gameObject.name.Equals("BasilTriggerH"))
                     {
                         reasonUI.SetActive(true);
                         Text reasonText = reasonUI.GetComponent<Text>();
                         reasonText.text = infos[nowIndex].reasons["Basil"];
                     }
 
-                    if (hit.collider.gameObject.name.Equals("MaryTrigger"))
+                    if (hit.collider.gameObject.name.Equals("MaryTrigger") || hit.collider.gameObject.name.Equals("MaryTriggerH"))
                     {
                         reasonUI.SetActive(true);
                         Text reasonText = reasonUI.GetComponent<Text>();
