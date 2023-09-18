@@ -376,21 +376,44 @@ public class Control : MonoBehaviour
         if(isTop)
         {
             //俯视角下名字可见
-            NPCNames[0].SetActive(true);
+           /* NPCNames[0].SetActive(true);
             NPCNames[1].SetActive(true);
             NPCNames[2].SetActive(true);
             NPCNames[3].SetActive(true);
-            NPCNames[4].SetActive(true);
+            NPCNames[4].SetActive(true);*/
+
+            //俯视角下对话框大小变大
+            float scale = -0.05f;
+            GameObject[] objectsOfType = FindObjectsOfType<GameObject>();
+            foreach (GameObject obj in objectsOfType)
+            {
+                if (obj.name.Contains("FloatingMessage"))
+                {
+                    obj.transform.localScale = new Vector3(scale, scale, scale);
+                }
+            }
+
 
             //俯视角下可以按 wasd操作相机位置
         }
         else
         {
+            //非俯视角下名字不可见
             NPCNames[0].SetActive(false);
             NPCNames[1].SetActive(false);
             NPCNames[2].SetActive(false);
             NPCNames[3].SetActive(false);
             NPCNames[4].SetActive(false);
+
+            //非俯视角下对话框大小正常
+            GameObject[] objectsOfType = FindObjectsOfType<GameObject>();
+            foreach (GameObject obj in objectsOfType)
+            {
+                if (obj.name.Contains("FloatingMessage"))
+                {
+                    obj.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+                }
+            }
         }
 
         //处理高空trigger

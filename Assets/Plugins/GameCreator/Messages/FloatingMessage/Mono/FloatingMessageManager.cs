@@ -37,6 +37,7 @@
         {
             RequireInit();
             GameObject instance = GameObject.Instantiate(PREFAB, target);
+
             instance.transform.localPosition = offset;
 
             CoroutinesManager.Instance.StartCoroutine(CoroutineShow(message, color, instance, duration));
