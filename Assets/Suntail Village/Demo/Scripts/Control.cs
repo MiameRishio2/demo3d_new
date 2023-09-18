@@ -11,6 +11,7 @@ using GameCreator.Messages;
 using UnityEditor.VersionControl;
 using static GameCreator.Core.ActionTransform;
 using UnityEngine.UI;
+using GameCreator.Variables;
 
 public class Control : MonoBehaviour
 {
@@ -370,6 +371,28 @@ public class Control : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        object isTopV = VariablesManager.GetGlobal("isTop");
+        bool isTop = (bool)isTopV;
+        if(isTop)
+        {
+            //俯视角下名字可见
+            NPCNames[0].SetActive(true);
+            NPCNames[1].SetActive(true);
+            NPCNames[2].SetActive(true);
+            NPCNames[3].SetActive(true);
+            NPCNames[4].SetActive(true);
+
+            //俯视角下可以按 wasd操作相机位置
+        }
+        else
+        {
+            NPCNames[0].SetActive(false);
+            NPCNames[1].SetActive(false);
+            NPCNames[2].SetActive(false);
+            NPCNames[3].SetActive(false);
+            NPCNames[4].SetActive(false);
+        }
+
         //处理高空trigger
         MannaTriggerH.transform.position = getTriggerHPosition(Manna, 20);
         DukeTriggerH.transform.position = getTriggerHPosition(Duke, 20);
