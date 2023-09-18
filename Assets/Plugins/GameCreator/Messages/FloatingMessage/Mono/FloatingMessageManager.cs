@@ -8,6 +8,7 @@
     using UnityEngine.Animations;
     using GameCreator.Core;
     using GameCreator.Core.Hooks;
+    using GameCreator.Variables;
 
     public static class FloatingMessageManager
     {

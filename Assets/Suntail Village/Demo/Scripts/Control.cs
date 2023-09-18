@@ -12,6 +12,7 @@ using UnityEditor.VersionControl;
 using static GameCreator.Core.ActionTransform;
 using UnityEngine.UI;
 using GameCreator.Variables;
+using UnityEngine.Animations;
 
 public class Control : MonoBehaviour
 {
@@ -383,13 +384,18 @@ public class Control : MonoBehaviour
             NPCNames[4].SetActive(true);*/
 
             //俯视角下对话框大小变大
-            float scale = -0.05f;
+            float scale = 0.05f;
             GameObject[] objectsOfType = FindObjectsOfType<GameObject>();
             foreach (GameObject obj in objectsOfType)
             {
                 if (obj.name.Contains("FloatingMessage"))
                 {
                     obj.transform.localScale = new Vector3(scale, scale, scale);
+                    //调整俯视角下面对话框的朝向
+                    LookAtConstraint constraint = obj.GetComponent<LookAtConstraint>();
+                    constraint.constraintActive = false;
+                   // Debug.Log(obj.transform.rotation);
+                    obj.transform.rotation = new Quaternion(-0.6f, 0f, 0f, -0.8f);
                 }
             }
 
@@ -421,6 +427,8 @@ public class Control : MonoBehaviour
                 if (obj.name.Contains("FloatingMessage"))
                 {
                     obj.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+                    LookAtConstraint constraint = obj.GetComponent<LookAtConstraint>();
+                    constraint.constraintActive = true;
                 }
             }
         }
@@ -686,6 +694,7 @@ public class Control : MonoBehaviour
             ActionFloatingMessage message = actions.gameObject.AddComponent<ActionFloatingMessage>();
             message.message = new LocString(content);
             message.target = npcDicsDialogue[name];
+            
             actions.actionsList.actions[i] = message;
         }
 
