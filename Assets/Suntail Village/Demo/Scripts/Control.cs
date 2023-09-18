@@ -393,8 +393,17 @@ public class Control : MonoBehaviour
                 }
             }
 
-
             //俯视角下可以按 wasd操作相机位置
+            Vector3 currentPosition = topViewer.transform.position;
+            float moveSpeed = 10f;
+            // 计算新的位置
+            float horizontalInput = Input.GetAxis("Horizontal");
+            float verticalInput = Input.GetAxis("Vertical");
+            Vector3 moveDirection = new Vector3(horizontalInput, 0, verticalInput);
+            Vector3 newPosition = currentPosition + moveDirection * moveSpeed * Time.deltaTime;
+
+            // 设置新位置
+            topViewer.transform.position = newPosition;
         }
         else
         {
