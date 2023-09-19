@@ -96,6 +96,7 @@ public class Control : MonoBehaviour
     private List<Actions> moveActions;
     private Actions dialogueActions;
     private bool isPaused = false;
+   //Sprivate Dictionary<>
 
     // Start is called before the first frame update
     void Start()
@@ -377,14 +378,14 @@ public class Control : MonoBehaviour
         if(isTop)
         {
             //俯视角下名字可见
-           /* NPCNames[0].SetActive(true);
+            NPCNames[0].SetActive(true);
             NPCNames[1].SetActive(true);
             NPCNames[2].SetActive(true);
             NPCNames[3].SetActive(true);
-            NPCNames[4].SetActive(true);*/
+            NPCNames[4].SetActive(true);
 
             //俯视角下对话框大小变大
-            float scale = 0.05f;
+            float scale = 0.08f;
             GameObject[] objectsOfType = FindObjectsOfType<GameObject>();
             foreach (GameObject obj in objectsOfType)
             {
@@ -394,8 +395,21 @@ public class Control : MonoBehaviour
                     //调整俯视角下面对话框的朝向
                     LookAtConstraint constraint = obj.GetComponent<LookAtConstraint>();
                     constraint.constraintActive = false;
-                   // Debug.Log(obj.transform.rotation);
+                    // Debug.Log(obj.transform.rotation);
                     obj.transform.rotation = new Quaternion(-0.6f, 0f, 0f, -0.8f);
+                    string parentName = obj.transform.parent.name;
+
+                    //调节对话框位置
+                    if (parentName.Equals("Manna"))
+                        obj.transform.position = Manna.transform.position + new Vector3(0, 0, 5);
+                    if (parentName.Equals("Duke"))
+                        obj.transform.position = Duke.transform.position + new Vector3(0, 0, 5);
+                    if (parentName.Equals("Anna"))
+                        obj.transform.position = Anna.transform.position + new Vector3(0, 0, 5);
+                    if (parentName.Equals("Basil"))
+                        obj.transform.position = Basil.transform.position + new Vector3(0, 0, 5);
+                    if (parentName.Equals("Mary"))
+                        obj.transform.position = Mary.transform.position + new Vector3(0, 0, 5);
                 }
             }
 
@@ -429,6 +443,18 @@ public class Control : MonoBehaviour
                     obj.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
                     LookAtConstraint constraint = obj.GetComponent<LookAtConstraint>();
                     constraint.constraintActive = true;
+
+                    string parentName = obj.transform.parent.name;
+                    if (parentName.Equals("Manna"))
+                        obj.transform.position = Manna.transform.position + new Vector3(0, 2f, 0);
+                    if (parentName.Equals("Duke"))
+                        obj.transform.position = Duke.transform.position + new Vector3(0, 2f, 0);
+                    if (parentName.Equals("Anna"))
+                        obj.transform.position = Anna.transform.position + new Vector3(0, 2f, 0);
+                    if (parentName.Equals("Basil"))
+                        obj.transform.position = Basil.transform.position + new Vector3(0, 2f, 0);
+                    if (parentName.Equals("Mary"))
+                        obj.transform.position = Mary.transform.position + new Vector3(0, 2f, 0);
                 }
             }
         }
