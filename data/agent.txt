@@ -4,544 +4,374 @@ current agent state, timestep: 0, name: Duke, in map: AjaWineryScene
 current agent state, timestep: 0, name: Anna, in map: BasilHouseScene
 current agent state, timestep: 0, name: Basil, in map: BasilHouseScene
 current agent state, timestep: 0, name: Mary, in map: BasilHouseScene
-take action: agent name: Manna, no action!!!!
-reason: Manna thinks that staying at AjaWineryScene will provide her with a peaceful and quiet environment to relax and enjoy some time alone.
+choice [1]: Duke will discuss the upcoming wine tasting event at the Aja Winery with Manna.
+choice [2]: Duke will ask Manna for her opinion on a new wine blend he is considering.
+choice [3]: Duke will inform Manna about a recent award the Aja Winery received for its exceptional wines.
+debug: choice [2] is chosen, dialogue will happen.
+choice_dialogue: Duke said "Hey Manna, I hope you're doing well. I wanted to get your opinion on a new wine blend I'm considering. I value your taste and thought it would be great to get your input. What do you think?"
+choice_dialogue: Manna said "Thank you, Duke! I appreciate you valuing my opinion. I would be happy to try the new wine blend and give you my thoughts. Just let me know when and where I can sample it. Cheers!"
+choice_dialogue: Duke said "Thank you so much, Manna! I really appreciate your willingness to try the new blend and provide your thoughts. I'll make sure to set up a tasting session for us soon. I'll let you know the details. Cheers!"
+take action: agent name: Manna, from map AjaWineryScene to map RoseSquareScene
+reason: Manna thinks that she will go to Rose Square to chat with Anna and Sasha.
 take action: agent name: Duke, from map AjaWineryScene to map ChurchScene
-reason: Duke thinks that he needs to go to the church to make preparations or finalize arrangements for the wedding.
+reason: Duke thinks that he needs to visit the ChurchScene to prepare for his wedding ceremony.
 take action: agent name: Anna, no action!!!!
-reason: Anna thinks that staying at Basil's house for the next hour will give her some quiet time and space to relax or work on something without any distractions.
+reason: Anna thinks that it is time for her to go to bed and get a good night's sleep.
 take action: agent name: Basil, from map BasilHouseScene to map SouthSideOfMineralTownScene
-reason: Basil thinks that going to the South Side of Mineral Town will provide an opportunity to study and observe the local flora.
+reason: Basil thinks that he will be sleeping in the next hour as he goes to bed before 10PM every night.
 take action: agent name: Mary, no action!!!!
-reason: Mary thinks that it is late at night and she should be in bed, so she will stay at BasilHouseScene and not interact with anyone else.
+reason: Mary thinks that she will use the next hour to focus on her writing and work on her novel in the quiet and solitude of her home.
+debug: execute agent to go: RoseSquareScene
 debug: execute agent to go: ChurchScene
 debug: execute agent to go: SouthSideOfMineralTownScene
-next agent state, timestep: 0, name: Manna, in map: AjaWineryScene
+next agent state, timestep: 0, name: Manna, in map: RoseSquareScene
 next agent state, timestep: 0, name: Duke, in map: ChurchScene
 next agent state, timestep: 0, name: Anna, in map: BasilHouseScene
 next agent state, timestep: 0, name: Basil, in map: SouthSideOfMineralTownScene
 next agent state, timestep: 0, name: Mary, in map: BasilHouseScene
-current timestep: 1, time: 2022-11-11 02:00:00
-current agent state, timestep: 1, name: Manna, in map: AjaWineryScene
+current timestep: 1, time: 2022-11-11 04:00:00
+current agent state, timestep: 1, name: Manna, in map: RoseSquareScene
 current agent state, timestep: 1, name: Duke, in map: ChurchScene
 current agent state, timestep: 1, name: Anna, in map: BasilHouseScene
 current agent state, timestep: 1, name: Basil, in map: SouthSideOfMineralTownScene
 current agent state, timestep: 1, name: Mary, in map: BasilHouseScene
+choice [1]: Duke will ask Manna if she has tried the new wine blend and what her thoughts are.
+choice [2]: Duke will discuss the details of setting up a tasting session for Manna to try the new wine blend.
+choice [3]: Duke will express his gratitude to Manna for valuing her opinion and willingness to try the new blend.
+debug: choice [2] is chosen, dialogue will happen.
+choice_dialogue: Duke said "That's great to hear, Manna! Let's schedule the tasting session for this Saturday at 2 PM at the winery. I'll prepare a variety of snacks to pair with the wine. Looking forward to your feedback. See you then!"
+choice_dialogue: Manna said "Thank you, Duke! I'm excited for the tasting session this Saturday at 2 PM at the winery. I appreciate your effort in preparing snacks to pair with the wine. Looking forward to providing my feedback. See you then!"
 take action: agent name: Manna, no action!!!!
-reason: Manna thinks that staying at Aja Winery will provide a peaceful and relaxing environment for her to unwind and have some alone time.
+reason: Manna thinks that staying at Rose Square allows her to catch up with Anna and Sasha and engage in gossip.
 take action: agent name: Duke, no action!!!!
-reason: Duke thinks that staying at the church for the next hour will allow them to prepare for the wedding ceremony.
-take action: agent name: Anna, no action!!!!
-reason: Anna thinks that she can use the next hour to relax and enjoy some quiet time at home.
-take action: agent name: Basil, no action!!!!
-reason: Basil thinks that staying at the SouthSideOfMineralTownScene for the next hour will allow him to study the local flora undisturbed.
+reason: Duke thinks that staying at the ChurchScene for the next hour allows him to have some quiet time for reflection and preparation for the upcoming wedding ceremony.
+take action: agent name: Anna, talk to Mary
+reason: Anna thinks that she will have a conversation with Mary because they are currently in the same location.
+dialogue: Anna said "Good morning, Mary! How are you today? I was thinking we could catch up later and maybe bake some cookies together. What do you think?"
+dialogue: Mary said "Good morning, Anna! I'm doing well, thank you. Baking cookies sounds like a fun idea. I'd love to catch up and spend some time together. Thank you for inviting me!"
+dialogue: Anna said "That's great! How about we meet at my house around 2 PM? I'll make sure to have all the ingredients ready. See you then, Mary!"
+dialogue: Mary said "Sounds perfect, Anna! I'll see you at your house at 2 PM. Looking forward to baking cookies together and catching up. Thank you again for inviting me!"
+take action: agent name: Basil, from map SouthSideOfMineralTownScene to map NorthSideOfMineralTownScene
+reason: Basil thinks that he will be studying the local flora near Mother's Hill at the North Side of Mineral Town.
 take action: agent name: Mary, no action!!!!
-reason: Mary thinks that staying at BasilHouseScene for the next hour will allow her to have some quiet and alone time to work on her novel.
-next agent state, timestep: 1, name: Manna, in map: AjaWineryScene
+reason: Mary thinks that she will stay at BasilHouseScene for the next hour because she has already made plans to meet Anna later and does not need to interact with anyone else at the moment.
+debug: execute agent to go: NorthSideOfMineralTownScene
+next agent state, timestep: 1, name: Manna, in map: RoseSquareScene
 next agent state, timestep: 1, name: Duke, in map: ChurchScene
 next agent state, timestep: 1, name: Anna, in map: BasilHouseScene
-next agent state, timestep: 1, name: Basil, in map: SouthSideOfMineralTownScene
+next agent state, timestep: 1, name: Basil, in map: NorthSideOfMineralTownScene
 next agent state, timestep: 1, name: Mary, in map: BasilHouseScene
-current timestep: 2, time: 2022-11-11 04:00:00
-current agent state, timestep: 2, name: Manna, in map: AjaWineryScene
+current timestep: 2, time: 2022-11-11 08:00:00
+current agent state, timestep: 2, name: Manna, in map: RoseSquareScene
 current agent state, timestep: 2, name: Duke, in map: ChurchScene
 current agent state, timestep: 2, name: Anna, in map: BasilHouseScene
-current agent state, timestep: 2, name: Basil, in map: SouthSideOfMineralTownScene
+current agent state, timestep: 2, name: Basil, in map: NorthSideOfMineralTownScene
 current agent state, timestep: 2, name: Mary, in map: BasilHouseScene
-take action: agent name: Manna, from map AjaWineryScene to map RoseSquareScene
-reason: Manna thinks that she will go to Rose Square to chat with Anna and Sasha.
+choice [1]: Mary will talk to Manna about their plans for baking cookies later in the day.
+choice [2]: Mary will talk to Manna about catching up and spending some time together.
+choice [3]: Mary will talk to Manna to express her gratitude for inviting her and her excitement for baking cookies.
+debug: choice [1] is chosen, dialogue will happen.
+choice_dialogue: Mary said "That's great, Manna! I'm really excited to bake cookies and catch up with you. It's been a while since we've had some quality time together. I'll see you at your house at 2 PM. Can't wait!"
+choice_dialogue: Manna said "Thank you, Mary! I'm looking forward to baking cookies and catching up with you too. See you at my house at 2 PM. Can't wait!"
+choice_dialogue: Mary said "I'm really excited to bake cookies and catch up with you. It's been a while since we've had some quality time together. I'll see you at your house at 2 PM. Can't wait!"
+take action: agent name: Manna, no action!!!!
+reason: Manna thinks that staying at Rose Square will allow her to catch up with Anna and Sasha and engage in some town gossip.
 take action: agent name: Duke, no action!!!!
-reason: Duke thinks that staying at the church will allow him to prepare for and oversee the wedding ceremony.
-take action: agent name: Anna, no action!!!!
-reason: Anna thinks that staying at BasilHouseScene for the next hour will allow her to maintain her disciplined routine and ensure she gets enough sleep.
+reason: Duke thinks that staying at the ChurchScene for the next hour will allow him to have some quiet time for reflection or meditation.
+take action: agent name: Anna, talk to Mary
+reason: Anna thinks that she will greet Mary, discuss their plans for baking cookies, and possibly start preparing the ingredients.
+dialogue: Anna said "Good morning, Mary! How are you today? I was thinking we could catch up later and maybe bake some cookies together. What do you think?"
+dialogue: Mary said "Good morning, Anna! I'm doing well, thank you. Baking cookies sounds like a fun idea. I'd love to catch up and spend some time together. Thank you for inviting me!"
+dialogue: Anna said "That's great! How about we meet at my house around 2 PM? I'll make sure to have all the ingredients ready. See you then, Mary!"
+dialogue: Mary said "Sounds perfect, Anna! I'll see you at your house at 2 PM. Looking forward to baking cookies together and catching up. Thank you again for inviting me!"
+dialogue: Anna said "Great! I'll see you at my house at 2 PM. Looking forward to baking cookies together and catching up. Thank you again for accepting my invitation!"
 take action: agent name: Basil, no action!!!!
-reason: Basil thinks that staying at the SouthSideOfMineralTownScene for the next hour allows for uninterrupted focus on studying the local flora.
-take action: agent name: Mary, no action!!!!
-reason: Mary thinks that she wants to spend some quiet time alone to work on her novel.
-debug: execute agent to go: RoseSquareScene
+reason: Basil thinks that he will spend the next hour at the Library studying or working on his own books.
+take action: agent name: Mary, from map BasilHouseScene to map MaryLibraryScene
+reason: Mary thinks that she should go to the library to work and fulfill her role as the librarian.
+debug: execute agent to go: MaryLibraryScene
 next agent state, timestep: 2, name: Manna, in map: RoseSquareScene
 next agent state, timestep: 2, name: Duke, in map: ChurchScene
 next agent state, timestep: 2, name: Anna, in map: BasilHouseScene
-next agent state, timestep: 2, name: Basil, in map: SouthSideOfMineralTownScene
-next agent state, timestep: 2, name: Mary, in map: BasilHouseScene
-current timestep: 3, time: 2022-11-11 06:00:00
+next agent state, timestep: 2, name: Basil, in map: NorthSideOfMineralTownScene
+next agent state, timestep: 2, name: Mary, in map: MaryLibraryScene
+current timestep: 3, time: 2022-11-11 12:00:00
 current agent state, timestep: 3, name: Manna, in map: RoseSquareScene
 current agent state, timestep: 3, name: Duke, in map: ChurchScene
 current agent state, timestep: 3, name: Anna, in map: BasilHouseScene
-current agent state, timestep: 3, name: Basil, in map: SouthSideOfMineralTownScene
-current agent state, timestep: 3, name: Mary, in map: BasilHouseScene
+current agent state, timestep: 3, name: Basil, in map: NorthSideOfMineralTownScene
+current agent state, timestep: 3, name: Mary, in map: MaryLibraryScene
+choice [1]: Duke will ask Manna about her availability for the tasting session this Saturday at 2 PM.
+choice [2]: Duke will discuss the snacks he plans to prepare to enhance the wine tasting experience.
+choice [3]: Duke will mention his appreciation for Manna's willingness to try the new wine blend and provide her thoughts.
+debug: choice [3] is chosen, dialogue will happen.
+choice_dialogue: Duke said "That's great to hear, Manna! Let's schedule the tasting session for this Saturday at 2 PM at the winery. I'll prepare a variety of snacks to pair with the wine. Looking forward to your feedback. See you then!"
+choice_dialogue: Manna said "Thank you, Duke! I'm excited for the tasting session this Saturday at 2 PM at the winery. I appreciate your effort in preparing snacks to pair with the wine. Looking forward to providing my feedback. See you then!"
 take action: agent name: Manna, no action!!!!
-reason: Manna thinks that staying at Rose Square and chatting with Anna and Sasha will provide her with entertainment and social interaction.
-take action: agent name: Duke, no action!!!!
-reason: Duke thinks that staying at the ChurchScene for the next hour will allow them to prepare for their wedding ceremony and ensure everything is in order.
-take action: agent name: Anna, no action!!!!
-reason: Anna thinks that staying at BasilHouseScene for the next hour will allow her to have some alone time and focus on her own tasks or hobbies.
+reason: Manna thinks that spending time at Rose Square chatting with Anna and Sasha is a enjoyable and fulfilling activity.
+take action: agent name: Duke, from map ChurchScene to map AjaWineryScene
+reason: Duke thinks that he needs to check on the operations at Aja Winery and attend to any tasks or responsibilities related to his business.
+take action: agent name: Anna, from map BasilHouseScene to map RoseSquareScene
+reason: Anna thinks that she will go to Rose Square to catch up with her friends Sasha and Manna and engage in gossip.
 take action: agent name: Basil, no action!!!!
-reason: Basil thinks that staying at the SouthSideOfMineralTownScene for the next hour will allow him to focus on studying the local flora.
+reason: Basil thinks that studying the local flora at Mother's Hill is the best use of his time for the next hour.
 take action: agent name: Mary, no action!!!!
-reason: Mary thinks that she will spend the next hour at home, possibly engaging in activities such as reading, writing, or spending time with her mother.
+reason: Mary thinks that she will stay at the library for the next hour to focus on her work and continue writing her novel.
+debug: execute agent to go: AjaWineryScene
+debug: execute agent to go: RoseSquareScene
 next agent state, timestep: 3, name: Manna, in map: RoseSquareScene
-next agent state, timestep: 3, name: Duke, in map: ChurchScene
-next agent state, timestep: 3, name: Anna, in map: BasilHouseScene
-next agent state, timestep: 3, name: Basil, in map: SouthSideOfMineralTownScene
-next agent state, timestep: 3, name: Mary, in map: BasilHouseScene
-current timestep: 4, time: 2022-11-11 08:00:00
+next agent state, timestep: 3, name: Duke, in map: AjaWineryScene
+next agent state, timestep: 3, name: Anna, in map: RoseSquareScene
+next agent state, timestep: 3, name: Basil, in map: NorthSideOfMineralTownScene
+next agent state, timestep: 3, name: Mary, in map: MaryLibraryScene
+current timestep: 4, time: 2022-11-11 16:00:00
 current agent state, timestep: 4, name: Manna, in map: RoseSquareScene
-current agent state, timestep: 4, name: Duke, in map: ChurchScene
-current agent state, timestep: 4, name: Anna, in map: BasilHouseScene
-current agent state, timestep: 4, name: Basil, in map: SouthSideOfMineralTownScene
-current agent state, timestep: 4, name: Mary, in map: BasilHouseScene
+current agent state, timestep: 4, name: Duke, in map: AjaWineryScene
+current agent state, timestep: 4, name: Anna, in map: RoseSquareScene
+current agent state, timestep: 4, name: Basil, in map: NorthSideOfMineralTownScene
+current agent state, timestep: 4, name: Mary, in map: MaryLibraryScene
+choice [1]: Anna will ask Mary how she is doing today.
+choice [2]: Anna will discuss their plans for baking cookies together.
+choice [3]: Anna may start preparing the ingredients for baking cookies.
+debug: choice [1] is chosen, dialogue will happen.
+choice_dialogue: Anna said "Good morning, Mary! How are you today? I was thinking we could catch up later and maybe bake some cookies together. What do you think?"
+choice_dialogue: Mary said "Good morning, Anna! I'm doing well, thank you. Baking cookies sounds like a fun idea. I'd love to catch up and spend some time together. Thank you for inviting me!"
+choice_dialogue: Anna said "That's great! How about we meet at my house around 2 PM? I'll make sure to have all the ingredients ready. See you then, Mary!"
+choice_dialogue: Mary said "Sounds perfect, Anna! I'll see you at your house at 2 PM. Looking forward to baking cookies together and catching up. Thank you again for inviting me!"
 take action: agent name: Manna, no action!!!!
-reason: Manna thinks that staying at Rose Square will provide her with an opportunity to gossip and chat with her friends Anna and Sasha.
+reason: Manna thinks that staying at Rose Square allows her to relax and enjoy some quiet time before her upcoming social engagements.
 take action: agent name: Duke, no action!!!!
-reason: Duke thinks that he needs some time alone at the church to prepare for the wedding ceremony.
+reason: Duke thinks that he will use the next hour to attend to his responsibilities at the winery, such as organizing and preparing for upcoming events or handling administrative tasks.
 take action: agent name: Anna, no action!!!!
-reason: Anna thinks that it is her designated time to rest and maintain her consistent sleep schedule, so she will stay at BasilHouseScene for the next hour without interacting with anyone else.
-take action: agent name: Basil, no action!!!!
-reason: Basil thinks that staying at the SouthSideOfMineralTownScene for the next hour will allow him to focus on studying the local flora without any distractions or interruptions.
+reason: Anna thinks that she will spend the next hour at Rose Square, either enjoying some quiet time or engaging in activities she enjoys.
+take action: agent name: Basil, from map NorthSideOfMineralTownScene to map SouthSideOfMineralTownScene
+reason: Basil thinks that he will be studying the local flora near Mother's Hill in the next hour.
 take action: agent name: Mary, no action!!!!
-reason: Mary thinks that she will spend the next hour at BasilHouseScene because she prefers solitude and does not have any specific plans or interactions scheduled.
+reason: Mary thinks that she will spend the next hour at the library because it is her usual routine and she enjoys her work as a librarian.
+debug: execute agent to go: SouthSideOfMineralTownScene
 next agent state, timestep: 4, name: Manna, in map: RoseSquareScene
-next agent state, timestep: 4, name: Duke, in map: ChurchScene
-next agent state, timestep: 4, name: Anna, in map: BasilHouseScene
+next agent state, timestep: 4, name: Duke, in map: AjaWineryScene
+next agent state, timestep: 4, name: Anna, in map: RoseSquareScene
 next agent state, timestep: 4, name: Basil, in map: SouthSideOfMineralTownScene
-next agent state, timestep: 4, name: Mary, in map: BasilHouseScene
-current timestep: 5, time: 2022-11-11 10:00:00
+next agent state, timestep: 4, name: Mary, in map: MaryLibraryScene
+current timestep: 5, time: 2022-11-11 20:00:00
 current agent state, timestep: 5, name: Manna, in map: RoseSquareScene
-current agent state, timestep: 5, name: Duke, in map: ChurchScene
-current agent state, timestep: 5, name: Anna, in map: BasilHouseScene
+current agent state, timestep: 5, name: Duke, in map: AjaWineryScene
+current agent state, timestep: 5, name: Anna, in map: RoseSquareScene
 current agent state, timestep: 5, name: Basil, in map: SouthSideOfMineralTownScene
-current agent state, timestep: 5, name: Mary, in map: BasilHouseScene
-take action: agent name: Manna, no action!!!!
-reason: Manna thinks that staying at Rose Square and chatting with Anna and Sasha is a good way to pass the time and enjoy some social interaction.
-take action: agent name: Duke, no action!!!!
-reason: Duke thinks that staying at the ChurchScene for the next hour will allow him to prepare for his wedding ceremony and attend to any last-minute details.
+current agent state, timestep: 5, name: Mary, in map: MaryLibraryScene
+choice [1]: Manna asks Basil if he would like to join her and Duke for the wine tasting session.
+choice [2]: Manna tells Basil about her plans to bake cookies with Mary and asks if he would like to join.
+choice [3]: Manna discusses her excitement about the upcoming wedding ceremony with Basil.
+debug: choice [1] is chosen, dialogue will happen.
+choice_dialogue: Manna said "Hey Basil! Duke and I have planned a wine tasting session this Saturday at 2 PM at the winery. Would you like to join us? It's going to be a fun and delicious experience. Let me know if you're interested!"
+choice_dialogue: Basil said "Thank you for the invitation, Manna! I appreciate the offer, but I have to decline. I prefer to avoid alcohol and focus on my botanical studies. Have a great time at the wine tasting session!"
+choice_dialogue: Manna said "That's completely understandable, Basil. Your dedication to your botanical studies is admirable. If you ever change your mind, feel free to join us. Have a great time with your studies and take care!"
+take action: agent name: Manna, talk to Anna
+reason: Manna thinks that she should catch up with Anna and discuss the upcoming wedding plans.
+dialogue: Manna said "Hey Anna! I wanted to talk to you about the upcoming wedding. Duke and I have some ideas, and we would love to get your input. Can we meet up sometime to discuss the plans? I value your opinion and would love to have your help. Thank you!"
+dialogue: Anna said "Of course, Manna! I'd be happy to meet up and discuss the wedding plans. Let's plan to meet at the cafe tomorrow afternoon. Thank you for including me and I'm looking forward to helping out."
+dialogue: Manna said "That's great, Anna! Let's meet at the cafe tomorrow afternoon to discuss the wedding plans. Thank you for your willingness to help, I really appreciate it. Looking forward to seeing you and catching up! Take care!"
+take action: agent name: Duke, from map AjaWineryScene to map ChurchScene
+reason: Duke thinks that going to ChurchScene is necessary because it is time for his wedding ceremony with Manna.
 take action: agent name: Anna, no action!!!!
-reason: Anna thinks that she wants some quiet time to relax and unwind at home.
-take action: agent name: Basil, no action!!!!
-reason: Basil thinks that staying at the SouthSideOfMineralTownScene for the next hour will allow him to focus on studying the local flora without any interruptions or distractions.
+reason: Anna thinks that she will spend the next hour at Rose Square, possibly enjoying some alone time or engaging in personal activities.
+take action: agent name: Basil, from map SouthSideOfMineralTownScene to map NorthSideOfMineralTownScene
+reason: Basil thinks that visiting the North Side of Mineral Town to study the local flora near Mother's Hill is the best use of his time in the next hour.
 take action: agent name: Mary, no action!!!!
-reason: Mary thinks that staying at BasilHouseScene for the next hour will provide her with a quiet and peaceful environment to work on her novel.
+reason: Mary thinks that she needs to focus on her work at the library and doesn't have any other plans or obligations in the next hour.
+debug: execute agent to go: ChurchScene
+debug: execute agent to go: NorthSideOfMineralTownScene
 next agent state, timestep: 5, name: Manna, in map: RoseSquareScene
 next agent state, timestep: 5, name: Duke, in map: ChurchScene
-next agent state, timestep: 5, name: Anna, in map: BasilHouseScene
-next agent state, timestep: 5, name: Basil, in map: SouthSideOfMineralTownScene
-next agent state, timestep: 5, name: Mary, in map: BasilHouseScene
-current timestep: 6, time: 2022-11-11 12:00:00
+next agent state, timestep: 5, name: Anna, in map: RoseSquareScene
+next agent state, timestep: 5, name: Basil, in map: NorthSideOfMineralTownScene
+next agent state, timestep: 5, name: Mary, in map: MaryLibraryScene
+current timestep: 6, time: 2022-11-12 00:00:00
 current agent state, timestep: 6, name: Manna, in map: RoseSquareScene
 current agent state, timestep: 6, name: Duke, in map: ChurchScene
-current agent state, timestep: 6, name: Anna, in map: BasilHouseScene
-current agent state, timestep: 6, name: Basil, in map: SouthSideOfMineralTownScene
-current agent state, timestep: 6, name: Mary, in map: BasilHouseScene
+current agent state, timestep: 6, name: Anna, in map: RoseSquareScene
+current agent state, timestep: 6, name: Basil, in map: NorthSideOfMineralTownScene
+current agent state, timestep: 6, name: Mary, in map: MaryLibraryScene
+choice [1]: Manna will talk to Anna about the upcoming wedding and ask for her input
+choice [2]: Manna will talk to Anna about meeting up to discuss the wedding plans
+choice [3]: Manna will talk to Anna about the wine tasting session and invite her to join
+debug: choice [1] is chosen, dialogue will happen.
+choice_dialogue: Manna said "Hey Anna! I wanted to talk to you about the upcoming wedding. Duke and I have some ideas, and we would love to get your input. Can we meet up sometime to discuss the plans? I value your opinion and would love to have your help. Thank you!"
+choice_dialogue: Anna said "Of course, Manna! I'd be happy to meet up and discuss the wedding plans. Let's plan to meet at the cafe tomorrow afternoon. Thank you for including me and I'm looking forward to helping out."
+choice_dialogue: Manna said "That's great, Anna! Let's meet at the cafe tomorrow afternoon to discuss the wedding plans. Thank you for your willingness to help, I really appreciate it. Looking forward to seeing you and catching up! Take care!"
+choice_dialogue: Anna said "I'm glad you value my opinion, Manna. Let's meet at the cafe tomorrow afternoon to discuss the wedding plans. Thank you for including me and I'm looking forward to helping out."
 take action: agent name: Manna, no action!!!!
-reason: Manna thinks that staying at Rose Square and chatting with Anna and Sasha is a good way to pass the time.
+reason: Manna thinks that staying at Rose Square for the next hour will allow her to relax and enjoy some alone time.
 take action: agent name: Duke, no action!!!!
-reason: Duke thinks that staying at the ChurchScene for the next hour will allow them to focus on wedding preparations and avoid any disruptions to their sleep schedule.
+reason: Duke thinks that staying at the ChurchScene for the next hour allows him to have some quiet time for reflection or prayer.
 take action: agent name: Anna, no action!!!!
-reason: Anna thinks that staying at BasilHouseScene for the next hour will allow her to have some quiet time and focus on her own tasks or activities.
+reason: Anna thinks that she will spend the next hour at Rose Square, enjoying some quiet time to herself.
 take action: agent name: Basil, no action!!!!
-reason: Basil thinks that staying at the SouthSideOfMineralTownScene for the next hour will allow him to study the local flora undisturbed.
+reason: Basil thinks that he will use the next hour to continue studying the local flora near Mother's Hill.
 take action: agent name: Mary, no action!!!!
-reason: Mary thinks that staying at home and not interacting with anyone will provide her with the quiet and solitude she needs to work on her novel.
+reason: Mary thinks that she will stay at the library because she is the librarian and has work to do.
 next agent state, timestep: 6, name: Manna, in map: RoseSquareScene
 next agent state, timestep: 6, name: Duke, in map: ChurchScene
-next agent state, timestep: 6, name: Anna, in map: BasilHouseScene
-next agent state, timestep: 6, name: Basil, in map: SouthSideOfMineralTownScene
-next agent state, timestep: 6, name: Mary, in map: BasilHouseScene
-current timestep: 7, time: 2022-11-11 14:00:00
+next agent state, timestep: 6, name: Anna, in map: RoseSquareScene
+next agent state, timestep: 6, name: Basil, in map: NorthSideOfMineralTownScene
+next agent state, timestep: 6, name: Mary, in map: MaryLibraryScene
+current timestep: 7, time: 2022-11-12 04:00:00
 current agent state, timestep: 7, name: Manna, in map: RoseSquareScene
 current agent state, timestep: 7, name: Duke, in map: ChurchScene
-current agent state, timestep: 7, name: Anna, in map: BasilHouseScene
-current agent state, timestep: 7, name: Basil, in map: SouthSideOfMineralTownScene
-current agent state, timestep: 7, name: Mary, in map: BasilHouseScene
-take action: agent name: Manna, no action!!!!
-reason: Manna thinks that staying at Rose Square and chatting with Anna and Sasha will provide her with entertainment and social interaction.
+current agent state, timestep: 7, name: Anna, in map: RoseSquareScene
+current agent state, timestep: 7, name: Basil, in map: NorthSideOfMineralTownScene
+current agent state, timestep: 7, name: Mary, in map: MaryLibraryScene
+choice [1]: Manna will talk to Duke about their ideas for the upcoming wedding.
+choice [2]: Manna will discuss the wedding plans and ask for Duke's input.
+choice [3]: Manna will mention to Duke that they would love to have his help with the wedding.
+debug: choice [1] is chosen, dialogue will happen.
+choice_dialogue: Manna said "Hey Duke! I wanted to discuss our ideas for the wedding. Can we meet up later today? I think it's important to finalize the plans and make sure we're on the same page. Let me know when you're available. Thanks!"
+choice_dialogue: Duke said "Of course, Manna! I'm available to meet up later today. Let's meet at the winery around 3 PM. We can go over the wedding plans and make any necessary adjustments. Looking forward to our discussion. See you then!"
+choice_dialogue: Manna said "That's great, Duke! Let's meet at the winery around 3 PM to discuss our wedding ideas. I'm looking forward to finalizing the plans and making sure we're on the same page. See you then!"
+choice_dialogue: Duke said "I'm glad we're meeting up later today, Manna. It's important to finalize our wedding plans and make sure everything is in order. I value your input and look forward to our discussion. See you at the winery at 3 PM!"
+take action: agent name: Manna, talk to Anna
+reason: Manna thinks that she will have a friendly chat with Anna at Rose Square.
+dialogue: Manna said "Hey Anna! How have you been? I wanted to catch up and see what's new with you. Have you tried that new coffee shop that opened up on Main Street? I heard they have amazing pastries. It would be great to grab a coffee and chat sometime."
+dialogue: Anna said "Yes, Manna, I've been well! Thank you for asking. I haven't tried the new coffee shop yet, but I'd love to go with you and catch up. How about we meet there tomorrow morning? I'll be looking forward to it!"
+dialogue: Manna said "That sounds great, Anna! Let's meet at the new coffee shop tomorrow morning. I can't wait to catch up with you and try their pastries. See you then!"
+dialogue: Anna said "Sure, Manna! Let's meet at the new coffee shop tomorrow morning. I'm excited to catch up with you and try their pastries. See you then!"
 take action: agent name: Duke, no action!!!!
-reason: Duke thinks that he should stay at the ChurchScene to prepare for the wedding ceremony and make sure everything is set up properly.
-take action: agent name: Anna, no action!!!!
-reason: Anna thinks that staying at BasilHouseScene for the next hour will give her some peace and quiet to relax and unwind.
+reason: Duke thinks that staying at the ChurchScene for the next hour is necessary to prepare for the wedding ceremony and ensure everything is in order.
+take action: agent name: Anna, talk to Manna
+reason: Anna thinks that she needs to confirm the meeting details with Manna at the new coffee shop.
+dialogue: Anna said "Great, Manna! Let's confirm the meeting details. Shall we meet at the new coffee shop tomorrow afternoon? I'm excited to discuss the wedding plans with you. Thank you for including me and I'm looking forward to it!"
+dialogue: Manna said "That sounds perfect, Anna! Let's meet at the new coffee shop tomorrow afternoon. I can't wait to discuss the wedding plans with you and catch up. Thank you for being a part of it, and I'm really looking forward to our conversation. See you then!"
+dialogue: Anna said "Great, Manna! Let's confirm the meeting details. Shall we meet at the new coffee shop tomorrow afternoon? I'm excited to discuss the wedding plans with you. Thank you for including me, and I'm looking forward to it!"
 take action: agent name: Basil, no action!!!!
-reason: Basil thinks that staying at SouthSideOfMineralTownScene for the next hour will provide a peaceful and solitary environment to focus on his botanical studies.
+reason: Basil thinks that he will spend the next hour studying the local flora at Mother's Hill.
 take action: agent name: Mary, no action!!!!
-reason: Mary thinks that spending the next hour alone at home is a peaceful and comforting way to unwind before going to bed early.
+reason: Mary thinks that she will spend the next hour at the library because it is her usual routine and she enjoys her work as a librarian.
 next agent state, timestep: 7, name: Manna, in map: RoseSquareScene
 next agent state, timestep: 7, name: Duke, in map: ChurchScene
-next agent state, timestep: 7, name: Anna, in map: BasilHouseScene
-next agent state, timestep: 7, name: Basil, in map: SouthSideOfMineralTownScene
-next agent state, timestep: 7, name: Mary, in map: BasilHouseScene
-current timestep: 8, time: 2022-11-11 16:00:00
+next agent state, timestep: 7, name: Anna, in map: RoseSquareScene
+next agent state, timestep: 7, name: Basil, in map: NorthSideOfMineralTownScene
+next agent state, timestep: 7, name: Mary, in map: MaryLibraryScene
+current timestep: 8, time: 2022-11-12 08:00:00
 current agent state, timestep: 8, name: Manna, in map: RoseSquareScene
 current agent state, timestep: 8, name: Duke, in map: ChurchScene
-current agent state, timestep: 8, name: Anna, in map: BasilHouseScene
-current agent state, timestep: 8, name: Basil, in map: SouthSideOfMineralTownScene
-current agent state, timestep: 8, name: Mary, in map: BasilHouseScene
+current agent state, timestep: 8, name: Anna, in map: RoseSquareScene
+current agent state, timestep: 8, name: Basil, in map: NorthSideOfMineralTownScene
+current agent state, timestep: 8, name: Mary, in map: MaryLibraryScene
+choice [1]: Basil says "Hi Manna, I hope you're doing well. Sorry, but I can't join you for the wine tasting session."
+choice [2]: Basil says "Hey Manna, thank you for the invitation. Unfortunately, I have to decline as I prioritize my botanical studies."
+choice [3]: Basil says "Hi Manna, I appreciate the offer, but I'll have to pass on the wine tasting session. Good luck and enjoy!"
+debug: choice [1] is chosen, dialogue will happen.
+choice_dialogue: Basil said "Hi Manna, I hope you're doing well. Thank you for the invitation, but I have to decline again. I prefer to avoid alcohol and focus on my botanical studies. Have a great time at the wine tasting session! Take care."
+choice_dialogue: Manna said "That's totally understandable, Basil! Your studies are important, and it's great that you prioritize them. We'll miss you at the wine tasting, but I hope you have a productive time with your botanical studies. Take care and see you later!"
+choice_dialogue: Basil said "Hi Manna, thank you for the invitation once again. I really appreciate it, but I have to decline. My botanical studies require my full attention. Have a great time at the wine tasting session! Take care."
 take action: agent name: Manna, no action!!!!
-reason: Manna thinks that staying at Rose Square and chatting with Anna and Sasha will provide her with an enjoyable and entertaining way to spend the next hour.
+reason: Manna thinks that staying at Rose Square allows her to socialize with Anna and Sasha, continuing her love for chatting and gossiping.
 take action: agent name: Duke, no action!!!!
-reason: Duke thinks that staying at the ChurchScene for the next hour is necessary for the wedding ceremony.
-take action: agent name: Anna, no action!!!!
-reason: Anna thinks that she will spend the next hour in BasilHouseScene either doing her own tasks or simply enjoying some quiet time alone.
-take action: agent name: Basil, from map SouthSideOfMineralTownScene to map NorthSideOfMineralTownScene
-reason: Basil thinks that he will be studying the local flora near Mother's Hill in the next hour.
-take action: agent name: Mary, from map BasilHouseScene to map MaryLibraryScene
-reason: Mary thinks that she will go to the library in the next hour to work on her novel and potentially interact with the few friends she has in town.
-debug: execute agent to go: NorthSideOfMineralTownScene
-debug: execute agent to go: MaryLibraryScene
+reason: Duke thinks that staying at the ChurchScene for the next hour will allow him to have some quiet time for reflection or prayer.
+take action: agent name: Anna, talk to Manna
+reason: Anna thinks that she needs to confirm the meeting details with Manna at the new coffee shop and discuss the wedding plans.
+dialogue: Anna said "Great, Manna! Just to confirm, we'll meet at the new coffee shop tomorrow afternoon. I'm excited to discuss the wedding plans with you. Thank you for including me, and I'm looking forward to it!"
+dialogue: Manna said "Sounds good, Anna! Let's meet at the new coffee shop tomorrow afternoon. I'm excited to discuss the wedding plans with you too. Thank you for being there for me, and I'll see you then!"
+take action: agent name: Basil, no action!!!!
+reason: Basil thinks that staying at the North Side of Mineral Town will provide a peaceful environment for studying the local flora.
+take action: agent name: Mary, no action!!!!
+reason: Mary thinks that she will stay at the library for the next hour to focus on her work and continue writing her novel.
 next agent state, timestep: 8, name: Manna, in map: RoseSquareScene
 next agent state, timestep: 8, name: Duke, in map: ChurchScene
-next agent state, timestep: 8, name: Anna, in map: BasilHouseScene
+next agent state, timestep: 8, name: Anna, in map: RoseSquareScene
 next agent state, timestep: 8, name: Basil, in map: NorthSideOfMineralTownScene
 next agent state, timestep: 8, name: Mary, in map: MaryLibraryScene
-current timestep: 9, time: 2022-11-11 18:00:00
+current timestep: 9, time: 2022-11-12 12:00:00
 current agent state, timestep: 9, name: Manna, in map: RoseSquareScene
 current agent state, timestep: 9, name: Duke, in map: ChurchScene
-current agent state, timestep: 9, name: Anna, in map: BasilHouseScene
+current agent state, timestep: 9, name: Anna, in map: RoseSquareScene
 current agent state, timestep: 9, name: Basil, in map: NorthSideOfMineralTownScene
 current agent state, timestep: 9, name: Mary, in map: MaryLibraryScene
-take action: agent name: Manna, no action!!!!
-reason: Manna thinks that she wants some time alone at Rose Square to relax and chat with her friends Anna and Sasha.
+choice [1]: Anna will discuss the wedding plans with Manna.
+choice [2]: Anna will confirm the meeting details with Manna at the new coffee shop.
+choice [3]: Anna will express excitement about the upcoming conversation with Manna.
+debug: choice [2] is chosen, dialogue will happen.
+choice_dialogue: Anna said "Great, Manna! I'm glad we're meeting at the new coffee shop tomorrow afternoon. I'm really excited to discuss the wedding plans with you and catch up. Thank you for including me, and I'm looking forward to it!"
+choice_dialogue: Manna said "Great, Anna! I'm looking forward to meeting at the new coffee shop tomorrow afternoon. I can't wait to discuss the wedding plans and catch up with you. Thank you for being there for me. See you then!"
+choice_dialogue: Anna said "Great, Manna! Just to confirm, we'll meet at the new coffee shop tomorrow afternoon. I'm excited to discuss the wedding plans with you. Thank you for including me, and I'm looking forward to it!"
+take action: agent name: Manna, talk to Anna
+reason: Manna thinks that she needs to talk to Anna to confirm the meeting details and discuss the wedding plans.
+dialogue: Manna said "That sounds perfect, Anna! Let's meet at the new coffee shop tomorrow afternoon. I can't wait to catch up and discuss the wedding plans with you. Thank you for being there for me. See you then!"
+dialogue: Anna said "Great, Manna! Just to confirm, we'll meet at the new coffee shop tomorrow afternoon. I'm excited to discuss the wedding plans with you. Thank you for including me, and I'm looking forward to it!"
+dialogue: Manna said "Sounds good, Anna! Let's meet at the new coffee shop tomorrow afternoon. I'm excited to discuss the wedding plans with you too. Thank you for being there for me, and I'll see you then!"
+dialogue: Anna said "Great, Manna! I'm glad we're meeting at the new coffee shop tomorrow afternoon. I'm really excited to discuss the wedding plans with you and catch up. Thank you for including me, and I'm looking forward to it!"
 take action: agent name: Duke, no action!!!!
-reason: Duke thinks that staying at the ChurchScene for the next hour will allow him to prepare for his wedding ceremony and focus on his upcoming marriage to Manna.
+reason: Duke thinks that staying at the ChurchScene for the next hour will allow him to focus on preparing for the wedding ceremony and ensure everything is in order.
 take action: agent name: Anna, no action!!!!
-reason: Anna thinks that staying at Basil's house for the next hour will provide her with a peaceful and quiet environment to relax and possibly work on her dessert recipes.
-take action: agent name: Basil, from map NorthSideOfMineralTownScene to map SouthSideOfMineralTownScene
-reason: Basil thinks that he will go to the South Side of Mineral Town to study the local flora near Mother's Hill.
+reason: Anna thinks that she wants to spend some quiet time alone in Rose Square, perhaps to reflect or enjoy some solitude.
+take action: agent name: Basil, no action!!!!
+reason: Basil thinks that staying at the NorthSideOfMineralTownScene for the next hour will provide a peaceful and conducive environment for studying the local flora.
 take action: agent name: Mary, no action!!!!
-reason: Mary thinks that it is important for her to maintain a consistent sleep schedule and prioritize her rest.
-debug: execute agent to go: SouthSideOfMineralTownScene
+reason: Mary thinks that she needs to focus on her work at the library and does not have any specific plans or interactions scheduled for the next hour.
 next agent state, timestep: 9, name: Manna, in map: RoseSquareScene
 next agent state, timestep: 9, name: Duke, in map: ChurchScene
-next agent state, timestep: 9, name: Anna, in map: BasilHouseScene
-next agent state, timestep: 9, name: Basil, in map: SouthSideOfMineralTownScene
+next agent state, timestep: 9, name: Anna, in map: RoseSquareScene
+next agent state, timestep: 9, name: Basil, in map: NorthSideOfMineralTownScene
 next agent state, timestep: 9, name: Mary, in map: MaryLibraryScene
-current timestep: 10, time: 2022-11-11 20:00:00
+current timestep: 10, time: 2022-11-12 16:00:00
 current agent state, timestep: 10, name: Manna, in map: RoseSquareScene
 current agent state, timestep: 10, name: Duke, in map: ChurchScene
-current agent state, timestep: 10, name: Anna, in map: BasilHouseScene
-current agent state, timestep: 10, name: Basil, in map: SouthSideOfMineralTownScene
+current agent state, timestep: 10, name: Anna, in map: RoseSquareScene
+current agent state, timestep: 10, name: Basil, in map: NorthSideOfMineralTownScene
 current agent state, timestep: 10, name: Mary, in map: MaryLibraryScene
-take action: agent name: Manna, no action!!!!
-reason: Manna thinks that staying at Rose Square and chatting with Anna and Sasha for the next hour will provide her with an enjoyable social interaction.
-take action: agent name: Duke, no action!!!!
-reason: Duke thinks that staying at the ChurchScene for the next hour will allow him to prepare for his wedding and ensure everything is in order.
+choice [1]: Manna asks Basil if he wants to join her and Anna at the new coffee shop tomorrow afternoon.
+choice [2]: Manna discusses the wedding plans with Basil and asks for his input.
+choice [3]: Manna thanks Basil for being there for her and expresses her appreciation for their friendship.
+debug: choice [2] is chosen, dialogue will happen.
+choice_dialogue: Manna said "Hey Basil, I wanted to get your opinion on something. Anna and I are meeting tomorrow to discuss the wedding plans. Do you have any ideas or suggestions? I value your input. Thank you!"
+choice_dialogue: Basil said "Thank you for considering my input, Manna. However, I prefer to focus on my botanical studies and leave the wedding planning to you and Anna. I'm sure you both will make wonderful decisions. Take care!"
+choice_dialogue: Manna said "Thank you, Basil, for your honesty. I understand and respect your focus on your botanical studies. I appreciate your support and I'm looking forward to discussing the wedding plans with Anna. Take care!"
+take action: agent name: Manna, talk to Anna
+reason: Manna thinks that she needs to talk to Anna to confirm the details and discuss any updates or ideas for their meeting at the new coffee shop tomorrow afternoon.
+dialogue: Manna said "Hey Anna! I just wanted to confirm that we're still meeting at the new coffee shop tomorrow afternoon. I'm really looking forward to catching up and discussing the wedding plans with you. Thank you for being there for me. See you then!"
+dialogue: Anna said "Yes, Manna! We are still meeting at the new coffee shop tomorrow afternoon. I'm excited to catch up and discuss the wedding plans with you. Thank you for including me, and I'll see you then!"
+take action: agent name: Duke, from map ChurchScene to map AjaWineryScene
+reason: Duke thinks that he needs to check on the operations and attend to his business responsibilities at Aja Winery.
 take action: agent name: Anna, no action!!!!
-reason: Anna thinks that staying at Basil's house for the next hour will allow her to have some quiet time and focus on her own thoughts or activities.
+reason: Anna thinks that she will spend the next hour enjoying some quiet time in Rose Square.
 take action: agent name: Basil, no action!!!!
-reason: Basil thinks that staying at the SouthSideOfMineralTownScene for the next hour will allow him to focus on his botanical studies without any distractions or interruptions.
+reason: Basil thinks that he will spend the next hour studying the local flora at Mother's Hill.
 take action: agent name: Mary, no action!!!!
-reason: Mary thinks that staying at the library will give her uninterrupted time to work on her novel.
+reason: Mary thinks that she will stay at the library to work on her novel and continue her duties as a librarian.
+debug: execute agent to go: AjaWineryScene
 next agent state, timestep: 10, name: Manna, in map: RoseSquareScene
-next agent state, timestep: 10, name: Duke, in map: ChurchScene
-next agent state, timestep: 10, name: Anna, in map: BasilHouseScene
-next agent state, timestep: 10, name: Basil, in map: SouthSideOfMineralTownScene
+next agent state, timestep: 10, name: Duke, in map: AjaWineryScene
+next agent state, timestep: 10, name: Anna, in map: RoseSquareScene
+next agent state, timestep: 10, name: Basil, in map: NorthSideOfMineralTownScene
 next agent state, timestep: 10, name: Mary, in map: MaryLibraryScene
-current timestep: 11, time: 2022-11-11 22:00:00
+current timestep: 11, time: 2022-11-12 20:00:00
 current agent state, timestep: 11, name: Manna, in map: RoseSquareScene
-current agent state, timestep: 11, name: Duke, in map: ChurchScene
-current agent state, timestep: 11, name: Anna, in map: BasilHouseScene
-current agent state, timestep: 11, name: Basil, in map: SouthSideOfMineralTownScene
+current agent state, timestep: 11, name: Duke, in map: AjaWineryScene
+current agent state, timestep: 11, name: Anna, in map: RoseSquareScene
+current agent state, timestep: 11, name: Basil, in map: NorthSideOfMineralTownScene
 current agent state, timestep: 11, name: Mary, in map: MaryLibraryScene
+choice [1]: Manna asks Mary for her opinion on the new coffee shop they plan to meet at tomorrow.
+choice [2]: Manna discusses the wedding plans with Mary and asks for any ideas or suggestions.
+choice [3]: Manna thanks Mary for being there for her and expresses her excitement to catch up with her tomorrow.
+debug: choice [2] is chosen, dialogue will happen.
+choice_dialogue: Manna said "Hey Mary! I wanted to discuss the wedding plans with you. Do you have any ideas or suggestions? I value your input. Thank you!"
+choice_dialogue: Mary said "Hi Manna! I'm honored that you value my input for the wedding plans. I think it would be lovely to have a rustic theme with lots of greenery and wildflowers. Maybe we could also incorporate some homemade decorations. What do you think?"
+choice_dialogue: Manna said "Thank you, Mary, for your input! I love the idea of a rustic theme with greenery and wildflowers. Homemade decorations sound perfect too. I appreciate your ideas and will definitely consider them. Let's catch up again soon. Take care!"
+choice_dialogue: Mary said "Thank you, Manna, for your kind words. I'm glad you liked my ideas for the wedding. I'm excited to catch up with you again soon. Take care!"
 take action: agent name: Manna, no action!!!!
-reason: Manna thinks that staying at Rose Square and chatting with Anna and Sasha will provide a pleasant and enjoyable way to pass the time.
-take action: agent name: Duke, no action!!!!
-reason: Duke thinks that staying at the ChurchScene for the next hour will allow him to prepare for the wedding ceremony and make sure everything is in order.
-take action: agent name: Anna, from map BasilHouseScene to map RoseSquareScene
-reason: Anna thinks that she will go to Rose Square to spend time with her friends Sasha and Manna and enjoy gossiping.
+reason: Manna thinks that she will enjoy some quiet time at Rose Square and reflect on the wedding plans.
+take action: agent name: Duke, from map AjaWineryScene to map ChurchScene
+reason: Duke thinks that he will go to the church to discuss wedding arrangements or finalize details for their upcoming ceremony.
+take action: agent name: Anna, no action!!!!
+reason: Anna thinks that she can use the next hour at Rose Square to relax, enjoy some alone time, or possibly engage in a personal activity or hobby.
 take action: agent name: Basil, no action!!!!
-reason: Basil thinks that it is already past midnight and he should be going to bed soon.
+reason: Basil thinks that staying at the North Side of Mineral Town allows him to study the local flora undisturbed and focus on his botanical studies.
 take action: agent name: Mary, no action!!!!
-reason: Mary thinks that staying at the library and not interacting with anyone else will allow her to focus on her writing and escape from the loneliness she feels in town.
-debug: execute agent to go: RoseSquareScene
+reason: Mary thinks that she will spend the next hour at the library, focusing on her work as a librarian and possibly working on her novel.
+debug: execute agent to go: ChurchScene
 next agent state, timestep: 11, name: Manna, in map: RoseSquareScene
 next agent state, timestep: 11, name: Duke, in map: ChurchScene
 next agent state, timestep: 11, name: Anna, in map: RoseSquareScene
-next agent state, timestep: 11, name: Basil, in map: SouthSideOfMineralTownScene
+next agent state, timestep: 11, name: Basil, in map: NorthSideOfMineralTownScene
 next agent state, timestep: 11, name: Mary, in map: MaryLibraryScene
-current timestep: 12, time: 2022-11-12 00:00:00
-current agent state, timestep: 12, name: Manna, in map: RoseSquareScene
-current agent state, timestep: 12, name: Duke, in map: ChurchScene
-current agent state, timestep: 12, name: Anna, in map: RoseSquareScene
-current agent state, timestep: 12, name: Basil, in map: SouthSideOfMineralTownScene
-current agent state, timestep: 12, name: Mary, in map: MaryLibraryScene
-take action: agent name: Manna, talk to Anna
-reason: Manna thinks that she will talk to Anna in the next hour because they usually chat when they meet at Rose Square.
-dialogue: Manna said "Hey Anna! I wanted to invite you to my wedding with Duke. It's on November 12, 2022, at the church. We'll be starting at 8 AM and it will go on until 6 PM. I hope you can make it!"
-dialogue: Anna said "Thank you for the invitation, Manna! I'm honored to be invited to your wedding with Duke. I'll definitely make sure to mark the date on my calendar and be there to celebrate with you both. It sounds like it's going to be a beautiful day!"
-dialogue: Manna said "Thank you, Anna! I'm so glad you can make it. It means a lot to me. I can't wait to celebrate with you. I'll see you on November 12th at the church. Take care!"
-dialogue: Anna said "I'm looking forward to your wedding, Manna. It's going to be a memorable day. Thank you again for inviting me. Take care and see you on November 12th at the church!"
-take action: agent name: Duke, no action!!!!
-reason: Duke thinks that staying at the ChurchScene for the next hour will allow him to prepare for the wedding ceremony and ensure everything is in order.
-take action: agent name: Anna, from map RoseSquareScene to map ChurchScene
-reason: Anna thinks that she needs to go to the ChurchScene for Manna's wedding ceremony.
-take action: agent name: Basil, no action!!!!
-reason: Basil thinks that staying at SouthSideOfMineralTownScene for the next hour will allow him to focus on studying the local flora without any distractions.
-take action: agent name: Mary, no action!!!!
-reason: Mary thinks that staying at the library will give her uninterrupted time to work on her novel.
-debug: execute agent to go: ChurchScene
-next agent state, timestep: 12, name: Manna, in map: RoseSquareScene
-next agent state, timestep: 12, name: Duke, in map: ChurchScene
-next agent state, timestep: 12, name: Anna, in map: ChurchScene
-next agent state, timestep: 12, name: Basil, in map: SouthSideOfMineralTownScene
-next agent state, timestep: 12, name: Mary, in map: MaryLibraryScene
-current timestep: 13, time: 2022-11-12 02:00:00
-current agent state, timestep: 13, name: Manna, in map: RoseSquareScene
-current agent state, timestep: 13, name: Duke, in map: ChurchScene
-current agent state, timestep: 13, name: Anna, in map: ChurchScene
-current agent state, timestep: 13, name: Basil, in map: SouthSideOfMineralTownScene
-current agent state, timestep: 13, name: Mary, in map: MaryLibraryScene
-take action: agent name: Manna, from map RoseSquareScene to map ChurchScene
-reason: Manna thinks that she needs to go to the church to prepare for her wedding ceremony with Duke.
-take action: agent name: Duke, no action!!!!
-reason: Duke thinks that since it is 4:00 AM, there is likely no one awake or available to talk to at the church, so he will stay there without interacting with anyone for the next hour.
-take action: agent name: Anna, no action!!!!
-reason: Anna thinks that since she is currently at the church and there is only Duke present, she will stay at ChurchScene for the next hour and not interact with anyone else.
-take action: agent name: Basil, no action!!!!
-reason: Basil thinks that staying at the South Side of Mineral Town allows him to study the local flora undisturbed.
-take action: agent name: Mary, no action!!!!
-reason: Mary thinks that she needs to focus on her writing and wants a quiet and peaceful environment, so she chooses to stay at the library for the next hour.
-debug: execute agent to go: ChurchScene
-next agent state, timestep: 13, name: Manna, in map: ChurchScene
-next agent state, timestep: 13, name: Duke, in map: ChurchScene
-next agent state, timestep: 13, name: Anna, in map: ChurchScene
-next agent state, timestep: 13, name: Basil, in map: SouthSideOfMineralTownScene
-next agent state, timestep: 13, name: Mary, in map: MaryLibraryScene
-current timestep: 14, time: 2022-11-12 04:00:00
-current agent state, timestep: 14, name: Manna, in map: ChurchScene
-current agent state, timestep: 14, name: Duke, in map: ChurchScene
-current agent state, timestep: 14, name: Anna, in map: ChurchScene
-current agent state, timestep: 14, name: Basil, in map: SouthSideOfMineralTownScene
-current agent state, timestep: 14, name: Mary, in map: MaryLibraryScene
-take action: agent name: Manna, no action!!!!
-reason: Manna thinks that she needs to focus on getting ready for her wedding ceremony.
-take action: agent name: Duke, talk to Manna
-reason: Duke thinks that he needs to talk to Manna to finalize any last-minute preparations for their wedding ceremony.
-dialogue: Duke said "Have a great day!"
-take action: agent name: Anna, no action!!!!
-reason: Anna thinks that staying at the ChurchScene for the next hour will give her time to reflect on her excitement for Manna's wedding and mentally prepare for the upcoming event.
-take action: agent name: Basil, no action!!!!
-reason: Basil thinks that staying at the South Side of Mineral Town for the next hour will allow him to focus on studying the local flora without any distractions.
-take action: agent name: Mary, no action!!!!
-reason: Mary thinks that she can use the next hour to focus on her writing and make progress on her novel.
-next agent state, timestep: 14, name: Manna, in map: ChurchScene
-next agent state, timestep: 14, name: Duke, in map: ChurchScene
-next agent state, timestep: 14, name: Anna, in map: ChurchScene
-next agent state, timestep: 14, name: Basil, in map: SouthSideOfMineralTownScene
-next agent state, timestep: 14, name: Mary, in map: MaryLibraryScene
-current timestep: 15, time: 2022-11-12 06:00:00
-current agent state, timestep: 15, name: Manna, in map: ChurchScene
-current agent state, timestep: 15, name: Duke, in map: ChurchScene
-current agent state, timestep: 15, name: Anna, in map: ChurchScene
-current agent state, timestep: 15, name: Basil, in map: SouthSideOfMineralTownScene
-current agent state, timestep: 15, name: Mary, in map: MaryLibraryScene
-take action: agent name: Manna, no action!!!!
-reason: Manna thinks that they will enjoy a moment of peace and reflection at the church before the wedding ceremony begins.
-take action: agent name: Duke, talk to Manna
-reason: Duke thinks that in the next hour, they need to finalize wedding preparations and discuss any remaining details with Manna.
-dialogue: Duke said "Manna, I'm so excited for our wedding today! I can't wait to see everyone there and celebrate our special day together. Let's make sure we talk to everyone and invite them personally. It's going to be a great day!"
-dialogue: Manna said "Thank you, Duke! I'm also really excited for our wedding. I appreciate your enthusiasm and I agree, let's make sure we personally invite everyone and make it a wonderful day. I can't wait to celebrate with you. Goodbye!"
-dialogue: Duke said "Thank you, Manna! I'm so grateful for your support and excitement. Let's make this day unforgettable. I can't wait to celebrate with you. See you soon!"
-take action: agent name: Anna, from map ChurchScene to map RoseSquareScene
-reason: Anna thinks that she will go to Rose Square to spend time with her friends Sasha and Manna and possibly engage in some gossip.
-take action: agent name: Basil, no action!!!!
-reason: Basil thinks that staying at the SouthSideOfMineralTownScene for the next hour will allow him to focus on studying the local flora undisturbed.
-take action: agent name: Mary, no action!!!!
-reason: Mary thinks that staying at the library for the next hour will allow her uninterrupted time to work on her novel.
-debug: execute agent to go: RoseSquareScene
-next agent state, timestep: 15, name: Manna, in map: ChurchScene
-next agent state, timestep: 15, name: Duke, in map: ChurchScene
-next agent state, timestep: 15, name: Anna, in map: RoseSquareScene
-next agent state, timestep: 15, name: Basil, in map: SouthSideOfMineralTownScene
-next agent state, timestep: 15, name: Mary, in map: MaryLibraryScene
-current timestep: 16, time: 2022-11-12 08:00:00
-current agent state, timestep: 16, name: Manna, in map: ChurchScene
-current agent state, timestep: 16, name: Duke, in map: ChurchScene
-current agent state, timestep: 16, name: Anna, in map: RoseSquareScene
-current agent state, timestep: 16, name: Basil, in map: SouthSideOfMineralTownScene
-current agent state, timestep: 16, name: Mary, in map: MaryLibraryScene
-take action: agent name: Manna, no action!!!!
-reason: Manna thinks that staying at the ChurchScene for the next hour will allow her to prepare for the wedding and make sure everything is in order.
-take action: agent name: Duke, no action!!!!
-reason: Duke thinks that staying at the ChurchScene for the next hour will allow him to reflect on the upcoming wedding and mentally prepare for the celebration.
-take action: agent name: Anna, from map RoseSquareScene to map ChurchScene
-reason: Anna thinks that she should start getting ready for Manna's wedding at the church.
-take action: agent name: Basil, no action!!!!
-reason: Basil thinks that staying at the SouthSideOfMineralTownScene for the next hour will allow him to study the local flora undisturbed.
-take action: agent name: Mary, no action!!!!
-reason: Mary thinks that she will spend the next hour at the library because she wants to continue working on her novel and is hoping for some quiet time to focus.
-debug: execute agent to go: ChurchScene
-next agent state, timestep: 16, name: Manna, in map: ChurchScene
-next agent state, timestep: 16, name: Duke, in map: ChurchScene
-next agent state, timestep: 16, name: Anna, in map: ChurchScene
-next agent state, timestep: 16, name: Basil, in map: SouthSideOfMineralTownScene
-next agent state, timestep: 16, name: Mary, in map: MaryLibraryScene
-current timestep: 17, time: 2022-11-12 10:00:00
-current agent state, timestep: 17, name: Manna, in map: ChurchScene
-current agent state, timestep: 17, name: Duke, in map: ChurchScene
-current agent state, timestep: 17, name: Anna, in map: ChurchScene
-current agent state, timestep: 17, name: Basil, in map: SouthSideOfMineralTownScene
-current agent state, timestep: 17, name: Mary, in map: MaryLibraryScene
-take action: agent name: Manna, talk to Duke
-reason: Manna thinks that they need to discuss final preparations and last-minute details for their wedding with Duke in the next hour.
-dialogue: Manna said "Thank you, Duke! I'm grateful for your support and enthusiasm. Let's make this day unforgettable. I can't wait to celebrate with you. See you soon!"
-dialogue: Duke said "Thank you, Manna! I'm so grateful for your support and excitement. Let's make this day unforgettable. I can't wait to celebrate with you. See you soon!"
-dialogue: Manna said "Thank you, Duke! I appreciate your support and enthusiasm. Let's make this day unforgettable. I can't wait to celebrate with you. See you soon!"
-dialogue: Duke said "Manna, I'm so grateful for your support and excitement. Let's make this day unforgettable. I can't wait to celebrate with you. See you soon!"
-dialogue: Manna said "Thank you, Duke! I'm also really excited for our wedding. I appreciate your enthusiasm, and I agree, let's make sure we personally invite everyone and make it a wonderful day. I can't wait to celebrate with you. Goodbye!"
-take action: agent name: Duke, no action!!!!
-reason: Duke thinks that staying at the ChurchScene for the next hour will provide a peaceful and reflective environment to prepare for the upcoming wedding ceremony.
-take action: agent name: Anna, no action!!!!
-reason: Anna thinks that she will continue to stay at the ChurchScene because there are no specific plans or reasons for her to engage in conversation with Duke or Manna at this time.
-take action: agent name: Basil, no action!!!!
-reason: Basil thinks that staying at the SouthSideOfMineralTownScene for the next hour will allow him to peacefully enjoy the outdoors and study the local flora.
-take action: agent name: Mary, no action!!!!
-reason: Mary thinks that staying at the library will provide her with a quiet and peaceful environment to work on her novel.
-next agent state, timestep: 17, name: Manna, in map: ChurchScene
-next agent state, timestep: 17, name: Duke, in map: ChurchScene
-next agent state, timestep: 17, name: Anna, in map: ChurchScene
-next agent state, timestep: 17, name: Basil, in map: SouthSideOfMineralTownScene
-next agent state, timestep: 17, name: Mary, in map: MaryLibraryScene
-current timestep: 18, time: 2022-11-12 12:00:00
-current agent state, timestep: 18, name: Manna, in map: ChurchScene
-current agent state, timestep: 18, name: Duke, in map: ChurchScene
-current agent state, timestep: 18, name: Anna, in map: ChurchScene
-current agent state, timestep: 18, name: Basil, in map: SouthSideOfMineralTownScene
-current agent state, timestep: 18, name: Mary, in map: MaryLibraryScene
-take action: agent name: Manna, talk to Duke
-reason: Manna think that she will talk to Duke in the next hour to discuss wedding plans or express gratitude and excitement for their upcoming wedding.
-dialogue: Manna said "Thank you, Duke! I'm grateful for your support and enthusiasm. Let's make this day unforgettable. I can't wait to celebrate with you. See you soon!"
-dialogue: Duke said "Thank you, Manna! I'm so grateful for your support and excitement. Let's make this day unforgettable. I can't wait to celebrate with you. See you soon!"
-dialogue: Manna said "Thank you, Duke! I appreciate your support and enthusiasm. Let's make this day unforgettable. I can't wait to celebrate with you. See you soon!"
-take action: agent name: Duke, no action!!!!
-reason: Duke thinks that staying at the ChurchScene for the next hour will provide a peaceful and reflective environment for personal contemplation or prayer.
-take action: agent name: Anna, talk to Duke
-reason: Anna thinks that since she is at the church and Duke is also present, it would be a good opportunity to talk to him and congratulate him on his upcoming wedding with Manna.
-dialogue: Anna said "Congratulations, Duke! I'm so happy for you and Manna. She's a wonderful person, and I know you two will have a beautiful life together. Thank you for inviting me to be a part of your special day. Take care!"
-dialogue: Duke said "Thank you, Anna! I appreciate your kind words and support. Manna and I are excited to have you be a part of our special day. We look forward to celebrating with you. Take care!"
-dialogue: Anna said "Thank you, Duke! It means a lot to hear your appreciation. I am truly excited to be a part of your special day. I'll make sure to bring my best wishes and a heartfelt gift. Take care!"
-dialogue: Duke said "Thank you, Anna! Your kind words mean a lot to me and Manna. We are excited to have you be a part of our special day. We truly appreciate your support and can't wait to celebrate with you. Take care!"
-dialogue: Anna said "Thank you, Duke! Your kind words mean a lot to me and Manna. We are excited to have you be a part of our special day. We truly appreciate your support and can't wait to celebrate with you. Take care!"
-take action: agent name: Basil, no action!!!!
-reason: Basil thinks that staying at the South Side of Mineral Town scene for the next hour will allow him to study the local flora undisturbed.
-take action: agent name: Mary, no action!!!!
-reason: Mary thinks that she can use the next hour at the library to focus on her writing and make progress on her novel.
-next agent state, timestep: 18, name: Manna, in map: ChurchScene
-next agent state, timestep: 18, name: Duke, in map: ChurchScene
-next agent state, timestep: 18, name: Anna, in map: ChurchScene
-next agent state, timestep: 18, name: Basil, in map: SouthSideOfMineralTownScene
-next agent state, timestep: 18, name: Mary, in map: MaryLibraryScene
-current timestep: 19, time: 2022-11-12 14:00:00
-current agent state, timestep: 19, name: Manna, in map: ChurchScene
-current agent state, timestep: 19, name: Duke, in map: ChurchScene
-current agent state, timestep: 19, name: Anna, in map: ChurchScene
-current agent state, timestep: 19, name: Basil, in map: SouthSideOfMineralTownScene
-current agent state, timestep: 19, name: Mary, in map: MaryLibraryScene
-take action: agent name: Manna, no action!!!!
-reason: Manna thinks that staying at ChurchScene for the next hour will provide her with a peaceful and introspective environment, allowing her to reflect on her upcoming wedding and perhaps seek solace or guidance.
-take action: agent name: Duke, no action!!!!
-reason: Duke thinks that staying at the ChurchScene for the next hour will allow him to reflect on his upcoming wedding and perhaps seek solace or guidance in a peaceful setting.
-take action: agent name: Anna, no action!!!!
-reason: Anna thinks that staying at the ChurchScene for the next hour will allow her to have some quiet time for reflection or prayer.
-take action: agent name: Basil, no action!!!!
-reason: Basil thinks that staying at the SouthSideOfMineralTownScene for the next hour will allow him to focus on studying the local flora without any distractions or interruptions.
-take action: agent name: Mary, no action!!!!
-reason: Mary thinks that she will spend the next hour at the library because she enjoys being surrounded by books and wants to work on her novel.
-next agent state, timestep: 19, name: Manna, in map: ChurchScene
-next agent state, timestep: 19, name: Duke, in map: ChurchScene
-next agent state, timestep: 19, name: Anna, in map: ChurchScene
-next agent state, timestep: 19, name: Basil, in map: SouthSideOfMineralTownScene
-next agent state, timestep: 19, name: Mary, in map: MaryLibraryScene
-current timestep: 20, time: 2022-11-12 16:00:00
-current agent state, timestep: 20, name: Manna, in map: ChurchScene
-current agent state, timestep: 20, name: Duke, in map: ChurchScene
-current agent state, timestep: 20, name: Anna, in map: ChurchScene
-current agent state, timestep: 20, name: Basil, in map: SouthSideOfMineralTownScene
-current agent state, timestep: 20, name: Mary, in map: MaryLibraryScene
-take action: agent name: Manna, talk to Anna
-reason: Manna thinks that she will have a friendly conversation with Anna at the ChurchScene in the next hour.
-dialogue: Manna said "Anna, I wanted to personally invite you to our wedding on November 12th. Your presence would mean a lot to both Duke and me. We can't wait to celebrate with you. See you soon!"
-dialogue: Anna said "Thank you so much for inviting me, Manna! I'm truly honored and excited to be a part of your special day. I will definitely be there to celebrate with you and Duke. See you soon!"
-dialogue: Manna said "Thank you so much, Anna! Your presence means a lot to both Duke and me. We can't wait to celebrate with you on November 12th. See you soon!"
-dialogue: Anna said "Thank you so much, Manna! Your presence means a lot to me too. I'm really looking forward to celebrating with you and Duke on November 12th. See you soon!"
-take action: agent name: Duke, no action!!!!
-reason: Duke thinks that staying at ChurchScene will provide him with a peaceful and reflective environment to prepare mentally and emotionally for his upcoming wedding.
-take action: agent name: Anna, no action!!!!
-reason: Anna thinks that it is best for her to quietly observe the wedding preparations and enjoy the peaceful atmosphere at the ChurchScene without interrupting or engaging in any conversations.
-take action: agent name: Basil, no action!!!!
-reason: Basil thinks that staying at the SouthSideOfMineralTownScene for the next hour will provide a peaceful and conducive environment for his botanical studies.
-take action: agent name: Mary, no action!!!!
-reason: Mary thinks that staying at the library for the next hour will allow her to focus on her writing and escape the loneliness she feels in town.
-next agent state, timestep: 20, name: Manna, in map: ChurchScene
-next agent state, timestep: 20, name: Duke, in map: ChurchScene
-next agent state, timestep: 20, name: Anna, in map: ChurchScene
-next agent state, timestep: 20, name: Basil, in map: SouthSideOfMineralTownScene
-next agent state, timestep: 20, name: Mary, in map: MaryLibraryScene
-current timestep: 21, time: 2022-11-12 18:00:00
-current agent state, timestep: 21, name: Manna, in map: ChurchScene
-current agent state, timestep: 21, name: Duke, in map: ChurchScene
-current agent state, timestep: 21, name: Anna, in map: ChurchScene
-current agent state, timestep: 21, name: Basil, in map: SouthSideOfMineralTownScene
-current agent state, timestep: 21, name: Mary, in map: MaryLibraryScene
-take action: agent name: Manna, talk to Anna
-reason: Manna thinks that she will talk to Anna about the wedding preparations and confirm any last-minute details.
-dialogue: Manna said "Thank you so much for accepting our invitation, Anna! We're thrilled to have you there on our special day. I can't wait to see you and celebrate with you. See you soon!"
-dialogue: Anna said "Thank you, Manna! I'm truly honored and excited to be a part of your special day. I will definitely be there to celebrate with you and Duke. See you soon!"
-take action: agent name: Duke, no action!!!!
-reason: Duke thinks that staying at ChurchScene for the next hour allows for some quiet reflection and personal time before the wedding ceremony.
-take action: agent name: Anna, no action!!!!
-reason: Anna thinks that staying at the ChurchScene for the next hour will provide her with a peaceful and quiet environment for reflection and personal prayer.
-take action: agent name: Basil, no action!!!!
-reason: Basil thinks that staying at SouthSideOfMineralTownScene for the next hour will allow him to focus on studying the local flora without any distractions.
-take action: agent name: Mary, no action!!!!
-reason: Mary thinks that staying at the library for the next hour will provide her with a quiet and peaceful environment to work on her novel.
-next agent state, timestep: 21, name: Manna, in map: ChurchScene
-next agent state, timestep: 21, name: Duke, in map: ChurchScene
-next agent state, timestep: 21, name: Anna, in map: ChurchScene
-next agent state, timestep: 21, name: Basil, in map: SouthSideOfMineralTownScene
-next agent state, timestep: 21, name: Mary, in map: MaryLibraryScene
-current timestep: 22, time: 2022-11-12 20:00:00
-current agent state, timestep: 22, name: Manna, in map: ChurchScene
-current agent state, timestep: 22, name: Duke, in map: ChurchScene
-current agent state, timestep: 22, name: Anna, in map: ChurchScene
-current agent state, timestep: 22, name: Basil, in map: SouthSideOfMineralTownScene
-current agent state, timestep: 22, name: Mary, in map: MaryLibraryScene
-take action: agent name: Manna, talk to Duke
-reason: Manna thinks that she needs to discuss and resolve the issue of Duke's drinking with him in the next hour.
-dialogue: Manna said "Thank you, Duke! I appreciate your support and enthusiasm. Let's make this day unforgettable. I can't wait to celebrate with you. See you soon!"
-dialogue: Duke said "Thank you, Manna! Your support and enthusiasm mean the world to me. Let's make this day unforgettable together. I can't wait to celebrate with you. See you soon!"
-dialogue: Manna said "Thank you, Duke! Your support and enthusiasm mean the world to me. Let's make this day unforgettable together. I can't wait to celebrate with you. See you soon!"
-take action: agent name: Duke, no action!!!!
-reason: Duke thinks that they will spend the next hour at ChurchScene to reflect, pray, or seek solace.
-take action: agent name: Anna, no action!!!!
-reason: Anna thinks that she will spend the next hour quietly observing the wedding preparations at the ChurchScene.
-take action: agent name: Basil, no action!!!!
-reason: Basil thinks that staying at the South Side of Mineral Town scene will provide a peaceful and serene environment for studying the local flora.
-take action: agent name: Mary, no action!!!!
-reason: Mary thinks that it is her usual bedtime and she wants to spend the next hour reading or working on her novel in the library before going to sleep.
-next agent state, timestep: 22, name: Manna, in map: ChurchScene
-next agent state, timestep: 22, name: Duke, in map: ChurchScene
-next agent state, timestep: 22, name: Anna, in map: ChurchScene
-next agent state, timestep: 22, name: Basil, in map: SouthSideOfMineralTownScene
-next agent state, timestep: 22, name: Mary, in map: MaryLibraryScene
-current timestep: 23, time: 2022-11-12 22:00:00
-current agent state, timestep: 23, name: Manna, in map: ChurchScene
-current agent state, timestep: 23, name: Duke, in map: ChurchScene
-current agent state, timestep: 23, name: Anna, in map: ChurchScene
-current agent state, timestep: 23, name: Basil, in map: SouthSideOfMineralTownScene
-current agent state, timestep: 23, name: Mary, in map: MaryLibraryScene
-take action: agent name: Manna, talk to Anna
-reason: Manna thinks that talking to Anna in the next hour will allow her to express her excitement for the wedding and continue building their close relationship.
-dialogue: Manna said "Thank you so much for accepting our invitation, Anna! We're thrilled to have you there on our special day. I can't wait to see you and celebrate with you. See you soon!"
-dialogue: Anna said "Thank you, Manna! I'm truly honored and excited to be a part of your special day. I will definitely be there to celebrate with you and Duke. See you soon!"
-take action: agent name: Duke, no action!!!!
-reason: Duke thinks that staying at the ChurchScene for the next hour will allow him to reflect on the upcoming wedding and enjoy some quiet time before the festivities begin.
-take action: agent name: Anna, no action!!!!
-reason: Anna thinks that staying at the ChurchScene for the next hour will provide her with a peaceful and reflective environment.
-take action: agent name: Basil, no action!!!!
-reason: Basil thinks that staying at the South Side of Mineral Town will provide a peaceful environment for him to study the local flora.
-take action: agent name: Mary, no action!!!!
-reason: Mary thinks that staying at the library and continuing to work on her novel is the best use of her time for the next hour.
-next agent state, timestep: 23, name: Manna, in map: ChurchScene
-next agent state, timestep: 23, name: Duke, in map: ChurchScene
-next agent state, timestep: 23, name: Anna, in map: ChurchScene
-next agent state, timestep: 23, name: Basil, in map: SouthSideOfMineralTownScene
-next agent state, timestep: 23, name: Mary, in map: MaryLibraryScene
