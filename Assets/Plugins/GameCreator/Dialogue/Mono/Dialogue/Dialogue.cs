@@ -140,5 +140,10 @@
         {
             this.information = new Information();
         }
+
+        public static implicit operator Dialogue(GameObject v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

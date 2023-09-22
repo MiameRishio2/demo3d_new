@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: DatabaseLocalization
   m_EditorClassIdentifier: 
   languages: []
-  translationList: []
+  translationList:
+  - key: 239016486
+    placeholder: 1233
+    content: []

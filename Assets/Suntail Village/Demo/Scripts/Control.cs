@@ -13,6 +13,9 @@ using static GameCreator.Core.ActionTransform;
 using UnityEngine.UI;
 using GameCreator.Variables;
 using UnityEngine.Animations;
+using JetBrains.Annotations;
+using GameCreator.Dialogue;
+using System.Linq;
 
 public class Control : MonoBehaviour
 {
@@ -44,6 +47,9 @@ public class Control : MonoBehaviour
         public Dictionary<string, string> moves;
         public Dictionary<string, string> reasons;
         public List<string> dialogues;
+
+        public List<string> choices;
+        public List<string> choice_dialogues;
     }
 
     public List<NavigationMarker> locationMarkers = new List<NavigationMarker>();//存放所有场所路点
@@ -84,6 +90,7 @@ public class Control : MonoBehaviour
     public GameObject MaryTriggerH;
 
     public List<GameObject> NPCNames = new List<GameObject>();
+    public GameObject selectDialogue;
 
     private Dictionary<string, TargetCharacter> npcDicsMove = new Dictionary<string, TargetCharacter>();//存放npc的map 运动相关
     private Dictionary<string, TargetGameObject> npcDicsDialogue = new Dictionary<string, TargetGameObject>();//存放npc的map 对话相关
@@ -95,12 +102,27 @@ public class Control : MonoBehaviour
     private int nowIndex = 0;
     private List<Actions> moveActions;
     private Actions dialogueActions;
+    private Actions selectActions;
     private bool isPaused = false;
-   //Sprivate Dictionary<>
+
 
     // Start is called before the first frame update
     void Start()
     {
+        //测试代码创建三选一对话过程
+        /*  GameObject tempObject = new GameObject();
+          dialogueActions = tempObject.AddComponent<Actions>();
+          dialogueActions.destroyAfterFinishing = true;
+
+          dialogueActions.actionsList.actions = new IAction[1];
+          ActionDialogue select = dialogueActions.gameObject.AddComponent<ActionDialogue>();
+          select.dialogue = selectDialogue.GetComponent<Dialogue>();
+          select.dialogue.itemInstances[2].content = new LocString("111");
+          select.dialogue.itemInstances[3].content = new LocString("222");
+          select.dialogue.itemInstances[4].content = new LocString("333");
+          dialogueActions.actionsList.actions[0] = select;
+          dialogueActions.Execute();*/
+
         // 设置鼠标为非独占，并且显示模式
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -296,7 +318,7 @@ public class Control : MonoBehaviour
             //初始化每一个时间段的数据结构
             if (line.StartsWith("current timestep:"))
             {
-                string[] test  = new string[1];
+                string[] test = new string[1];
                 test[0] = "time: ";
                 string time = line.Split(test, System.StringSplitOptions.None)[1];
 
@@ -305,6 +327,8 @@ public class Control : MonoBehaviour
                 info.moves = new Dictionary<string, string>();
                 info.reasons = new Dictionary<string, string>();
                 info.dialogues = new List<string>();
+                info.choices = new List<string>();
+                info.choice_dialogues = new List<string>();
                 infos.Add(info);
             }
 
@@ -358,24 +382,52 @@ public class Control : MonoBehaviour
                 string content = line.Split(test1, System.StringSplitOptions.None)[1];
                 infos[infos.Count - 1].dialogues.Add(content);
             }
+
+            //处理选项信息
+            if (line.StartsWith("choice "))
+            {
+                string[] test1 = new string[1];
+                test1[0] = "]: ";
+                string content = line.Split(test1, System.StringSplitOptions.None)[1];
+                infos[infos.Count - 1].choices.Add(content);
+                // Debug.Log("choice\t" + content);
+            }
+
+            //处理选择到的选项
+            if (line.StartsWith("debug: choice "))
+            {
+                string content = line.Split('[')[1].Split(']')[0];
+                infos[infos.Count - 1].choices.Add(content);
+                //  Debug.Log("number\t" + content);
+            }
+
+            //处理选项的结果
+            if (line.StartsWith("choice_dialogue:"))
+            {
+                string[] test1 = new string[1];
+                test1[0] = "choice_dialogue: ";
+                string content = line.Split(test1, System.StringSplitOptions.None)[1];
+                infos[infos.Count - 1].choice_dialogues.Add(content);
+                // Debug.Log("content\t" + content);
+            }
         }
 
-       /* for(int i = 0 ; i < infos.Count; i++)
-        {
-            Debug.Log(i + "\t" + infos[i].time);
-            foreach (string key in infos[i].reasons.Keys)
-            {
-                Debug.Log("Key: " + key);
-                Debug.Log("Value: " + infos[i].reasons[key]);
-            }
-        }*/
-     }
+        /* for(int i = 0 ; i < infos.Count; i++)
+         {
+             Debug.Log(i + "\t" + infos[i].time);
+             foreach (string key in infos[i].reasons.Keys)
+             {
+                 Debug.Log("Key: " + key);
+                 Debug.Log("Value: " + infos[i].reasons[key]);
+             }
+         }*/
+    }
     // Update is called once per frame
     void Update()
     {
         object isTopV = VariablesManager.GetGlobal("isTop");
         bool isTop = (bool)isTopV;
-        if(isTop)
+        if (isTop)
         {
             //俯视角下名字可见
             NPCNames[0].SetActive(true);
@@ -492,24 +544,35 @@ public class Control : MonoBehaviour
         if (state == 0)
         {
             //当前所有的指令都已经被取完 进入结束状态
-            if(nowIndex >= infos.Count)
+            if (nowIndex >= infos.Count)
             {
-                state = 3;
+                state = 4;
                 Debug.Log("finish");
             }
             else
             {
                 Text tempText = timeUI.GetComponent<Text>();
                 tempText.text = infos[nowIndex].time;
-                Debug.Log(infos[nowIndex].time);
+                //生成选择Actions 
+                selectActions = GetSelectActions();
+                state = 1;
+            }
+        }
+
+        //选择阶段
+        if (state == 1)
+        {
+            //当前所有的指令都已经被取完 进入结束状态
+            if(selectActions == null)
+            {
                 //生成对话Actions 
                 dialogueActions = GetDiglogueActions();
-                state = 1 ;
+                state = 2;
             }
         }
 
         //对话阶段
-        if (state == 1)
+        if (state == 2)
         {
             if (dialogueActions == null)
             {
@@ -524,24 +587,24 @@ public class Control : MonoBehaviour
                     Debug.Log(name + "\tstart\t" + start + "\tend\t" + end);
                     moveActions.Add(GetMoveActions(name, start, end));
                 }
-                state = 2;
+                state = 3;
             }
         }
 
         //运动阶段
-        if (state == 2)
+        if (state == 3)
         {
             //判断运动的action是否都已经结束 
             bool isFinish = true;
-            for(int i = 0; i < moveActions.Count; i++)
+            for (int i = 0; i < moveActions.Count; i++)
             {
                 if (moveActions[i] != null)
                 {
-                    isFinish = false;   
+                    isFinish = false;
                     break;
                 }
             }
-            if(isFinish)
+            if (isFinish)
             {
                 state = 0;
                 nowIndex++;
@@ -620,14 +683,14 @@ public class Control : MonoBehaviour
 
     Actions GetMoveActions(string name, string start, string end)
     {
-        GameObject tempObject= new GameObject();
+        GameObject tempObject = new GameObject();
         Actions actions = tempObject.AddComponent<Actions>();
         actions.destroyAfterFinishing = true;
 
         //获得路径的Markers 不算起点和终点 每个人的起点和终点
         List<NavigationMarker> markers = GetMarkers(name, start, end);
         actions.actionsList.actions = new IAction[markers.Count];
-        for(int i = 0; i < markers.Count; i++)
+        for (int i = 0; i < markers.Count; i++)
         {
             ActionCharacterMoveTo moveTo = actions.gameObject.AddComponent<ActionCharacterMoveTo>();
             moveTo.target = npcDicsMove[name];
@@ -635,7 +698,7 @@ public class Control : MonoBehaviour
             moveTo.marker = markers[i];
             actions.actionsList.actions[i] = moveTo;
         }
-            
+
         actions.Execute();
         return actions;
     }
@@ -647,7 +710,7 @@ public class Control : MonoBehaviour
 
         if (start.Equals("AjaWineryScene"))
         {
-            for(int i = 0; i < AjaWinerySceneOutMarkers.Count; i++)
+            for (int i = 0; i < AjaWinerySceneOutMarkers.Count; i++)
                 resultMarkers.Add(AjaWinerySceneOutMarkers[i]);
         }
         if (start.Equals("BasilHouseScene"))
@@ -671,28 +734,28 @@ public class Control : MonoBehaviour
                 resultMarkers.Add(ChurchSceneOutMarkers[i]);
         }
         List<NavigationMarker> path = pathMarkers[start + " " + end];
-        for(int i = 0; i < path.Count; i++)
+        for (int i = 0; i < path.Count; i++)
             resultMarkers.Add(path[i]);
 
         if (end.Equals("AjaWineryScene"))
         {
             for (int i = 0; i < AjaWinerySceneInMarkers.Count; i++)
-                resultMarkers.Add(AjaWinerySceneInMarkers[AjaWinerySceneInMarkers.Count - i -1]);
+                resultMarkers.Add(AjaWinerySceneInMarkers[AjaWinerySceneInMarkers.Count - i - 1]);
         }
         if (end.Equals("BasilHouseScene"))
         {
             for (int i = 0; i < BasilHouseSceneInMarkers.Count; i++)
-                resultMarkers.Add(BasilHouseSceneInMarkers[BasilHouseSceneInMarkers.Count - i -1]);
+                resultMarkers.Add(BasilHouseSceneInMarkers[BasilHouseSceneInMarkers.Count - i - 1]);
         }
         if (end.Equals("MaryLibraryScene"))
         {
             for (int i = 0; i < MaryLibrarySceneInMarkers.Count; i++)
-                resultMarkers.Add(MaryLibrarySceneInMarkers[MaryLibrarySceneInMarkers.Count - i -1]);
+                resultMarkers.Add(MaryLibrarySceneInMarkers[MaryLibrarySceneInMarkers.Count - i - 1]);
         }
         if (end.Equals("MineralClinicScene"))
         {
             for (int i = 0; i < MineralClinicSceneInMarkers.Count; i++)
-                resultMarkers.Add(MineralClinicSceneInMarkers[MineralClinicSceneInMarkers.Count -i -1]);
+                resultMarkers.Add(MineralClinicSceneInMarkers[MineralClinicSceneInMarkers.Count - i - 1]);
         }
         if (end.Equals("ChurchScene"))
         {
@@ -720,8 +783,44 @@ public class Control : MonoBehaviour
             ActionFloatingMessage message = actions.gameObject.AddComponent<ActionFloatingMessage>();
             message.message = new LocString(content);
             message.target = npcDicsDialogue[name];
-            
+
             actions.actionsList.actions[i] = message;
+        }
+
+        actions.Execute();
+        return actions;
+    }
+
+    Actions GetSelectActions()
+    {
+        GameObject tempObject = new GameObject();
+        Actions actions = tempObject.AddComponent<Actions>();
+        actions.destroyAfterFinishing = true;
+
+        actions.actionsList.actions = new IAction[infos[nowIndex].choice_dialogues.Count + 1];
+
+        //添加选项事件
+        ActionDialogue select = actions.gameObject.AddComponent<ActionDialogue>();
+        select.waitToComplete = true;
+        select.dialogue = selectDialogue.GetComponent<Dialogue>();
+        select.dialogue.itemInstances[2].content = new LocString(infos[nowIndex].choices[0]);
+        select.dialogue.itemInstances[3].content = new LocString(infos[nowIndex].choices[1]);
+        select.dialogue.itemInstances[4].content = new LocString(infos[nowIndex].choices[2]);
+        actions.actionsList.actions[0] = select;
+
+        //添加选项后续对话事件
+        for (int i = 0; i < infos[nowIndex].choice_dialogues.Count; i++)
+        {
+            string name = infos[nowIndex].choice_dialogues[i].Split(' ')[0];
+
+            string[] test = new string[1];
+            test[0] = "said \"";
+            string content = infos[nowIndex].choice_dialogues[i].Split(test, System.StringSplitOptions.None)[1].Split('\"')[0];
+            ActionFloatingMessage message = actions.gameObject.AddComponent<ActionFloatingMessage>();
+            message.message = new LocString(content);
+            message.target = npcDicsDialogue[name];
+
+            actions.actionsList.actions[i+1] = message;
         }
 
         actions.Execute();
