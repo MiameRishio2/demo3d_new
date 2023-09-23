@@ -674,7 +674,13 @@ public class Control : MonoBehaviour
                 tempText.text = infos[nowIndex].time;
                 //生成选择Actions 
                 selectActions = GetSelectActions();
-                state = 1;
+             //   object isSelectV = VariablesManager.GetGlobal("isSelect");
+            //    bool isSelect = (bool)isSelectV;
+           //     if (isSelect)
+            //    {
+                    selectActions.Execute();
+                    state = 1;
+           //     }
             }
         }
 
@@ -686,6 +692,12 @@ public class Control : MonoBehaviour
             {
                 talker1 = "nobody";
                 talker2 = "nobody";
+                VariablesManager.SetGlobal("isMannaSelected", false);
+                VariablesManager.SetGlobal("isDukeSelected", false);
+                VariablesManager.SetGlobal("isAnnaSelected", false);
+                VariablesManager.SetGlobal("isBasilSelected", false);
+                VariablesManager.SetGlobal("isAnnaSelected", false);
+
                 //生成对话Actions 
                 dialogueActions = GetDiglogueActions();
                 state = 2;
@@ -959,6 +971,27 @@ public class Control : MonoBehaviour
             }
         }
 
+        if(talker1.Equals("Manna"))
+        {
+            VariablesManager.SetGlobal("isMannaSelected", false);
+        }
+        if (talker1.Equals("Duke"))
+        {
+            VariablesManager.SetGlobal("isDukeSelected", false);
+        }
+        if (talker1.Equals("Anna"))
+        {
+            VariablesManager.SetGlobal("isAnnaSelected", false);
+        }
+        if (talker1.Equals("Basil"))
+        {
+            VariablesManager.SetGlobal("isBasilSelected", false);
+        }
+        if (talker1.Equals("Mary"))
+        {
+            VariablesManager.SetGlobal("isMarySelected", false);
+        }
+
         //添加选项后续对话事件
         for (int i = 0; i < infos[nowIndex].choice_dialogues.Count; i++)
         {
@@ -972,7 +1005,7 @@ public class Control : MonoBehaviour
             actions.actionsList.actions[i+1] = message;
         }
 
-        actions.Execute();
+        //actions.Execute();
         return actions;
     }
 
