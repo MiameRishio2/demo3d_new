@@ -92,6 +92,10 @@ public class Control : MonoBehaviour
     public List<GameObject> NPCNames = new List<GameObject>();
     public GameObject selectDialogue;
 
+    //三选一的2个人物的名字
+    public string talker1 = "nobody";
+    public string talker2 = "nobody";
+
     private Dictionary<string, TargetCharacter> npcDicsMove = new Dictionary<string, TargetCharacter>();//存放npc的map 运动相关
     private Dictionary<string, TargetGameObject> npcDicsDialogue = new Dictionary<string, TargetGameObject>();//存放npc的map 对话相关
     private Dictionary<string, NavigationMarker> npcMarkers = new Dictionary<string, NavigationMarker>();//存放npc在各个场所的路点
@@ -565,6 +569,8 @@ public class Control : MonoBehaviour
             //当前所有的指令都已经被取完 进入结束状态
             if(selectActions == null)
             {
+                talker1 = "nobody";
+                talker2 = "nobody";
                 //生成对话Actions 
                 dialogueActions = GetDiglogueActions();
                 state = 2;
@@ -807,19 +813,50 @@ public class Control : MonoBehaviour
         select.dialogue.itemInstances[3].content = new LocString(infos[nowIndex].choices[1]);
         select.dialogue.itemInstances[4].content = new LocString(infos[nowIndex].choices[2]);
         actions.actionsList.actions[0] = select;
+        string[] temp1 = infos[nowIndex].choices[0].Split(' ');
+        talker1 = temp1[0];
+        for (int i = 1; i < temp1.Length; i++)
+        {
+            if (temp1[i].Contains("Manna") && !temp1[i].Contains(talker1))
+            {
+                talker2 = "Manna";
+                break;
+            }
+            if (temp1[i].Contains("Duke") && !temp1[i].Contains(talker1))
+            {
+                talker2 = "Duke";
+                break;
+            }
+            if (temp1[i].Contains("Anna") && !temp1[i].Contains(talker1))
+            {
+                talker2 = "Anna";
+                break;
+            }
+            if (temp1[i].Contains("Basil") && !temp1[i].Contains(talker1))
+            {
+                talker2 = "Basil";
+                break;
+            }
+            if (temp1[i].Contains("Mary") && !temp1[i].Contains(talker1))
+            {
+                talker2 = "Mary";
+                break;
+            }
+        }
+
+        Debug.Log("talker1\t" + talker1);
+        Debug.Log("talker2\t" + talker2);
 
         //添加选项后续对话事件
         for (int i = 0; i < infos[nowIndex].choice_dialogues.Count; i++)
         {
-            string name = infos[nowIndex].choice_dialogues[i].Split(' ')[0];
-
+            string[] temp2 = infos[nowIndex].choice_dialogues[i].Split(' ');
+            string name = temp2[0];
             string[] test = new string[1];
             test[0] = "said \"";
             string content = infos[nowIndex].choice_dialogues[i].Split(test, System.StringSplitOptions.None)[1].Split('\"')[0];
-            ActionFloatingMessage message = actions.gameObject.AddComponent<ActionFloatingMessage>();
-            message.message = new LocString(content);
-            message.target = npcDicsDialogue[name];
-
+            ActionSimpleMessageShow message = actions.gameObject.AddComponent<ActionSimpleMessageShow>();
+            message.message = new LocString(name + ":\t\t"  + content);
             actions.actionsList.actions[i+1] = message;
         }
 
