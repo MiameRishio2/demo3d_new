@@ -442,32 +442,92 @@ public class Control : MonoBehaviour
 
             //俯视角下对话框大小变大
             float scale = 0.08f;
-            GameObject[] objectsOfType = FindObjectsOfType<GameObject>();
-            foreach (GameObject obj in objectsOfType)
+            Transform childTransform = Manna.transform.Find("FloatingMessage(Clone)");
+            if (childTransform != null)
             {
-                if (obj.name.Contains("FloatingMessage"))
-                {
-                    obj.transform.localScale = new Vector3(scale, scale, scale);
-                    //调整俯视角下面对话框的朝向
-                    LookAtConstraint constraint = obj.GetComponent<LookAtConstraint>();
-                    constraint.constraintActive = false;
-                    // Debug.Log(obj.transform.rotation);
-                    obj.transform.rotation = new Quaternion(-0.6f, 0f, 0f, -0.8f);
-                    string parentName = obj.transform.parent.name;
-
-                    //调节对话框位置
-                    if (parentName.Equals("Manna"))
-                        obj.transform.position = Manna.transform.position + new Vector3(0, 0, 5);
-                    if (parentName.Equals("Duke"))
-                        obj.transform.position = Duke.transform.position + new Vector3(0, 0, 5);
-                    if (parentName.Equals("Anna"))
-                        obj.transform.position = Anna.transform.position + new Vector3(0, 0, 5);
-                    if (parentName.Equals("Basil"))
-                        obj.transform.position = Basil.transform.position + new Vector3(0, 0, 5);
-                    if (parentName.Equals("Mary"))
-                        obj.transform.position = Mary.transform.position + new Vector3(0, 0, 5);
-                }
+                childTransform.localScale = new Vector3(scale, scale, scale);
+                //调整俯视角下面对话框的朝向
+                LookAtConstraint constraint = childTransform.GetComponent<LookAtConstraint>();
+                constraint.constraintActive = false;
+                childTransform.rotation = new Quaternion(-0.6f, 0f, 0f, -0.8f);
+                //调节对话框位置
+                childTransform.position = Manna.transform.position + new Vector3(0, 0, 5);
             }
+
+            childTransform = Duke.transform.Find("FloatingMessage(Clone)");
+            if (childTransform != null)
+            {
+                childTransform.localScale = new Vector3(scale, scale, scale);
+                //调整俯视角下面对话框的朝向
+                LookAtConstraint constraint = childTransform.GetComponent<LookAtConstraint>();
+                constraint.constraintActive = false;
+                childTransform.rotation = new Quaternion(-0.6f, 0f, 0f, -0.8f);
+                //调节对话框位置
+                childTransform.position = Duke.transform.position + new Vector3(0, 0, 5);
+            }
+
+            childTransform = Anna.transform.Find("FloatingMessage(Clone)");
+            if (childTransform != null)
+            {
+                childTransform.localScale = new Vector3(scale, scale, scale);
+                //调整俯视角下面对话框的朝向
+                LookAtConstraint constraint = childTransform.GetComponent<LookAtConstraint>();
+                constraint.constraintActive = false;
+                childTransform.rotation = new Quaternion(-0.6f, 0f, 0f, -0.8f);
+                //调节对话框位置
+                childTransform.position = Anna.transform.position + new Vector3(0, 0, 5);
+            }
+
+            childTransform = Basil.transform.Find("FloatingMessage(Clone)");
+            if (childTransform != null)
+            {
+                childTransform.localScale = new Vector3(scale, scale, scale);
+                //调整俯视角下面对话框的朝向
+                LookAtConstraint constraint = childTransform.GetComponent<LookAtConstraint>();
+                constraint.constraintActive = false;
+                childTransform.rotation = new Quaternion(-0.6f, 0f, 0f, -0.8f);
+                //调节对话框位置
+                childTransform.position = Basil.transform.position + new Vector3(0, 0, 5);
+            }
+
+            childTransform = Mary.transform.Find("FloatingMessage(Clone)");
+            if (childTransform != null)
+            {
+                childTransform.localScale = new Vector3(scale, scale, scale);
+                //调整俯视角下面对话框的朝向
+                LookAtConstraint constraint = childTransform.GetComponent<LookAtConstraint>();
+                constraint.constraintActive = false;
+                childTransform.rotation = new Quaternion(-0.6f, 0f, 0f, -0.8f);
+                //调节对话框位置
+                childTransform.position = Mary.transform.position + new Vector3(0, 0, 5);
+            }
+
+            /* GameObject[] objectsOfType = FindObjectsOfType<GameObject>();
+             foreach (GameObject obj in objectsOfType)
+             {
+                 if (obj.name.Contains("FloatingMessage"))
+                 {
+                     obj.transform.localScale = new Vector3(scale, scale, scale);
+                     //调整俯视角下面对话框的朝向
+                     LookAtConstraint constraint = obj.GetComponent<LookAtConstraint>();
+                     constraint.constraintActive = false;
+                     // Debug.Log(obj.transform.rotation);
+                     obj.transform.rotation = new Quaternion(-0.6f, 0f, 0f, -0.8f);
+                     string parentName = obj.transform.parent.name;
+
+                     //调节对话框位置
+                     if (parentName.Equals("Manna"))
+                         obj.transform.position = Manna.transform.position + new Vector3(0, 0, 5);
+                     if (parentName.Equals("Duke"))
+                         obj.transform.position = Duke.transform.position + new Vector3(0, 0, 5);
+                     if (parentName.Equals("Anna"))
+                         obj.transform.position = Anna.transform.position + new Vector3(0, 0, 5);
+                     if (parentName.Equals("Basil"))
+                         obj.transform.position = Basil.transform.position + new Vector3(0, 0, 5);
+                     if (parentName.Equals("Mary"))
+                         obj.transform.position = Mary.transform.position + new Vector3(0, 0, 5);
+                 }
+             }*/
 
             //俯视角下可以按 wasd操作相机位置
             Vector3 currentPosition = topViewer.transform.position;
@@ -491,28 +551,83 @@ public class Control : MonoBehaviour
             NPCNames[4].SetActive(false);
 
             //非俯视角下对话框大小正常
-            GameObject[] objectsOfType = FindObjectsOfType<GameObject>();
-            foreach (GameObject obj in objectsOfType)
+            Transform childTransform = Manna.transform.Find("FloatingMessage(Clone)");
+            if (childTransform != null)
             {
-                if (obj.name.Contains("FloatingMessage"))
-                {
-                    obj.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
-                    LookAtConstraint constraint = obj.GetComponent<LookAtConstraint>();
-                    constraint.constraintActive = true;
-
-                    string parentName = obj.transform.parent.name;
-                    if (parentName.Equals("Manna"))
-                        obj.transform.position = Manna.transform.position + new Vector3(0, 2f, 0);
-                    if (parentName.Equals("Duke"))
-                        obj.transform.position = Duke.transform.position + new Vector3(0, 2f, 0);
-                    if (parentName.Equals("Anna"))
-                        obj.transform.position = Anna.transform.position + new Vector3(0, 2f, 0);
-                    if (parentName.Equals("Basil"))
-                        obj.transform.position = Basil.transform.position + new Vector3(0, 2f, 0);
-                    if (parentName.Equals("Mary"))
-                        obj.transform.position = Mary.transform.position + new Vector3(0, 2f, 0);
-                }
+                childTransform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+                //调整俯视角下面对话框的朝向
+                LookAtConstraint constraint = childTransform.GetComponent<LookAtConstraint>();
+                constraint.constraintActive = true;
+                //调节对话框位置
+                childTransform.position = Manna.transform.position + new Vector3(0, 2f, 0);
             }
+
+            childTransform = Duke.transform.Find("FloatingMessage(Clone)");
+            if (childTransform != null)
+            {
+                childTransform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+                //调整俯视角下面对话框的朝向
+                LookAtConstraint constraint = childTransform.GetComponent<LookAtConstraint>();
+                constraint.constraintActive = true;
+                //调节对话框位置
+                childTransform.position = Duke.transform.position + new Vector3(0, 2f, 0);
+            }
+
+            childTransform = Anna.transform.Find("FloatingMessage(Clone)");
+            if (childTransform != null)
+            {
+                childTransform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+                //调整俯视角下面对话框的朝向
+                LookAtConstraint constraint = childTransform.GetComponent<LookAtConstraint>();
+                constraint.constraintActive = true;
+                //调节对话框位置
+                childTransform.position = Anna.transform.position + new Vector3(0, 2f, 0);
+            }
+
+            childTransform = Basil.transform.Find("FloatingMessage(Clone)");
+            if (childTransform != null)
+            {
+                childTransform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+                //调整俯视角下面对话框的朝向
+                LookAtConstraint constraint = childTransform.GetComponent<LookAtConstraint>();
+                constraint.constraintActive = true;
+                //调节对话框位置
+                childTransform.position = Basil.transform.position + new Vector3(0, 2f, 0);
+            }
+
+            childTransform = Mary.transform.Find("FloatingMessage(Clone)");
+            if (childTransform != null)
+            {
+                childTransform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+                //调整俯视角下面对话框的朝向
+                LookAtConstraint constraint = childTransform.GetComponent<LookAtConstraint>();
+                constraint.constraintActive = true;
+                //调节对话框位置
+                childTransform.position = Mary.transform.position + new Vector3(0, 2f, 0);
+            }
+
+            /*  GameObject[] objectsOfType = FindObjectsOfType<GameObject>();
+              foreach (GameObject obj in objectsOfType)
+              {
+                  if (obj.name.Contains("FloatingMessage"))
+                  {
+                      obj.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+                      LookAtConstraint constraint = obj.GetComponent<LookAtConstraint>();
+                      constraint.constraintActive = true;
+
+                      string parentName = obj.transform.parent.name;
+                      if (parentName.Equals("Manna"))
+                          obj.transform.position = Manna.transform.position + new Vector3(0, 2f, 0);
+                      if (parentName.Equals("Duke"))
+                          obj.transform.position = Duke.transform.position + new Vector3(0, 2f, 0);
+                      if (parentName.Equals("Anna"))
+                          obj.transform.position = Anna.transform.position + new Vector3(0, 2f, 0);
+                      if (parentName.Equals("Basil"))
+                          obj.transform.position = Basil.transform.position + new Vector3(0, 2f, 0);
+                      if (parentName.Equals("Mary"))
+                          obj.transform.position = Mary.transform.position + new Vector3(0, 2f, 0);
+                  }
+              }*/
         }
 
         //处理高空trigger
@@ -843,9 +958,6 @@ public class Control : MonoBehaviour
                 break;
             }
         }
-
-        Debug.Log("talker1\t" + talker1);
-        Debug.Log("talker2\t" + talker2);
 
         //添加选项后续对话事件
         for (int i = 0; i < infos[nowIndex].choice_dialogues.Count; i++)
