@@ -719,7 +719,7 @@ public class Control : MonoBehaviour
                 tempText.text = infos[nowIndex].time + "\t" + nowSpeed.ToString() + "+";
 
 
-                if(version == 1)
+                if(version == 1 || infos[nowIndex].choices.Count == 0)
                 {
                     selectActions = null;
                     state = 1;
