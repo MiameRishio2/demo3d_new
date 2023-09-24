@@ -663,7 +663,7 @@ public class Control : MonoBehaviour
         MaryTriggerH.transform.position = getTriggerHPosition(Mary, 20);
 
         //俯视角下显示名字
-        float offset_x = 100f;
+        float offset_x = 130f;
         Vector3 targetPosition = getTriggerHPosition(Manna, 5);
         Vector3 screenPosition = Camera.main.WorldToScreenPoint(targetPosition);
         NPCNames[0].transform.position = screenPosition + new Vector3(offset_x, 0);
@@ -872,7 +872,7 @@ public class Control : MonoBehaviour
             Debug.Log("paused");
             if (isPaused)
             {
-                Time.timeScale = 1f;
+                Time.timeScale = nowSpeed;
                 isPaused = false;
             }
             else
