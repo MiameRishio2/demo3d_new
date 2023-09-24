@@ -106,7 +106,9 @@
                                 transformPosition += this.targetTransform.TransformDirection(this.offset);
                                 break;
                         }
-                        direction = transformPosition - invoker.transform.position;
+                        //direction = transformPosition - invoker.transform.position;
+                        //修改为目标的正方向
+                        direction = this.targetTransform.forward;
                     }
                     break;
 
