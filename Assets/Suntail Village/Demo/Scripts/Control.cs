@@ -1059,14 +1059,14 @@ public class Control : MonoBehaviour
         //defaultSelectNumber
 
         //添加选项事件
-        ActionDialogue select = actions.gameObject.AddComponent<ActionDialogue>();
+       /* ActionDialogue select = actions.gameObject.AddComponent<ActionDialogue>();
         select.waitToComplete = true;
         select.dialogue = selectDialogue.GetComponent<Dialogue>();
         select.dialogue.itemInstances[2].content = new LocString(infos[nowIndex].choices[0]);
         select.dialogue.itemInstances[3].content = new LocString(infos[nowIndex].choices[1]);
         select.dialogue.itemInstances[4].content = new LocString(infos[nowIndex].choices[2]);
+        actions.actionsList.actions[0] = select;*/
 
-        actions.actionsList.actions[0] = select;
         string[] temp1 = infos[nowIndex].choices[0].Split(' ');
         talker1 = temp1[0];
         for (int i = 1; i < temp1.Length; i++)
