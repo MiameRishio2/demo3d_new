@@ -104,14 +104,18 @@ public class Control : MonoBehaviour
     private Dictionary<string, NavigationMarker> npcMarkers = new Dictionary<string, NavigationMarker>();//存放npc在各个场所的路点
     private Dictionary<string, List<NavigationMarker>> pathMarkers = new Dictionary<string, List<NavigationMarker>>(); //存放场所到场所之间的路径
 
-    private int state = 0; //一共有三种状态 0表示需要取指令 1表示对话阶段 2表示运动阶段  3表示结束状态
+    public int state = 0; //一共有4种状态 0表示需要取指令 1表示选择阶段  2表示对话阶段 3表示运动阶段  4表示结束状态
     private List<TimeInfo> infos;
     private int nowIndex = 0;
     private List<Actions> moveActions;
     private Actions dialogueActions;
     private Actions selectActions;
     private bool isPaused = false;
+    private float nowSpeed = 1f;
 
+
+    //专门用于调试相关的信息
+    public string defaultSelectItem = "1";
 
     // Start is called before the first frame update
     void Start()
@@ -674,7 +678,7 @@ public class Control : MonoBehaviour
             else
             {
                 Text tempText = timeUI.GetComponent<Text>();
-                tempText.text = infos[nowIndex].time;
+                tempText.text = infos[nowIndex].time + "\t" + nowSpeed.ToString() + "+";
                 //生成选择Actions 
                 selectActions = GetSelectActions();
                 object isSelectV = VariablesManager.GetGlobal("isSelect");
@@ -748,7 +752,26 @@ public class Control : MonoBehaviour
             }
         }
 
-        //暂停功能
+        //游戏加速功能
+        if (Input.GetButtonDown("addSpeed"))
+        {
+            nowSpeed += 1f;
+            Time.timeScale = nowSpeed;
+            Text tempText = timeUI.GetComponent<Text>();
+            tempText.text = infos[nowIndex].time + "\t" + nowSpeed.ToString() + "+";
+        }
+
+        if (Input.GetButtonDown("deSpeed"))
+        {
+            nowSpeed -= 1f;
+            if (nowSpeed <= 1)
+                nowSpeed = 1;
+            Time.timeScale = nowSpeed;
+            Text tempText = timeUI.GetComponent<Text>();
+            tempText.text = infos[nowIndex].time + "\t" + nowSpeed.ToString() + "+";
+        }
+
+            //暂停功能
         if (Input.GetButtonDown("PauseResume"))
         {
             Debug.Log("paused");
@@ -1023,6 +1046,8 @@ public class Control : MonoBehaviour
             message.message = new LocString(name + ":\t\t"  + content);
             actions.actionsList.actions[i+1] = message;
         }
+
+        defaultSelectItem = infos[nowIndex].choices[3];
 
         //actions.Execute();
         return actions;
