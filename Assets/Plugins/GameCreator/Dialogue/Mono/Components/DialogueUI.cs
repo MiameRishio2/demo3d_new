@@ -6,6 +6,7 @@
     using UnityEngine.UI;
     using UnityEngine.EventSystems;
     using GameCreator.Core;
+    using GameCreator.Variables;
 
     [AddComponentMenu("")]
     public class DialogueUI : MonoBehaviour
@@ -332,8 +333,11 @@
 
                 if (DatabaseDialogue.Load().autoFocusFirstChoice)
                 {
-                    Transform selection = this.choiceContainer.GetChild(0);
-                    EventSystem.current.SetSelectedGameObject(selection.gameObject);
+                   object varNum = VariablesManager.GetGlobal("defaultSelectNumber");
+                   float index = (float)varNum;
+                   int index2 = (int)index;
+                   Transform selection = this.choiceContainer.GetChild(index2);
+                   EventSystem.current.SetSelectedGameObject(selection.gameObject);
                 }
             }
 

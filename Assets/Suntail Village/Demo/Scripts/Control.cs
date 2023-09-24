@@ -98,6 +98,7 @@ public class Control : MonoBehaviour
 
     //正对人物的相机
     public GameObject selectCamera;
+    public Actions switchTop;
 
     private Dictionary<string, TargetCharacter> npcDicsMove = new Dictionary<string, TargetCharacter>();//存放npc的map 运动相关
     private Dictionary<string, TargetGameObject> npcDicsDialogue = new Dictionary<string, TargetGameObject>();//存放npc的map 对话相关
@@ -112,6 +113,9 @@ public class Control : MonoBehaviour
     private Actions selectActions;
     private bool isPaused = false;
     private float nowSpeed = 1f;
+
+    public int version = 1;
+
 
 
     //专门用于调试相关的信息
@@ -649,22 +653,42 @@ public class Control : MonoBehaviour
         Vector3 targetPosition = getTriggerHPosition(Manna, 5);
         Vector3 screenPosition = Camera.main.WorldToScreenPoint(targetPosition);
         NPCNames[0].transform.position = screenPosition + new Vector3(offset_x, 0);
+        if(talker1.Equals("Manna"))
+            NPCNames[0].GetComponent<Text>().color = Color.red;
+        else
+            NPCNames[0].GetComponent<Text>().color = Color.black;
 
         targetPosition = getTriggerHPosition(Duke, 5);
         screenPosition = Camera.main.WorldToScreenPoint(targetPosition);
-        NPCNames[1].transform.position = screenPosition + new Vector3(offset_x, 0); ;
+        NPCNames[1].transform.position = screenPosition + new Vector3(offset_x, 0);
+        if (talker1.Equals("Duke"))
+            NPCNames[1].GetComponent<Text>().color = Color.red;
+        else
+            NPCNames[1].GetComponent<Text>().color = Color.black;
 
         targetPosition = getTriggerHPosition(Anna, 5);
         screenPosition = Camera.main.WorldToScreenPoint(targetPosition);
-        NPCNames[2].transform.position = screenPosition + new Vector3(offset_x, 0); ;
+        NPCNames[2].transform.position = screenPosition + new Vector3(offset_x, 0);
+        if (talker1.Equals("Anna"))
+            NPCNames[2].GetComponent<Text>().color = Color.red;
+        else
+            NPCNames[2].GetComponent<Text>().color = Color.black;
 
         targetPosition = getTriggerHPosition(Basil, 5);
         screenPosition = Camera.main.WorldToScreenPoint(targetPosition);
-        NPCNames[3].transform.position = screenPosition + new Vector3(offset_x, 0); ;
+        NPCNames[3].transform.position = screenPosition + new Vector3(offset_x, 0);
+        if (talker1.Equals("Basil"))
+            NPCNames[3].GetComponent<Text>().color = Color.red;
+        else
+            NPCNames[3].GetComponent<Text>().color = Color.black;
 
         targetPosition = getTriggerHPosition(Mary, 5);
         screenPosition = Camera.main.WorldToScreenPoint(targetPosition);
-        NPCNames[4].transform.position = screenPosition + new Vector3(offset_x, 0); ;
+        NPCNames[4].transform.position = screenPosition + new Vector3(offset_x, 0);
+        if (talker1.Equals("Mary"))
+            NPCNames[4].GetComponent<Text>().color = Color.red;
+        else
+            NPCNames[4].GetComponent<Text>().color = Color.black;
 
         //取指令阶段
         if (state == 0)
@@ -679,14 +703,56 @@ public class Control : MonoBehaviour
             {
                 Text tempText = timeUI.GetComponent<Text>();
                 tempText.text = infos[nowIndex].time + "\t" + nowSpeed.ToString() + "+";
-                //生成选择Actions 
-                selectActions = GetSelectActions();
-                object isSelectV = VariablesManager.GetGlobal("isSelect");
-                bool isSelect = (bool)isSelectV;
-                if (isSelect)
+
+
+                if(version == 1)
                 {
-                    selectActions.Execute();
+                    selectActions = null;
                     state = 1;
+                }
+                else 
+                {
+                    //生成选择Actions 
+                    selectActions = GetSelectActions();
+                    object isSelectV = VariablesManager.GetGlobal("isSelect");
+                    bool isSelect = (bool)isSelectV;
+                    if (isSelect)
+                    {
+                        //正对人物修改相机位置
+                        if (talker2 == "Manna")
+                        {
+                            Transform tempT = Manna.transform.Find("CameraLocation");
+                            selectCamera.transform.position = tempT.position;
+                            selectCamera.transform.rotation = tempT.rotation;
+                        }
+                        if (talker2 == "Duke")
+                        {
+                            Transform tempT = Duke.transform.Find("CameraLocation");
+                            selectCamera.transform.position = tempT.position;
+                            selectCamera.transform.rotation = tempT.rotation;
+                        }
+                        if (talker2 == "Anna")
+                        {
+                            Transform tempT = Anna.transform.Find("CameraLocation");
+                            selectCamera.transform.position = tempT.position;
+                            selectCamera.transform.rotation = tempT.rotation;
+                        }
+                        if (talker2 == "Basil")
+                        {
+                            Transform tempT = Basil.transform.Find("CameraLocation");
+                            selectCamera.transform.position = tempT.position;
+                            selectCamera.transform.rotation = tempT.rotation;
+                        }
+                        if (talker2 == "Mary")
+                        {
+                            Transform tempT = Mary.transform.Find("CameraLocation");
+                            selectCamera.transform.position = tempT.position;
+                            selectCamera.transform.rotation = tempT.rotation;
+                        }
+
+                        selectActions.Execute();
+                        state = 1;
+                    }
                 }
             }
         }
@@ -694,8 +760,21 @@ public class Control : MonoBehaviour
         //选择阶段
         if (state == 1)
         {
+            //选择阶段把默认选项变成不一样的颜色
+          /*  GameObject contentSelect = GameObject.Find("DefaultDialogueSkin(Clone)/Choices/Content");
+            if(contentSelect != null)
+            {
+                int index = int.Parse(defaultSelectItem);
+                Debug.Log(index);
+                contentSelect.transform.GetChild(0).GetComponent<Button>().transition = Selectable.Transition.ColorTint;
+              //  contentSelect.transform.GetChild(1).GetComponent<Text>().color = Color.red;
+                contentSelect.transform.GetChild(index - 1).GetComponent<Text>().color = Color.yellow;
+                // Text text = target.GetComponent<Text>();
+                //  text.color = Color.red;
+            }*/
+
             //当前所有的指令都已经被取完 进入结束状态
-            if(selectActions == null)
+            if (selectActions == null)
             {
                 talker1 = "nobody";
                 talker2 = "nobody";
@@ -706,6 +785,8 @@ public class Control : MonoBehaviour
                 VariablesManager.SetGlobal("isAnnaSelected", false);
                 VariablesManager.SetGlobal("isSelect", false);
 
+                //三选一结束 切回顶视角
+                switchTop.Execute();
                 //生成对话Actions 
                 dialogueActions = GetDiglogueActions();
                 state = 2;
@@ -958,6 +1039,10 @@ public class Control : MonoBehaviour
         actions.destroyAfterFinishing = true;
 
         actions.actionsList.actions = new IAction[infos[nowIndex].choice_dialogues.Count + 1];
+        defaultSelectItem = infos[nowIndex].choices[3];
+
+        VariablesManager.SetGlobal("defaultSelectNumber", int.Parse(defaultSelectItem) - 1);
+        //defaultSelectNumber
 
         //添加选项事件
         ActionDialogue select = actions.gameObject.AddComponent<ActionDialogue>();
@@ -966,6 +1051,7 @@ public class Control : MonoBehaviour
         select.dialogue.itemInstances[2].content = new LocString(infos[nowIndex].choices[0]);
         select.dialogue.itemInstances[3].content = new LocString(infos[nowIndex].choices[1]);
         select.dialogue.itemInstances[4].content = new LocString(infos[nowIndex].choices[2]);
+
         actions.actionsList.actions[0] = select;
         string[] temp1 = infos[nowIndex].choices[0].Split(' ');
         talker1 = temp1[0];
@@ -974,41 +1060,41 @@ public class Control : MonoBehaviour
             if (temp1[i].Contains("Manna") && !temp1[i].Contains(talker1))
             {
                 talker2 = "Manna";
-                Transform tempT = Manna.transform.Find("CameraLocation");
-                selectCamera.transform.position = tempT.position;
-                selectCamera.transform.rotation = tempT.rotation;
+            //    Transform tempT = Manna.transform.Find("CameraLocation");
+             //   selectCamera.transform.position = tempT.position;
+             //   selectCamera.transform.rotation = tempT.rotation;
                 break;
             }
             if (temp1[i].Contains("Duke") && !temp1[i].Contains(talker1))
             {
                 talker2 = "Duke";
-                Transform tempT = Duke.transform.Find("CameraLocation");
-                selectCamera.transform.position = tempT.position;
-                selectCamera.transform.rotation = tempT.rotation;
+              //  Transform tempT = Duke.transform.Find("CameraLocation");
+              //  selectCamera.transform.position = tempT.position;
+              //  selectCamera.transform.rotation = tempT.rotation;
                 break;
             }
             if (temp1[i].Contains("Anna") && !temp1[i].Contains(talker1))
             {
                 talker2 = "Anna";
-                Transform tempT = Anna.transform.Find("CameraLocation");
-                selectCamera.transform.position = tempT.position;
-                selectCamera.transform.rotation = tempT.rotation;
+              //  Transform tempT = Anna.transform.Find("CameraLocation");
+              //  selectCamera.transform.position = tempT.position;
+              //  selectCamera.transform.rotation = tempT.rotation;
                 break;
             }
             if (temp1[i].Contains("Basil") && !temp1[i].Contains(talker1))
             {
                 talker2 = "Basil";
-                Transform tempT = Basil.transform.Find("CameraLocation");
-                selectCamera.transform.position = tempT.position;
-                selectCamera.transform.rotation = tempT.rotation;
+              //  Transform tempT = Basil.transform.Find("CameraLocation");
+              //  selectCamera.transform.position = tempT.position;
+              //  selectCamera.transform.rotation = tempT.rotation;
                 break;
             }
             if (temp1[i].Contains("Mary") && !temp1[i].Contains(talker1))
             {
                 talker2 = "Mary";
-                Transform tempT = Mary.transform.Find("CameraLocation");
-                selectCamera.transform.position = tempT.position;
-                selectCamera.transform.rotation = tempT.rotation;
+              //  Transform tempT = Mary.transform.Find("CameraLocation");
+              //  selectCamera.transform.position = tempT.position;
+              //  selectCamera.transform.rotation = tempT.rotation;
                 break;
             }
         }
@@ -1046,8 +1132,6 @@ public class Control : MonoBehaviour
             message.message = new LocString(name + ":\t\t"  + content);
             actions.actionsList.actions[i+1] = message;
         }
-
-        defaultSelectItem = infos[nowIndex].choices[3];
 
         //actions.Execute();
         return actions;
