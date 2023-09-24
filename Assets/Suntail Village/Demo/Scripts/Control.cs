@@ -96,6 +96,9 @@ public class Control : MonoBehaviour
     public string talker1 = "nobody";
     public string talker2 = "nobody";
 
+    //正对人物的相机
+    public GameObject selectCamera;
+
     private Dictionary<string, TargetCharacter> npcDicsMove = new Dictionary<string, TargetCharacter>();//存放npc的map 运动相关
     private Dictionary<string, TargetGameObject> npcDicsDialogue = new Dictionary<string, TargetGameObject>();//存放npc的map 对话相关
     private Dictionary<string, NavigationMarker> npcMarkers = new Dictionary<string, NavigationMarker>();//存放npc在各个场所的路点
@@ -674,13 +677,13 @@ public class Control : MonoBehaviour
                 tempText.text = infos[nowIndex].time;
                 //生成选择Actions 
                 selectActions = GetSelectActions();
-             //   object isSelectV = VariablesManager.GetGlobal("isSelect");
-            //    bool isSelect = (bool)isSelectV;
-           //     if (isSelect)
-            //    {
+                object isSelectV = VariablesManager.GetGlobal("isSelect");
+                bool isSelect = (bool)isSelectV;
+                if (isSelect)
+                {
                     selectActions.Execute();
                     state = 1;
-           //     }
+                }
             }
         }
 
@@ -697,6 +700,7 @@ public class Control : MonoBehaviour
                 VariablesManager.SetGlobal("isAnnaSelected", false);
                 VariablesManager.SetGlobal("isBasilSelected", false);
                 VariablesManager.SetGlobal("isAnnaSelected", false);
+                VariablesManager.SetGlobal("isSelect", false);
 
                 //生成对话Actions 
                 dialogueActions = GetDiglogueActions();
@@ -947,49 +951,64 @@ public class Control : MonoBehaviour
             if (temp1[i].Contains("Manna") && !temp1[i].Contains(talker1))
             {
                 talker2 = "Manna";
+                Transform tempT = Manna.transform.Find("CameraLocation");
+                selectCamera.transform.position = tempT.position;
+                selectCamera.transform.rotation = tempT.rotation;
                 break;
             }
             if (temp1[i].Contains("Duke") && !temp1[i].Contains(talker1))
             {
                 talker2 = "Duke";
+                Transform tempT = Duke.transform.Find("CameraLocation");
+                selectCamera.transform.position = tempT.position;
+                selectCamera.transform.rotation = tempT.rotation;
                 break;
             }
             if (temp1[i].Contains("Anna") && !temp1[i].Contains(talker1))
             {
                 talker2 = "Anna";
+                Transform tempT = Anna.transform.Find("CameraLocation");
+                selectCamera.transform.position = tempT.position;
+                selectCamera.transform.rotation = tempT.rotation;
                 break;
             }
             if (temp1[i].Contains("Basil") && !temp1[i].Contains(talker1))
             {
                 talker2 = "Basil";
+                Transform tempT = Basil.transform.Find("CameraLocation");
+                selectCamera.transform.position = tempT.position;
+                selectCamera.transform.rotation = tempT.rotation;
                 break;
             }
             if (temp1[i].Contains("Mary") && !temp1[i].Contains(talker1))
             {
                 talker2 = "Mary";
+                Transform tempT = Mary.transform.Find("CameraLocation");
+                selectCamera.transform.position = tempT.position;
+                selectCamera.transform.rotation = tempT.rotation;
                 break;
             }
         }
 
         if(talker1.Equals("Manna"))
         {
-            VariablesManager.SetGlobal("isMannaSelected", false);
+            VariablesManager.SetGlobal("isMannaSelected", true);
         }
         if (talker1.Equals("Duke"))
         {
-            VariablesManager.SetGlobal("isDukeSelected", false);
+            VariablesManager.SetGlobal("isDukeSelected", true);
         }
         if (talker1.Equals("Anna"))
         {
-            VariablesManager.SetGlobal("isAnnaSelected", false);
+            VariablesManager.SetGlobal("isAnnaSelected", true);
         }
         if (talker1.Equals("Basil"))
         {
-            VariablesManager.SetGlobal("isBasilSelected", false);
+            VariablesManager.SetGlobal("isBasilSelected", true);
         }
         if (talker1.Equals("Mary"))
         {
-            VariablesManager.SetGlobal("isMarySelected", false);
+            VariablesManager.SetGlobal("isMarySelected", true);
         }
 
         //添加选项后续对话事件
