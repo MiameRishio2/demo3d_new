@@ -8,7 +8,6 @@ using System.Xml;
 using GameCreator.Characters;
 using GameCreator.Localization;
 using GameCreator.Messages;
-using UnityEditor.VersionControl;
 using static GameCreator.Core.ActionTransform;
 using UnityEngine.UI;
 using GameCreator.Variables;
@@ -124,21 +123,31 @@ public class Control : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //测试代码创建三选一对话过程
-        /*  GameObject tempObject = new GameObject();
-          dialogueActions = tempObject.AddComponent<Actions>();
-          dialogueActions.destroyAfterFinishing = true;
+        //version 从配置文件中获取
+        string filePathC = "data/config.txt";
+        StreamReader readerC = new StreamReader(filePathC);
+        string lineC;
 
-          dialogueActions.actionsList.actions = new IAction[1];
-          ActionDialogue select = dialogueActions.gameObject.AddComponent<ActionDialogue>();
-          select.dialogue = selectDialogue.GetComponent<Dialogue>();
-          select.dialogue.itemInstances[2].content = new LocString("111");
-          select.dialogue.itemInstances[3].content = new LocString("222");
-          select.dialogue.itemInstances[4].content = new LocString("333");
-          dialogueActions.actionsList.actions[0] = select;
-          dialogueActions.Execute();*/
+        if ((lineC = readerC.ReadLine()) != null)
+        {
+            version = int.Parse(lineC);
+        }
 
-        // 设置鼠标为非独占，并且显示模式
+            //测试代码创建三选一对话过程
+            /*  GameObject tempObject = new GameObject();
+              dialogueActions = tempObject.AddComponent<Actions>();
+              dialogueActions.destroyAfterFinishing = true;
+
+              dialogueActions.actionsList.actions = new IAction[1];
+              ActionDialogue select = dialogueActions.gameObject.AddComponent<ActionDialogue>();
+              select.dialogue = selectDialogue.GetComponent<Dialogue>();
+              select.dialogue.itemInstances[2].content = new LocString("111");
+              select.dialogue.itemInstances[3].content = new LocString("222");
+              select.dialogue.itemInstances[4].content = new LocString("333");
+              dialogueActions.actionsList.actions[0] = select;
+              dialogueActions.Execute();*/
+
+            // 设置鼠标为非独占，并且显示模式
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
@@ -324,7 +333,12 @@ public class Control : MonoBehaviour
         npcDicsDialogue["Mary"] = npcsDialogue[4];
 
         infos = new List<TimeInfo>();
-        string filePath = "data/agent.txt";
+        string filePath = "";
+        if(version == 1)
+            filePath = "data/agent1.txt";
+        if (version == 2)
+            filePath = "data/agent2.txt";
+
         StreamReader reader = new StreamReader(filePath);
         string line;
 
