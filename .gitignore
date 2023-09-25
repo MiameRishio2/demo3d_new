@@ -11,3 +11,6 @@ Assets/TextMesh Pro/Shaders/TMPro_Surface.cginc
 Assets/TextMesh Pro/Shaders/TMPro_Mobile.cginc.meta
 Assets/TextMesh Pro/Shaders/
 Assets/TextMesh Pro/
+bin/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser
+bin/
+bin3.zip
