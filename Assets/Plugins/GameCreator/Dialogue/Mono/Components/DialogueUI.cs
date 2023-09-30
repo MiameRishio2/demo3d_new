@@ -333,10 +333,10 @@
 
                 if (DatabaseDialogue.Load().autoFocusFirstChoice)
                 {
-                   object varNum = VariablesManager.GetGlobal("defaultSelectNumber");
-                   float index = (float)varNum;
-                   int index2 = (int)index;
-                   Transform selection = this.choiceContainer.GetChild(index2);
+                //   object varNum = VariablesManager.GetGlobal("defaultSelectNumber");
+                //   float index = (float)varNum;
+                //   int index2 = (int)index;
+                   Transform selection = this.choiceContainer.GetChild(0);
                    EventSystem.current.SetSelectedGameObject(selection.gameObject);
                 }
             }

@@ -15,7 +15,6 @@ using UnityEngine.Animations;
 using JetBrains.Annotations;
 using GameCreator.Dialogue;
 using System.Linq;
-
 public class Control : MonoBehaviour
 {
     //角色按照这个顺序排列
@@ -774,19 +773,6 @@ public class Control : MonoBehaviour
         //选择阶段
         if (state == 1)
         {
-            //选择阶段把默认选项变成不一样的颜色
-          /*  GameObject contentSelect = GameObject.Find("DefaultDialogueSkin(Clone)/Choices/Content");
-            if(contentSelect != null)
-            {
-                int index = int.Parse(defaultSelectItem);
-                Debug.Log(index);
-                contentSelect.transform.GetChild(0).GetComponent<Button>().transition = Selectable.Transition.ColorTint;
-              //  contentSelect.transform.GetChild(1).GetComponent<Text>().color = Color.red;
-                contentSelect.transform.GetChild(index - 1).GetComponent<Text>().color = Color.yellow;
-                // Text text = target.GetComponent<Text>();
-                //  text.color = Color.red;
-            }*/
-
             //当前所有的指令都已经被取完 进入结束状态
             if (selectActions == null)
             {
@@ -1059,13 +1045,13 @@ public class Control : MonoBehaviour
         //defaultSelectNumber
 
         //添加选项事件
-       /* ActionDialogue select = actions.gameObject.AddComponent<ActionDialogue>();
+        ActionDialogue select = actions.gameObject.AddComponent<ActionDialogue>();
         select.waitToComplete = true;
         select.dialogue = selectDialogue.GetComponent<Dialogue>();
         select.dialogue.itemInstances[2].content = new LocString(infos[nowIndex].choices[0]);
         select.dialogue.itemInstances[3].content = new LocString(infos[nowIndex].choices[1]);
         select.dialogue.itemInstances[4].content = new LocString(infos[nowIndex].choices[2]);
-        actions.actionsList.actions[0] = select;*/
+        actions.actionsList.actions[0] = select;
 
         string[] temp1 = infos[nowIndex].choices[0].Split(' ');
         talker1 = temp1[0];
