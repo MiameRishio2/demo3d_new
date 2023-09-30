@@ -666,42 +666,42 @@ public class Control : MonoBehaviour
         Vector3 targetPosition = getTriggerHPosition(Manna, 5);
         Vector3 screenPosition = Camera.main.WorldToScreenPoint(targetPosition);
         NPCNames[0].transform.position = screenPosition + new Vector3(offset_x, 0);
-        if(talker1.Equals("Manna"))
+     /*   if(talker1.Equals("Manna"))
             NPCNames[0].GetComponent<Text>().color = Color.red;
         else
-            NPCNames[0].GetComponent<Text>().color = Color.black;
+            NPCNames[0].GetComponent<Text>().color = Color.black;*/
 
         targetPosition = getTriggerHPosition(Duke, 5);
         screenPosition = Camera.main.WorldToScreenPoint(targetPosition);
         NPCNames[1].transform.position = screenPosition + new Vector3(offset_x, 0);
-        if (talker1.Equals("Duke"))
+      /*  if (talker1.Equals("Duke"))
             NPCNames[1].GetComponent<Text>().color = Color.red;
         else
-            NPCNames[1].GetComponent<Text>().color = Color.black;
+            NPCNames[1].GetComponent<Text>().color = Color.black;*/
 
         targetPosition = getTriggerHPosition(Anna, 5);
         screenPosition = Camera.main.WorldToScreenPoint(targetPosition);
         NPCNames[2].transform.position = screenPosition + new Vector3(offset_x, 0);
-        if (talker1.Equals("Anna"))
+       /* if (talker1.Equals("Anna"))
             NPCNames[2].GetComponent<Text>().color = Color.red;
         else
-            NPCNames[2].GetComponent<Text>().color = Color.black;
+            NPCNames[2].GetComponent<Text>().color = Color.black;*/
 
         targetPosition = getTriggerHPosition(Basil, 5);
         screenPosition = Camera.main.WorldToScreenPoint(targetPosition);
         NPCNames[3].transform.position = screenPosition + new Vector3(offset_x, 0);
-        if (talker1.Equals("Basil"))
+       /* if (talker1.Equals("Basil"))
             NPCNames[3].GetComponent<Text>().color = Color.red;
         else
-            NPCNames[3].GetComponent<Text>().color = Color.black;
+            NPCNames[3].GetComponent<Text>().color = Color.black;*/
 
         targetPosition = getTriggerHPosition(Mary, 5);
         screenPosition = Camera.main.WorldToScreenPoint(targetPosition);
         NPCNames[4].transform.position = screenPosition + new Vector3(offset_x, 0);
-        if (talker1.Equals("Mary"))
+       /* if (talker1.Equals("Mary"))
             NPCNames[4].GetComponent<Text>().color = Color.red;
         else
-            NPCNames[4].GetComponent<Text>().color = Color.black;
+            NPCNames[4].GetComponent<Text>().color = Color.black;*/
 
         //取指令阶段
         if (state == 0)
