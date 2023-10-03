@@ -14,7 +14,11 @@ using GameCreator.Variables;
 using UnityEngine.Animations;
 using JetBrains.Annotations;
 using GameCreator.Dialogue;
-using System.Linq;
+using System.Net;
+using UnityEditor.PackageManager.Requests;
+using UnityEngine.Networking;
+using System.ComponentModel.Design;
+
 public class Control : MonoBehaviour
 {
     //角色按照这个顺序排列
@@ -44,6 +48,7 @@ public class Control : MonoBehaviour
         public string time;
         public Dictionary<string, string> moves;
         public Dictionary<string, string> reasons;
+        public Dictionary<string, string> locations;
         public List<string> dialogues;
 
         public List<string> choices;
@@ -104,17 +109,30 @@ public class Control : MonoBehaviour
     private Dictionary<string, List<NavigationMarker>> pathMarkers = new Dictionary<string, List<NavigationMarker>>(); //存放场所到场所之间的路径
 
     public int state = 0; //一共有4种状态 0表示需要取指令 1表示选择阶段  2表示对话阶段 3表示运动阶段  4表示结束状态
+    public int before_choice_state = 0; //在状态state 0下面的子状态 0表示未按下k键的状态 1表示按下k键 开始自动选人 然后发送post请求状态 同步发送 2表示等待返回 3表示请求返回 开始生成新的actions 执行切换视角等操作
+    public int choice_state = 0; //在state 1下面的子状态 0表示默认状态  显示三选一和对话框 1表示等待返回结果状态 2
     private List<TimeInfo> infos;
     private int nowIndex = 0;
     private List<Actions> moveActions;
     private Actions dialogueActions;
-    private Actions selectActions;
     private bool isPaused = false;
+    private Actions selectActions;
     private float nowSpeed = 1f;
+    private bool isSelectInfoReturned = false;
 
     public int version = 1;
+    private String postResult = ""; //post的返回结果
+    private String MannaD = "{\"name\":\"Manna\",\"description\":\"When she's not at home, she usually can be found at Rose Square, chatting with Anna and Sasha. Manna is a town gossip, and loves to chat. Duke and Manna frequently argue over Duke's drinking and Manna's gossiping. Manna acts like a mother to Cliff if he takes the job at the Winery, and he becomes very important to her. Manna and Duke will have a wedding ceremony at church.\"}";
+    private String DukeD = "{\"name\":\"Duke\",\"description\":\"Duke is the owner of the Aja Winery in Mineral Town. He is proud of his business and willing to give advice. Manna and Duke will have a wedding ceremony at church.\"}";
+    private String AnnaD = "{\"name\":\"Anna\",\"description\":\"Anna is Mary's mother and Basil's wife. She lives in the house next to the Library with her husband, although she spends most of her time in Rose Square. Anna is strangely sophisticated for a stay at home Mom in a small village, but she doesn't mind living in Mineral Town - especially when she's got friends like Sasha and Manna to gossip with. She is great at making all kinds of desserts. \"}";
+    private String BasilD = "{\"name\":\"Basil\",\"description\":\"Basil works as a world famous botanist and loves the outdoors. He lives next to the Library with his wife Anna and their daughter Mary. Most of the books in the Library were written by Basil himself! If he's not at his home, he will be near Mother's Hill studying the local flora.Basil is very friendly, and may give you a recipe for Fruit Latte.\"}";
+    private String MaryD = "{\"name\":\"Mary\",\"description\":\"She is the only child of Anna and Basil, and the librarian at the local library. She is a shy girl, and admires her father's work with botany. She hopes to one day become a writer, and is currently working on her own novel. She feels rather sad that few people in town take advantage of the library. She has only a few friends in town, including Gray, Saibara, and Carter. She is a participant in the Cooking Festival and plays the organ during the Music Festival.\"}";
 
-
+    public Actions switchManna;
+    public Actions switchDuke;
+    public Actions switchAnna;
+    public Actions switchBasil;
+    public Actions switchMary;
 
     //专门用于调试相关的信息
     public string defaultSelectItem = "1";
@@ -357,6 +375,7 @@ public class Control : MonoBehaviour
                 info.dialogues = new List<string>();
                 info.choices = new List<string>();
                 info.choice_dialogues = new List<string>();
+                info.locations = new Dictionary<string, string>();
                 infos.Add(info);
             }
 
@@ -437,6 +456,21 @@ public class Control : MonoBehaviour
                 string content = line.Split(test1, System.StringSplitOptions.None)[1];
                 infos[infos.Count - 1].choice_dialogues.Add(content);
                 // Debug.Log("content\t" + content);
+            }
+
+            if(line.StartsWith("current agent state"))
+            {
+                string[] test1 = new string[1];
+                test1[0] = "name: ";
+                string temp1 = line.Split(test1, System.StringSplitOptions.None)[1];
+                string name = temp1.Split(',')[0];
+                test1[0] = "in map: ";
+                string loc = temp1.Split(test1, System.StringSplitOptions.None)[1];
+                if (loc.Equals("SouthSideOfMineralTownScene") || loc.Equals("NorthSideOfMineralTownScene"))
+                    loc = "RoseSquareScene";
+
+                infos[infos.Count - 1].locations[name] = loc;
+             //   Debug.Log("name\t" + name + "\t" + loc);
             }
         }
 
@@ -717,7 +751,6 @@ public class Control : MonoBehaviour
                 Text tempText = timeUI.GetComponent<Text>();
                 tempText.text = infos[nowIndex].time + "\t" + nowSpeed.ToString() + "+";
 
-
                 if(version == 1 || infos[nowIndex].choices.Count == 0)
                 {
                     selectActions = null;
@@ -725,42 +758,107 @@ public class Control : MonoBehaviour
                 }
                 else 
                 {
-                    //生成选择Actions 
-                    selectActions = GetSelectActions();
-                    object isSelectV = VariablesManager.GetGlobal("isSelect");
-                    bool isSelect = (bool)isSelectV;
-                    if (isSelect)
+                    //等待按k键 
+                    if (before_choice_state == 0)
                     {
-                        //正对人物修改相机位置
-                        if (talker2 == "Manna")
+                        if (Input.GetKeyDown(KeyCode.K))
+                            before_choice_state = 1;
+                    }
+
+                    //按下k键之后 开始自动选择人物 然后发包 
+                    //人物优先级 Mary Manna Anna Duke Basil 交谈的双方必须在同一场景 如果没有人在同一场景 就跳过这一阶段
+                    if(before_choice_state == 1)
+                    {
+                        bool result = false;
+                        result = getTalkers("Mary");
+                        if(!result)
+                            result = getTalkers("Manna");
+                        if (!result)
+                            result = getTalkers("Anna");
+                        if (!result)
+                            result = getTalkers("Duke");
+                        if (!result)
+                            result = getTalkers("Basil");
+
+                        if (result)
                         {
+                               //构造发送的json
+                            String talker1D = "";
+                            String talker2D = "";
+                            if (talker1.Equals("Manna"))
+                                talker1D = MannaD;
+                            if (talker1.Equals("Duke"))
+                                talker1D = DukeD;
+                            if (talker1.Equals("Anna"))
+                                talker1D = AnnaD;
+                            if (talker1.Equals("Basil"))
+                                talker1D = BasilD;
+                            if (talker1.Equals("Mary"))
+                                talker1D = MaryD;
+                            if (talker2.Equals("Manna"))
+                                talker2D = MannaD;
+                            if (talker2.Equals("Duke"))
+                                talker2D = DukeD;
+                            if (talker2.Equals("Anna"))
+                                talker2D = AnnaD;
+                            if (talker2.Equals("Basil"))
+                                talker2D = BasilD;
+                            if (talker2.Equals("Mary"))
+                                talker2D = MaryD;
+
+                            String postData = "{\"background\":[" + talker1D + "," + talker2D + "],\"content\":\"" + talker1 + " is at " + infos[nowIndex].locations[talker1] + " now. "
+                                + talker2 + " is at " + infos[nowIndex].locations[talker1] + " now. Current event is wedding.\"}";
+                            String url = "http://127.0.0.1:18981/choice";
+                            before_choice_state = 2;
+                            //发送json
+                            SendPostRequest(url, postData);
+                        }
+                        else
+                        {
+                            selectActions = null;
+                            before_choice_state = 0;
+                            state = 1;
+                        }
+                    }
+
+                    //处理返回结果 切换相机 生成actions
+                    if(before_choice_state == 3)
+                    {
+                        selectActions = GetSelectActions1();
+                        if (talker2 == "Manna")
+                        {  
                             Transform tempT = Manna.transform.Find("CameraLocation");
                             selectCamera.transform.position = tempT.position;
                             selectCamera.transform.rotation = tempT.rotation;
+                            switchManna.Execute();
                         }
                         if (talker2 == "Duke")
                         {
                             Transform tempT = Duke.transform.Find("CameraLocation");
                             selectCamera.transform.position = tempT.position;
                             selectCamera.transform.rotation = tempT.rotation;
+                            switchDuke.Execute();
                         }
                         if (talker2 == "Anna")
                         {
                             Transform tempT = Anna.transform.Find("CameraLocation");
                             selectCamera.transform.position = tempT.position;
                             selectCamera.transform.rotation = tempT.rotation;
+                            switchAnna.Execute();
                         }
                         if (talker2 == "Basil")
                         {
                             Transform tempT = Basil.transform.Find("CameraLocation");
                             selectCamera.transform.position = tempT.position;
                             selectCamera.transform.rotation = tempT.rotation;
+                            switchBasil.Execute();
                         }
                         if (talker2 == "Mary")
                         {
                             Transform tempT = Mary.transform.Find("CameraLocation");
                             selectCamera.transform.position = tempT.position;
                             selectCamera.transform.rotation = tempT.rotation;
+                            switchMary.Execute();
                         }
 
                         selectActions.Execute();
@@ -1137,6 +1235,47 @@ public class Control : MonoBehaviour
         return actions;
     }
 
+    //通过网络的返回结果生成selections
+    Actions GetSelectActions1()
+    {
+        GameObject tempObject = new GameObject();
+        Actions actions = tempObject.AddComponent<Actions>();
+        actions.destroyAfterFinishing = true;
+
+        actions.actionsList.actions = new IAction[1];
+        ActionDialogue select = actions.gameObject.AddComponent<ActionDialogue>();
+        select.waitToComplete = true;
+        select.dialogue = selectDialogue.GetComponent<Dialogue>();
+        
+        string[] test = new string[1];
+        test[0] = "\"choice1\":\"";
+        //Debug.Log(postResult);
+        string choice1 = postResult.Split(test, System.StringSplitOptions.None)[1].Split('\"')[0];
+
+        test[0] = "\"choice2\":\"";
+        string choice2 = postResult.Split(test, System.StringSplitOptions.None)[1].Split('\"')[0];
+
+        test[0] = "\"choice3\":\"";
+        string choice3 = postResult.Split(test, System.StringSplitOptions.None)[1].Split('\"')[0];
+
+        select.dialogue.itemInstances[2].content = new LocString(choice1);
+        select.dialogue.itemInstances[3].content = new LocString(choice2);
+        select.dialogue.itemInstances[4].content = new LocString(choice3);
+        actions.actionsList.actions[0] = select;
+        return actions;
+    }
+
+    //生成网络的返回结果生成后续的对话事件
+    Actions GetSelectActions2()
+    {
+        GameObject tempObject = new GameObject();
+        Actions actions = tempObject.AddComponent<Actions>();
+        actions.destroyAfterFinishing = true;
+
+        actions.actionsList.actions = new IAction[infos[nowIndex].choice_dialogues.Count + 1];
+        return actions;
+    }
+
     private Vector3 getTriggerHPosition(GameObject people, float height)
     {
         Vector3 cameraPosition = topViewer.transform.position;
@@ -1151,5 +1290,48 @@ public class Control : MonoBehaviour
 
         // 返回要挡住的物体的新位置
         return newPosition;
+    }
+
+    private bool getTalkers(string target)
+    {
+        String targetLoc = infos[nowIndex].locations[target];
+        foreach (var pair in infos[nowIndex].locations)
+        {
+            string name = pair.Key;
+            string loc = pair.Value;
+            if (loc.Equals(targetLoc))
+            {
+                talker1 = name;
+                talker2 = target;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    //其中condition表示是在什么情况下发的请求 condition=1 表示在请求三选一选项
+    public void SendPostRequest(String url, String postData)
+    {
+        StartCoroutine(PostData(url, postData));
+    }
+
+    IEnumerator PostData(string url, string postData)
+    {
+        UnityWebRequest webRequest = UnityWebRequest.Post(url, "POST");
+        byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(postData); // 替换为你的JSON字符串
+        webRequest.uploadHandler = new UploadHandlerRaw(bodyRaw);
+        webRequest.SetRequestHeader("Content-Type", "application/json;charset=utf-8");
+        yield return webRequest.SendWebRequest();
+        if (webRequest.isNetworkError || webRequest.isHttpError)
+        {
+            postResult = "";
+            Debug.LogError("POST请求失败: " + webRequest.error);
+        }
+        else
+        {
+            postResult = webRequest.downloadHandler.text;
+            before_choice_state = 3;
+            Debug.Log("POST请求成功: " + webRequest.downloadHandler.text);
+        }
     }
 }

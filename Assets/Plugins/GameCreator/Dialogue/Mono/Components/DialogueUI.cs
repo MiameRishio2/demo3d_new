@@ -32,6 +32,7 @@
         public GameObject wrapChoices;
         public GameObject wrapTimer;
         public GameObject wrapLogs;
+        public GameObject wrapInputField;
 
         [Header("Messages")]
         public Text textTitle;
@@ -72,6 +73,25 @@
             if (this.wrapMessage != null) this.wrapMessage.SetActive(false);
             if (this.wrapChoices != null) this.wrapChoices.SetActive(false);
             if (this.wrapTimer != null) this.wrapTimer.SetActive(false);
+            if (this.wrapInputField != null) this.wrapInputField.SetActive(false);
+            // 增加回调事件
+            if (this.wrapInputField != null)
+            {
+                var inputField = this.wrapInputField.GetComponent<InputField>();
+                if (inputField != null)
+                {
+                    inputField.onEndEdit.AddListener(HandleInputEndEdit);
+                }
+            }
+        }
+
+        private void HandleInputEndEdit(string value)
+        {
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
+            {
+                Debug.Log("Enter key pressed! Input Value: " + value);
+                // TODO 在这里可以执行你想要的操作，例如提交表单、搜索等
+            }
         }
 
         // UPDATE METHODS: ------------------------------------------------------------------------
@@ -225,6 +245,8 @@
             DialogueUI.RequireInstance(config);
             if (Instance.wrapEverything != null) Instance.wrapEverything.SetActive(true);
             DialogueUI.Instance.wrapChoices.SetActive(true);
+            // 显示对话的同时显示输入框
+            DialogueUI.Instance.wrapInputField.SetActive(true);
 
             bool choicesAvailable = DialogueUI.Instance.SetupChoices(item, config);
             if (choicesAvailable && item.timedChoice)
@@ -254,7 +276,12 @@
 
         public static void HideChoices()
         {
-            if (Instance.wrapChoices != null) Instance.wrapChoices.SetActive(false);
+            if (Instance.wrapChoices != null)
+            {
+                Instance.wrapChoices.SetActive(false);
+                // 隐藏对话的同时隐藏输入框
+                Instance.wrapInputField.SetActive(false);
+            }
             if (Instance.wrapTimer != null) Instance.wrapTimer.SetActive(false);
 
             DialogueUI.Instance.CleanChoices();
@@ -333,11 +360,11 @@
 
                 if (DatabaseDialogue.Load().autoFocusFirstChoice)
                 {
-                //   object varNum = VariablesManager.GetGlobal("defaultSelectNumber");
-                //   float index = (float)varNum;
-                //   int index2 = (int)index;
-                   Transform selection = this.choiceContainer.GetChild(0);
-                   EventSystem.current.SetSelectedGameObject(selection.gameObject);
+                    object varNum = VariablesManager.GetGlobal("defaultSelectNumber");
+                    float index = (float)varNum;
+                    int index2 = (int)index;
+                    Transform selection = this.choiceContainer.GetChild(index2);
+                    EventSystem.current.SetSelectedGameObject(selection.gameObject);
                 }
             }
 
