@@ -53,7 +53,7 @@
 
         public bool overrideDefaultConfig = false;
         public DatabaseDialogue.ConfigData config = new DatabaseDialogue.ConfigData();
-
+       
         // VIRTUAL METHODS: -----------------------------------------------------------------------
 
         public virtual string GetContent()

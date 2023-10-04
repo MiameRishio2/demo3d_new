@@ -60,6 +60,9 @@
         private float typewriterCharsPerSec = 1.0f;
         private float typewriterStartTime = 0.0f;
 
+        // 缓存DialogueItemChoiceGroup
+        private DialogueItemChoiceGroup itemChoiceGroup = null;
+
         // INITIALIZE METHODS: --------------------------------------------------------------------
 
         private void Awake()
@@ -90,6 +93,7 @@
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
             {
                 Debug.Log("Enter key pressed! Input Value: " + value);
+                itemChoiceGroup.OnMakeChoice(3, value);
                 // TODO 在这里可以执行你想要的操作，例如提交表单、搜索等
             }
         }
@@ -331,6 +335,7 @@
             this.CleanChoices();
             int choicesSetup = 0;
 
+            // 最后一个选项是输入框
             for (int i = 0; i < item.children.Count; ++i)
             {
                 DialogueItemChoice choice = item.children[i] as DialogueItemChoice;
@@ -348,6 +353,13 @@
                     choice.onFailChoice == DialogueItemChoice.FailChoiceCondition.DisableChoice
                 );
 
+                // 最后一个选项框要隐藏
+                if (i == item.children.Count - 1)
+                {
+                    disabled = true;
+                    //缓存DialogItemChoice
+                    itemChoiceGroup = item;
+                }
                 if (choiceUI != null) choiceUI.Setup(config, item, i, disabled);
                 choicesSetup++;
             }

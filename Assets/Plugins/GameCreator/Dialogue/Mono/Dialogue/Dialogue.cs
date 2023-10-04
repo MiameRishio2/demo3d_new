@@ -56,7 +56,6 @@
             stackItems.Push(this.dialogue);
 
             DialogueUI.BeginDialogue();
-
             while (!this.stopDialogue && stackItems.Count > 0)
             {
                 IDialogueItem item = stackItems.Pop();

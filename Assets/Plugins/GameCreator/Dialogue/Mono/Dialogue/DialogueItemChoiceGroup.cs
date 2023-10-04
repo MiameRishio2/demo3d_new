@@ -29,6 +29,7 @@
         private bool hasMadeChoice = false;
         private int choiceIndex = -1;
 
+        public IControl control = null;
         // OVERRIDE METHODS: ----------------------------------------------------------------------
 
         protected override IEnumerator RunItem()
@@ -108,10 +109,17 @@
 
         // PUBLIC METHODS: ------------------------------------------------------------------------
 
-        public void OnMakeChoice(int choiceIndex)
+        public void OnMakeChoice(int choiceIndex, string value = "")
         {
             this.hasMadeChoice = true;
             this.choiceIndex = choiceIndex;
+      
+            if (control == null)
+                control = GameObject.Find("Control").GetComponent<IControl>();
+            if (choiceIndex == 3)
+                control.SendInfo2(value);
+            else
+                control.SendInfo(this.children[choiceIndex].content.GetText());
         }
     }
 }
