@@ -15,10 +15,7 @@ using UnityEngine.Animations;
 using JetBrains.Annotations;
 using GameCreator.Dialogue;
 using System.Net;
-using UnityEditor.PackageManager.Requests;
 using UnityEngine.Networking;
-using System.ComponentModel.Design;
-using System.ComponentModel;
 
 public class Control : MonoBehaviour, IControl
 {
@@ -769,8 +766,8 @@ public class Control : MonoBehaviour, IControl
                     //等待按k键 
                     if (before_choice_state == 0)
                     {
-                        if (Input.GetKeyDown(KeyCode.K))
-                            before_choice_state = 1;
+               //         if (Input.GetKeyDown(KeyCode.K))
+                         before_choice_state = 1;
                     }
 
                     //按下k键之后 开始自动选择人物 然后发包 
@@ -816,7 +813,7 @@ public class Control : MonoBehaviour, IControl
 
                             String postData = "{\"background\":[" + talker1D + "," + talker2D + "],\"content\":\"" + talker1 + " is at " + infos[nowIndex].locations[talker1] + " now. "
                                 + talker2 + " is at " + infos[nowIndex].locations[talker1] + " now. Current event is wedding.\"}";
-                            String url = "http://127.0.0.1:18981/choice";
+                            String url = "http://192.168.0.37:18981/choice";
                             before_choice_state = 2;
                             //发送json
                             SendPostRequest(url, postData, 1);
@@ -1263,6 +1260,7 @@ public class Control : MonoBehaviour, IControl
             test[0] = "said \"";
             string content = infos[nowIndex].choice_dialogues[i].Split(test, System.StringSplitOptions.None)[1].Split('\"')[0];
             ActionSimpleMessageShow message = actions.gameObject.AddComponent<ActionSimpleMessageShow>();
+            message.time = 2;
             message.message = new LocString(name + ":\t\t"  + content);
             actions.actionsList.actions[i+1] = message;
         }
@@ -1458,7 +1456,7 @@ public class Control : MonoBehaviour, IControl
         String result = "{\"background\":[" + talker1D + "," + talker2D + "],\"content\":\"" + talker1 + " is at " + infos[nowIndex].locations[talker1] + " now. "
                                 + talker2 + " is at " + infos[nowIndex].locations[talker1] + " now. Current event is wedding.\",\"choice\":\""
                                 + content + "\"}";
-        String url = "http://127.0.0.1:18981/choice_dialogue";
+        String url = "http://192.168.0.37:18981/choice_dialogue";
         SendPostRequest(url, result, 2);
     }
 
@@ -1466,7 +1464,7 @@ public class Control : MonoBehaviour, IControl
     {
         //先构造移动指令的协议 失败之后再发送对话协议
         String postData = "{\"instruction\": \"" + content + "\"}";
-        String url = "http://127.0.0.1:18981/test_choice_is_walking_instruction";
+        String url = "http://192.168.0.37:18981/test_choice_is_walking_instruction";
         SendPostRequest(url, postData, 3, content);  
     }
 }
