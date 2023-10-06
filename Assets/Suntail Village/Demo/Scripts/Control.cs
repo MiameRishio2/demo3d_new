@@ -121,6 +121,7 @@ public class Control : MonoBehaviour, IControl
     private bool isSelectInfoReturned = false;
     private Actions AfterSelectActions;
     bool isSendRequest = false;
+    bool talkerOrder = true;//发送请求对话协议的时候 2个talker的顺序  
 
     public int version = 1;
     private String postResult = ""; //post的返回结果
@@ -137,14 +138,15 @@ public class Control : MonoBehaviour, IControl
     public Actions switchMary;
     public float distance = 2;
     private Quaternion oldRotate;
+    private Queue<string> selectDialogueQueue = new Queue<string>();
 
     //专门用于调试相关的信息
     public string defaultSelectItem = "1";
+    private string ip = "127.0.0.1";
 
     // Start is called before the first frame update
     void Start()
     {
-       
         //version 从配置文件中获取
         string filePathC = "data/config.txt";
         StreamReader readerC = new StreamReader(filePathC);
@@ -155,21 +157,26 @@ public class Control : MonoBehaviour, IControl
             version = int.Parse(lineC);
         }
 
-            //测试代码创建三选一对话过程
-            /*  GameObject tempObject = new GameObject();
-              dialogueActions = tempObject.AddComponent<Actions>();
-              dialogueActions.destroyAfterFinishing = true;
+        if ((lineC = readerC.ReadLine()) != null)
+        {
+            ip = lineC;
+        }
 
-              dialogueActions.actionsList.actions = new IAction[1];
-              ActionDialogue select = dialogueActions.gameObject.AddComponent<ActionDialogue>();
-              select.dialogue = selectDialogue.GetComponent<Dialogue>();
-              select.dialogue.itemInstances[2].content = new LocString("111");
-              select.dialogue.itemInstances[3].content = new LocString("222");
-              select.dialogue.itemInstances[4].content = new LocString("333");
-              dialogueActions.actionsList.actions[0] = select;
-              dialogueActions.Execute();*/
+        //测试代码创建三选一对话过程
+        /*  GameObject tempObject = new GameObject();
+          dialogueActions = tempObject.AddComponent<Actions>();
+          dialogueActions.destroyAfterFinishing = true;
 
-            // 设置鼠标为非独占，并且显示模式
+          dialogueActions.actionsList.actions = new IAction[1];
+          ActionDialogue select = dialogueActions.gameObject.AddComponent<ActionDialogue>();
+          select.dialogue = selectDialogue.GetComponent<Dialogue>();
+          select.dialogue.itemInstances[2].content = new LocString("111");
+          select.dialogue.itemInstances[3].content = new LocString("222");
+          select.dialogue.itemInstances[4].content = new LocString("333");
+          dialogueActions.actionsList.actions[0] = select;
+          dialogueActions.Execute();*/
+
+        // 设置鼠标为非独占，并且显示模式
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
@@ -813,7 +820,7 @@ public class Control : MonoBehaviour, IControl
 
                             String postData = "{\"background\":[" + talker1D + "," + talker2D + "],\"content\":\"" + talker1 + " is at " + infos[nowIndex].locations[talker1] + " now. "
                                 + talker2 + " is at " + infos[nowIndex].locations[talker1] + " now. Current event is wedding.\"}";
-                            String url = "http://192.168.0.37:18981/choice";
+                            String url = "http://" + ip + ":18981/choice";
                             before_choice_state = 2;
                             //发送json
                             SendPostRequest(url, postData, 1);
@@ -892,6 +899,13 @@ public class Control : MonoBehaviour, IControl
         //选择阶段
         if (state == 1)
         {
+           if(selectDialogueQueue.Count !=0 && AfterSelectActions == null)
+           {
+                string info = selectDialogueQueue.Dequeue();
+                //生成新的actions 并且执行    
+                AfterSelectActions = GetSelectActions2(info);
+                AfterSelectActions.Execute();
+           }        
             //当前所有的指令都已经被取完 进入结束状态
             if (selectActions == null && AfterSelectActions == null && isSendRequest == true)
             {
@@ -1260,7 +1274,7 @@ public class Control : MonoBehaviour, IControl
             test[0] = "said \"";
             string content = infos[nowIndex].choice_dialogues[i].Split(test, System.StringSplitOptions.None)[1].Split('\"')[0];
             ActionSimpleMessageShow message = actions.gameObject.AddComponent<ActionSimpleMessageShow>();
-            message.time = 2;
+            message.time = 6;
             message.message = new LocString(name + ":\t\t"  + content);
             actions.actionsList.actions[i+1] = message;
         }
@@ -1305,17 +1319,22 @@ public class Control : MonoBehaviour, IControl
         GameObject tempObject = new GameObject();
         Actions actions = tempObject.AddComponent<Actions>();
         actions.destroyAfterFinishing = true;
-        string[] temp1 = postResult.Split('{');
-        actions.actionsList.actions = new IAction[temp1.Length - 1];
-        for(int i = 1; i < temp1.Length; i++)
-        {
-            String name = temp1[i].Split('\"')[1];
-            String content = temp1[i].Split('\"')[4].Split('\\')[0];
-            ActionSimpleMessageShow message = actions.gameObject.AddComponent<ActionSimpleMessageShow>();
-            message.message = new LocString(name + ":\t\t" + content);
-            actions.actionsList.actions[i - 1] = message;
-        }
+        actions.actionsList.actions = new IAction[1];
+        string[] temp = postResult.Split('{');
+        string name = temp[temp.Length - 1].Split('\"')[1];
+        //  Debug.Log("name\t" + name);
 
+        string[] test1 = new string[1];
+        test1[0] = ":\"\\\"";
+        //Debug.Log(postResult);
+        temp = postResult.Split(test1, System.StringSplitOptions.None);
+        string content  = temp[temp.Length - 1].Split('\\')[0];
+        
+        ActionSimpleMessageShow message = actions.gameObject.AddComponent<ActionSimpleMessageShow>();
+        message.message = new LocString(name + ":\t\t" + content);
+        message.time = 6;
+        actions.actionsList.actions[0] = message;
+       
         return actions;
     }
 
@@ -1418,15 +1437,32 @@ public class Control : MonoBehaviour, IControl
         }
         else
         {
-
             postResult = webRequest.downloadHandler.text;
             if (con == 1)
                 before_choice_state = 3;
             if(con == 2)
             {
-                AfterSelectActions = GetSelectActions2(postResult);
-                AfterSelectActions.Execute();
-                isSendRequest = true;
+                //把返回的消息放入队列
+                selectDialogueQueue.Enqueue(postResult);
+                //如果isEnd为空 结束游戏
+
+                string[] test = new string[1];
+                test[0] = "\"isEnd\":";
+                string isEnd = postResult.Split(test, System.StringSplitOptions.None)[1].Split('}')[0];
+                if (isEnd.Equals("true"))
+                    isSendRequest = true;
+                else
+                {
+                    //发送新包
+                    string[] test1 = new string[1];
+                    test1[0] = "\"content\":\"";
+                    string[] test2 = new string[1];
+                    test2[0] = "\",";
+
+                    string content = postResult.Split(test1, System.StringSplitOptions.None)[1].Split('}')[0].Split(test2, System.StringSplitOptions.None)[0];
+                    string conversation = "[" + postResult.Split('[')[1].Split(']')[0] + "]";
+                    SendInfo1(content, conversation);
+                }
             }
             if(con == 3)
             {
@@ -1450,21 +1486,46 @@ public class Control : MonoBehaviour, IControl
         }
     }
 
+    //在多选一对话中 发送第一个包的方法
     public void SendInfo(string content)
     {
         //构造json 发送
+        /*  String result = "{\"background\":[" + talker1D + "," + talker2D + "],\"content\":\"" + talker1 + " is at " + infos[nowIndex].locations[talker1] + " now. "
+                                  + talker2 + " is at " + infos[nowIndex].locations[talker1] + " now. Current event is wedding.\",\"choice\":\""
+                                  + content + "\"}";
+          String url = "http://192.168.0.37:18981/choice_dialogue";*/
         String result = "{\"background\":[" + talker1D + "," + talker2D + "],\"content\":\"" + talker1 + " is at " + infos[nowIndex].locations[talker1] + " now. "
-                                + talker2 + " is at " + infos[nowIndex].locations[talker1] + " now. Current event is wedding.\",\"choice\":\""
-                                + content + "\"}";
-        String url = "http://192.168.0.37:18981/choice_dialogue";
+                                  + talker2 + " is at " + infos[nowIndex].locations[talker1] + " now. Current event is wedding. "
+                                  + content + "\",\"conversation\": []}";
+        Debug.Log("111111\t" + result);
+        String url = "http://" +  ip + ":18981/choice_dialogue_step_by_step";
+        talkerOrder = false;
         SendPostRequest(url, result, 2);
+    }
+
+    //发送后续包的协议
+    public void SendInfo1(string content, string conversation)
+    {
+        String result = "";
+        if(talkerOrder)
+            result = "{\"background\":[" + talker1D + "," + talker2D + "],\"content\":\"" + talker1 + " is at " + infos[nowIndex].locations[talker1] + " now. "
+                                + talker2 + " is at " + infos[nowIndex].locations[talker1] + " now. Current event is wedding. "
+                                + content + "\",\"conversation\": " + conversation + "}";
+        else
+            result = "{\"background\":[" + talker2D + "," + talker1D + "],\"content\":\"" + talker2 + " is at " + infos[nowIndex].locations[talker2] + " now. "
+                               + talker1 + " is at " + infos[nowIndex].locations[talker1] + " now. Current event is wedding. "
+                               + content + "\",\"conversation\": " + conversation + "}";
+
+        talkerOrder = !talkerOrder;
+        String url = "http://" + ip + ":18981/choice_dialogue_step_by_step";
+        SendPostRequest(url, result, 2, content);
     }
 
     public void SendInfo2(string content)
     {
         //先构造移动指令的协议 失败之后再发送对话协议
         String postData = "{\"instruction\": \"" + content + "\"}";
-        String url = "http://192.168.0.37:18981/test_choice_is_walking_instruction";
+        String url = "http://" + ip + ":18981/test_choice_is_walking_instruction";
         SendPostRequest(url, postData, 3, content);  
     }
 }
