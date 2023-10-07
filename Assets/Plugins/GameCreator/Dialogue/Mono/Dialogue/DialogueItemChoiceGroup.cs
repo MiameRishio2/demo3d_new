@@ -115,7 +115,7 @@
             this.choiceIndex = choiceIndex;
       
             if (control == null)
-                control = GameObject.Find("Control").GetComponent<IControl>();
+                control = GameObject.Find("Control2").GetComponent<IControl>();
             if (choiceIndex == 3)
                 control.SendInfo2(value);
             else
